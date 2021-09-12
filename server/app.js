@@ -20,6 +20,9 @@ app.use(cors());
 
 app.use(express.json());
 
+const Job = require("./router/job/JobRouter");
+app.use("/api", Job);
+
 const PORT = process.env.PORT || 3002;
 
 app.listen(PORT, () => {
