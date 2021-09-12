@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 process.env.PWD = process.cwd();
 
 mongoose.connect(
-  "mongodb+srv://bogcareers:nikanikonika@cluster0.qet1t.mongodb.net/test",
+  "mongodb+srv://bogcareers:nikanikonika@cluster0.qet1t.mongodb.net/careers",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
