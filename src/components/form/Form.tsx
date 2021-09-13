@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import Button from "../../helpers/Button/Button";
 import Input from "../../helpers/Input/Input";
+import FormElement from "../../helpers/Form/Form";
 
 const Form: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   return (
     <>
-      <form
-        id="form"
-        name="form"
-        onSubmit={(e) => e.preventDefault()}
-        className="flex flex-col hh-search-form"
+      <FormElement
+        props={{
+          id: "form",
+          name: "form",
+          onSubmit: (e: any) => e.preventDefault(),
+          className: "flex flex-col hh-search-form",
+        }}
       >
         <div className="flex">
           <div className="flex-1 hh-search-bar-container">
@@ -52,7 +55,7 @@ const Form: React.FC = () => {
             </span>
           </Button>
         </div>
-      </form>
+      </FormElement>
     </>
   );
 };
