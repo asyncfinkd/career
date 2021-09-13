@@ -9,8 +9,10 @@ import UseDataListener from "../../hooks/useDataListener";
 import { isArrayEmpty } from "../../utils";
 import UseElementListener from "../../hooks/useElementListener";
 
+type T = any;
+
 const JobPages: React.FC = () => {
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<Array<T>>([]);
   useEffect(() => {
     axios.get(`${env.host}/api${window.location.pathname}`).then((res) => {
       setData([res.data.data]);
