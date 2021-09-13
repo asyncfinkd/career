@@ -3,6 +3,7 @@ import axios from "axios";
 import env from "../../application/environment/env.json";
 import { Helmet } from "react-helmet";
 import Navbar from "../../components/navbar/Navbar";
+import { useLocation } from "react-router-dom";
 
 const JobPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
@@ -11,6 +12,11 @@ const JobPages: React.FC = () => {
       setData([res.data.data]);
     });
   }, []);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <>
       <Helmet>

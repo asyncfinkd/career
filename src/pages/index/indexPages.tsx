@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Banner from "../../components/banner/Banner";
 import Footer from "../../components/footer/Footer";
 import Form from "../../components/form/Form";
 import Navbar from "../../components/navbar/Navbar";
 import Notification from "../../components/notification/Notification";
 import { ApplicationContext } from "../../application/context/ApplicationContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 const IndexPages: React.FC = () => {
-  const { jobs } = React.useContext(ApplicationContext)!;
+  const { jobs } = React.useContext(ApplicationContext);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <>
       <Helmet>
