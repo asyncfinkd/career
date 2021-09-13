@@ -6,11 +6,19 @@ import Navbar from "../../components/navbar/Navbar";
 import Notification from "../../components/notification/Notification";
 import { ApplicationContext } from "../../application/context/ApplicationContext";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const IndexPages: React.FC = () => {
   const { jobs } = React.useContext(ApplicationContext)!;
   return (
     <>
+      <Helmet>
+        <title>
+          &#x10D9;&#x10D0;&#x10E0;&#x10D8;&#x10D4;&#x10E0;&#x10D0; |
+          &#x10E1;&#x10D0;&#x10DB;&#x10E3;&#x10E8;&#x10D0;&#x10DD;&#x10D4;&#x10D1;&#x10D8;
+          JSC Bank of Georgia
+        </title>
+      </Helmet>
       <Navbar />
       <section className="flex-1 ie-no-flex1">
         <Banner />
