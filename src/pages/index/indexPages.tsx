@@ -7,6 +7,7 @@ import Notification from "../../components/notification/Notification";
 import { ApplicationContext } from "../../context/ApplicationContext";
 import { Link, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { JOB } from "../../constants/Routes";
 
 const IndexPages: React.FC = () => {
   const { jobs } = React.useContext(ApplicationContext);
@@ -41,7 +42,7 @@ const IndexPages: React.FC = () => {
                 <>
                   <div className="hh-jobs-openings">
                     <Link
-                      to={"/job/" + item.route}
+                      to={JOB(item.route)}
                       className="bg-white border-1 border-gray-400 p-4 block mt-3 first:mt-0 rounded hh-job-row transition-shadow duration-200 shadow-none hover:shadow-md"
                     >
                       <h3 className="font-semibold text-xl leading-8 hh-job-row-title">
