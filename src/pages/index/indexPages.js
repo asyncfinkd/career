@@ -5,6 +5,7 @@ import Form from "../../components/form/Form";
 import Navbar from "../../components/navbar/Navbar";
 import Notification from "../../components/notification/Notification";
 import { ApplicationContext } from "../../application/context/ApplicationContext";
+import { Link } from "react-router-dom";
 
 export default function IndxPages() {
   const { jobs } = React.useContext(ApplicationContext);
@@ -26,8 +27,8 @@ export default function IndxPages() {
               return (
                 <>
                   <div class="hh-jobs-openings">
-                    <a
-                      href="/job/83543/-"
+                    <Link
+                      to="/job/1"
                       class="bg-white border-1 border-gray-400 p-4 block mt-3 first:mt-0 rounded hh-job-row transition-shadow duration-200 shadow-none hover:shadow-md"
                     >
                       <h3 class="font-semibold text-xl leading-8 hh-job-row-title">
@@ -80,7 +81,7 @@ export default function IndxPages() {
                           {item.time}
                         </div>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                 </>
               );
