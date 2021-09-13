@@ -4,6 +4,7 @@ import env from "../../application/environment/env.json";
 import { Helmet } from "react-helmet";
 import Navbar from "../../components/navbar/Navbar";
 import { useLocation } from "react-router-dom";
+import parse from "html-react-parser";
 
 const JobPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
@@ -88,7 +89,7 @@ const JobPages: React.FC = () => {
                     className="ql-editor py-6 hh-job-description"
                   >
                     <p className="ql-align-justify">
-                      {item.description[0].title}
+                      {parse(item.description[0].title)}
                     </p>
                     <p className="ql-align-justify">
                       <strong>&nbsp;</strong>
