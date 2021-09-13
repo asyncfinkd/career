@@ -1,16 +1,15 @@
 import React from "react";
 
 interface Props {
-  props?: any;
   value: string;
-  onChange: void;
-  name?: string;
+  onChange: (e: any) => void;
+  props?: object;
 }
 
-const Input: React.FC<Props> = ({ props, value, onChange, name }) => {
+const Input: React.FC<Props> = ({ props, value, onChange }) => {
   return (
     <>
-      <input {...props} value={value} onChange={onChange} name={name} />
+      <input {...props} value={value} onChange={onChange} />
     </>
   );
 };
