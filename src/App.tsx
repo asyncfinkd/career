@@ -19,7 +19,7 @@ const App: React.FC = () => {
       <BrowserRouter>
         <Switch>
         <Route path="/" exact component={IndexPages} />
-          <Route path="/job/:id" exact component={JobPages} />
+        <Route path="/job/:id" exact component={JobPages} />
         </Switch>
       </BrowserRouter>
       </ApplicationContext.Provider>

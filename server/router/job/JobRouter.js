@@ -27,4 +27,14 @@ router.route("/getalljob").post(async (req, res) => {
   });
 });
 
+router.route("/job/:id").get(async (req, res) => {
+  JobSchema.find({}).then((result) => {
+    result.map((item) => {
+      if (item.route.toString() == req.params.id.toString()) {
+        res.json({ data: item });
+      }
+    });
+  });
+});
+
 module.exports = router;
