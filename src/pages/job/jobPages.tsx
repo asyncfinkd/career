@@ -4,7 +4,7 @@ import env from "../../application/environment/env.json";
 import { Helmet } from "react-helmet";
 import Navbar from "../../components/navbar/Navbar";
 import { useLocation } from "react-router-dom";
-import parse from "html-react-parser";
+import dompurify from "dompurify";
 import UseDataListener from "../../hooks/useDataListener";
 import { isArrayEmpty } from "../../utils";
 import UseElementListener from "../../hooks/useElementListener";
@@ -12,6 +12,7 @@ import UseElementListener from "../../hooks/useElementListener";
 type T = any;
 
 const JobPages: React.FC = () => {
+  const sanitizer = dompurify.sanitize;
   const [data, setData] = useState<Array<T>>([]);
   useEffect(() => {
     axios.get(`${env.host}/api${window.location.pathname}`).then((res) => {
@@ -106,9 +107,12 @@ const JobPages: React.FC = () => {
                     role="article"
                     className="ql-editor py-6 hh-job-description"
                   >
-                    <p className="ql-align-justify">
-                      {parse(item.description[0].title)}
-                    </p>
+                    <p
+                      className="ql-align-justify"
+                      dangerouslySetInnerHTML={{
+                        __html: sanitizer(item.description[0].title),
+                      }}
+                    ></p>
                     {UseElementListener({
                       condition: isArrayEmpty(data[0].description[0].functions),
                       children: (
