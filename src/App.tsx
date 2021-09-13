@@ -5,8 +5,10 @@ import { ApplicationContext } from "./context/ApplicationContext";
 import env from "./application/environment/env.json";
 import { Routes } from "./app/routes/Routes";
 
+type T = any;
+
 const App: React.FC = () => {
-  const [jobs, setJobs] = React.useState([]);
+  const [jobs, setJobs] = React.useState<Array<T> | null>([]);
   React.useEffect(() => {
     axios.post(`${env.host}/api/getalljob`).then((res) => {
       setJobs(res.data.data);

@@ -3,10 +3,7 @@ import { Link } from "react-router-dom";
 import { HOME } from "../../constants/Routes";
 
 const Navbar: React.FC = () => {
-  {
-    console.log(window.location.pathname);
-  }
-  const [role, setRole] = useState<number>(0);
+  const [role, setRole] = useState<number | null>(0);
   useEffect(() => {
     if (window.location.pathname != "/") {
       setRole(1);
