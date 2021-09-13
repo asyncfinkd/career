@@ -113,8 +113,8 @@ const JobPages: React.FC = () => {
                       <strong style={{ backgroundColor: "rgb(244, 244, 245)" }}>
                         განათლება:{" "}
                       </strong>
-                      უმაღლესი, იურიდიული განათლება ჩაითვლება
-                      უპირატესობად&nbsp;&nbsp;
+                      {data[0].description[0].qualitificationRequire}
+                      &nbsp;&nbsp;
                     </p>
                     <p>
                       <br />
