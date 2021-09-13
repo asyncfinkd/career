@@ -1,10 +1,8 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import IndexPages from "./pages/index/indexPages";
 import axios from "axios";
 import { ApplicationContext } from "./application/context/ApplicationContext";
 import env from "./application/environment/env.json";
-import JobPages from "./pages/job/jobPages";
 import { Routes } from "./app/routes/Routes";
 
 const App: React.FC = () => {
