@@ -124,18 +124,14 @@ const JobPages: React.FC = () => {
                         სამუშაო გამოცდილება:{" "}
                       </strong>
                     </p>
-                    <p>
-                      ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;მენეჯერულ
-                      პოზიციაზე მუშაობის მინ. 2 წლიანი გამოცდილება;
-                    </p>
-                    <p>
-                      ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;სასურველია,
-                      საკრედიტო მიმართულებით მუშაობის გამოცდილება;
-                    </p>
-                    <p>
-                      ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;პროექტის
-                      მენეჯმენტის მიმართულებით მუშაობის გამოცდილება;
-                    </p>
+                    {data[0].description[0].workExperience.map((work: any) => {
+                      return (
+                        <p>
+                          ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          {work.title}
+                        </p>
+                      );
+                    })}
                     <p>
                       <br />
                     </p>
