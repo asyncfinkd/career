@@ -4,7 +4,7 @@ import Footer from "../../components/footer/Footer";
 import Form from "../../components/form/Form";
 import Navbar from "../../components/navbar/Navbar";
 import Notification from "../../components/notification/Notification";
-import { ApplicationContext } from "../../application/context/ApplicationContext";
+import { ApplicationContext } from "../../context/ApplicationContext";
 import { Link, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import axios from "axios";
-import { ApplicationContext } from "./application/context/ApplicationContext";
+import { ApplicationContext } from "./context/ApplicationContext";
 import env from "./application/environment/env.json";
 import { Routes } from "./app/routes/Routes";
 
