@@ -5,6 +5,8 @@ import { Helmet } from "react-helmet";
 import Navbar from "../../components/navbar/Navbar";
 import { useLocation } from "react-router-dom";
 import parse from "html-react-parser";
+import UseDataListener from "../../hooks/useDataListener";
+import { isArrayEmpty } from "../../utils";
 
 const JobPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
@@ -13,6 +15,19 @@ const JobPages: React.FC = () => {
       setData([res.data.data]);
     });
   }, []);
+  const DataFunction = () => {
+    return (
+      <>
+        {data[0].description[0].functions.map((descriptionFunction: any) => {
+          return (
+            <>
+              <li>{descriptionFunction.title}</li>
+            </>
+          );
+        })}
+      </>
+    );
+  };
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -100,15 +115,12 @@ const JobPages: React.FC = () => {
                       </strong>
                     </p>
                     <ul>
-                      {data[0].description[0].functions.map(
-                        (descriptionFunction: any) => {
-                          return (
-                            <>
-                              <li>{descriptionFunction.title}</li>
-                            </>
-                          );
-                        }
-                      )}
+                      {UseDataListener({
+                        condition: isArrayEmpty(
+                          data[0].description[0].functions
+                        ),
+                        children: DataFunction(),
+                      })}
                     </ul>
                     <p className="ql-align-justify">&nbsp;</p>
                     <p className="ql-align-justify">
