@@ -7,6 +7,7 @@ router.route("/job").post(async (req, res) => {
   const time = req.body.time;
   const description = req.body.description;
   const lastTime = req.body.lastTime;
+  const route = req.body.route;
 
   const Job = new JobSchema({
     title: title,
@@ -14,6 +15,7 @@ router.route("/job").post(async (req, res) => {
     time: time,
     description: description,
     lastTime: lastTime,
+    route: route,
   });
   Job.save();
   res.json({ success: true });
