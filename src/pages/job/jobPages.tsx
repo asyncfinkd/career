@@ -146,44 +146,16 @@ const JobPages: React.FC = () => {
                         ცოდნა, უნარები:
                       </strong>
                     </p>
-                    <p>
-                      ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;გუნდური
-                      მუშაობის, გუნდის შეკვრის უნარი;
-                    </p>
-                    <p>
-                      ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ლიდერული
-                      თვისებები;
-                    </p>
-                    <p>
-                      ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;კონფლიქტური
-                      სიტუაციების მართვის და სწორი გადაწყვეტილების მიღების
-                      უნარი;
-                    </p>
-                    <p>
-                      ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ობიექტურობა,
-                      პატიოსნება, სამართლიანობა;
-                    </p>
-                    <p>
-                      ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ბიზნეს
-                      კომუნიკაციის კარგად განვითარებული უნარები;
-                    </p>
-                    <p>
-                      ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;სტანდარტებში,
-                      პროცედურებში ინფორმაციის მოძიების უნარი;
-                    </p>
-                    <p>
-                      ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;გუნდის
-                      მოტივირების უნარი;
-                    </p>
-                    <p>
-                      ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ანალიტიკური
-                      აზროვნების უნარი;
-                    </p>
-                    <p>
-                      ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ამოცანის
-                      ანალიზის, კრიტიკული შეფასების, საკვანძო და პრობლემური
-                      საკითხების დადგენის და მათი გადაწყვეტის უნარი;
-                    </p>
+                    {data[0].description[0].know.map((knows: any) => {
+                      return (
+                        <>
+                          <p>
+                            ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            {knows.title}
+                          </p>
+                        </>
+                      );
+                    })}
                     <p>
                       <br />
                     </p>
@@ -194,7 +166,7 @@ const JobPages: React.FC = () => {
                         „გამოაგზავნეთ განაცხადი“. რეზიუმეების მიღების ბოლო ვადაა{" "}
                       </span>
                       <strong style={{ color: "rgb(91, 91, 91)" }}>
-                        23 სექტემბერი 2021
+                        {data[0].lastTime}
                       </strong>
                       <span style={{ color: "rgb(91, 91, 91)" }}>.</span>
                     </p>
@@ -1531,13 +1503,7 @@ const JobPages: React.FC = () => {
                               type="text"
                               value=""
                             />
-                            {/* <hh-file-upload
-                        className="w-full"
-                        inputname="Application_Resume"
-                        required
-                        jobid="83543"
-                        csrf="CfDJ8JYSf8jKYMtGhl73eOPUqwcHX9KAu1dKkjRoKaL0mqhxdhYfDi-I7h7te-fCxVvG_FfvtSkAg2Ss4pvC2oZxyFb6DxLZNY066fizQCVocy9xfDOcQsoByd7BLsZ0ViiXoy9Kcx_IdHjAB2oX4IZZAiE"
-                      ></hh-file-upload> */}
+                            {/* RESUME or CV */}
                           </div>
 
                           <input
