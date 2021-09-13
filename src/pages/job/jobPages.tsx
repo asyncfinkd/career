@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import parse from "html-react-parser";
 import UseDataListener from "../../hooks/useDataListener";
 import { isArrayEmpty } from "../../utils";
+import UseElementListener from "../../hooks/useElementListener";
 
 const JobPages: React.FC = () => {
   const [data, setData] = useState<any>([]);
@@ -106,22 +107,31 @@ const JobPages: React.FC = () => {
                     <p className="ql-align-justify">
                       {parse(item.description[0].title)}
                     </p>
-                    <p className="ql-align-justify">
-                      <strong>&nbsp;</strong>
-                    </p>
-                    <p className="ql-align-justify">
-                      <strong style={{ backgroundColor: "rgb(244, 244, 245)" }}>
-                        ფუნქციები:
-                      </strong>
-                    </p>
-                    <ul>
-                      {UseDataListener({
-                        condition: isArrayEmpty(
-                          data[0].description[0].functions
-                        ),
-                        children: DataFunction(),
-                      })}
-                    </ul>
+                    {UseElementListener({
+                      condition: isArrayEmpty(data[0].description[0].functions),
+                      children: (
+                        <>
+                          <p className="ql-align-justify">
+                            <strong>&nbsp;</strong>
+                          </p>
+                          <p className="ql-align-justify">
+                            <strong
+                              style={{ backgroundColor: "rgb(244, 244, 245)" }}
+                            >
+                              ფუნქციები:
+                            </strong>
+                          </p>
+                          <ul>
+                            {UseDataListener({
+                              condition: isArrayEmpty(
+                                data[0].description[0].functions
+                              ),
+                              children: DataFunction(),
+                            })}
+                          </ul>
+                        </>
+                      ),
+                    })}
                     <p className="ql-align-justify">&nbsp;</p>
                     <p className="ql-align-justify">
                       <strong style={{ backgroundColor: "rgb(244, 244, 245)" }}>
