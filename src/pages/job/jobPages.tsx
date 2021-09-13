@@ -166,7 +166,7 @@ const JobPages: React.FC = () => {
                         „გამოაგზავნეთ განაცხადი“. რეზიუმეების მიღების ბოლო ვადაა{" "}
                       </span>
                       <strong style={{ color: "rgb(91, 91, 91)" }}>
-                        {data[0].lastTime}
+                        &nbsp;{data[0].lastTime}
                       </strong>
                       <span style={{ color: "rgb(91, 91, 91)" }}>.</span>
                     </p>
