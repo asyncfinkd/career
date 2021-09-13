@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Form() {
-  return (
-    <>
-      <form
+const Form: React.FC = () => {
+    return(
+        <>
+              <form
         id="form"
         name="form"
         onSubmit={(e) => e.preventDefault()}
@@ -27,7 +27,6 @@ export default function Form() {
           >
             <span className="circle-loader dark"></span>
             <span className="button-content flex items-center">
-              <inline-svg>
                 <svg
                   fill="none"
                   viewBox="0 0 24 24"
@@ -41,7 +40,6 @@ export default function Form() {
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                   ></path>
                 </svg>
-              </inline-svg>
               <span className="ml-2">
                 &#x10EB;&#x10D4;&#x10D1;&#x10DC;&#x10D0;
               </span>
@@ -49,6 +47,8 @@ export default function Form() {
           </button>
         </div>
       </form>
-    </>
-  );
+        </>
+    )
 }
+
+export default Form;

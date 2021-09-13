@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Navbar() {
-  return (
-    <>
-      <header className="hh-header flex justify-center border-b">
+const Navbar: React.FC = () => {
+    return(
+        <>
+        <header className="hh-header flex justify-center border-b">
         <div className="flex w-full justify-between max-w-screen-xl py-4 px-4 items-center">
           <div className="flex flex-1">
             <img
@@ -14,6 +14,8 @@ export default function Navbar() {
           </div>
         </div>
       </header>
-    </>
-  );
+        </>
+    )
 }
+
+export default Navbar;

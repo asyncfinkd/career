@@ -7,8 +7,8 @@ import Notification from "../../components/notification/Notification";
 import { ApplicationContext } from "../../application/context/ApplicationContext";
 import { Link } from "react-router-dom";
 
-export default function IndxPages() {
-  const { jobs } = React.useContext(ApplicationContext);
+const IndexPages: React.FC = () => {
+  const { jobs } = React.useContext(ApplicationContext)!;
   return (
     <>
       <Navbar />
@@ -23,27 +23,26 @@ export default function IndxPages() {
               <Form />
             </div>
 
-            {jobs.map((item) => {
+            {jobs.map((item: any) => {
               return (
                 <>
-                  <div class="hh-jobs-openings">
+                  <div className="hh-jobs-openings">
                     <Link
                       to="/job/1"
-                      class="bg-white border-1 border-gray-400 p-4 block mt-3 first:mt-0 rounded hh-job-row transition-shadow duration-200 shadow-none hover:shadow-md"
+                      className="bg-white border-1 border-gray-400 p-4 block mt-3 first:mt-0 rounded hh-job-row transition-shadow duration-200 shadow-none hover:shadow-md"
                     >
-                      <h3 class="font-semibold text-xl leading-8 hh-job-row-title">
-                        <span class="user-color text-secondary">
+                      <h3 className="font-semibold text-xl leading-8 hh-job-row-title">
+                        <span className="user-color text-secondary">
                           {item.title}
                         </span>
                       </h3>
-                      <div class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap">
-                        <div class="mt-2 flex items-center text-sm leading-5 text-gray-600 sm:mr-6 hh-job-row-location">
-                          <inline-svg>
+                      <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap">
+                        <div className="mt-2 flex items-center text-sm leading-5 text-gray-600 sm:mr-6 hh-job-row-location">
                             <svg
                               fill="none"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
-                              class="flex-shrink-0 mr-1 h-5 w-5 text-gray-500"
+                              className="flex-shrink-0 mr-1 h-5 w-5 text-gray-500"
                             >
                               <path
                                 stroke-linecap="round"
@@ -58,17 +57,15 @@ export default function IndxPages() {
                                 d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                               ></path>
                             </svg>
-                          </inline-svg>
                           {item.location}
                         </div>
 
-                        <div class="mt-2 flex items-center text-sm leading-5 text-gray-600 sm:mr-6 hh-job-row-experience">
-                          <inline-svg>
+                        <div className="mt-2 flex items-center text-sm leading-5 text-gray-600 sm:mr-6 hh-job-row-experience">
                             <svg
                               fill="none"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
-                              class="flex-shrink-0 mr-1 h-5 w-5 text-gray-500"
+                              className="flex-shrink-0 mr-1 h-5 w-5 text-gray-500"
                             >
                               <path
                                 stroke-linecap="round"
@@ -77,7 +74,6 @@ export default function IndxPages() {
                                 d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                               ></path>
                             </svg>
-                          </inline-svg>
                           {item.time}
                         </div>
                       </div>
@@ -88,9 +84,9 @@ export default function IndxPages() {
             })}
           </div>
         </div>
-        <div class="bg-white p-5 sm:py-10 sm:px-0 hh-text-section border-t-2">
-          <div class="ql-editor max-w-screen-md mx-auto">
-            <p class="ql-align-justify">
+        <div className="bg-white p-5 sm:py-10 sm:px-0 hh-text-section border-t-2">
+          <div className="ql-editor max-w-screen-md mx-auto">
+            <p className="ql-align-justify">
               <span style={{ color: "rgb(113, 111, 114)" }}>
                 თუ ამჟამად გამოცხადებული ვაკანსიების ჩამონათვალში ვერ აღმოაჩინეთ
                 თქვენთვის საინტერესო პოზიცია, შეგიძლიათ სამომავლოდ განსახილველად
@@ -118,4 +114,6 @@ export default function IndxPages() {
       <Footer />
     </>
   );
-}
+};
+
+export default IndexPages;
