@@ -19,13 +19,7 @@ const App: React.FC = () => {
           <Switch>
             {Routes.map((routes) => {
               return (
-                <>
-                  <Route
-                    path={routes.path}
-                    exact
-                    component={routes.component}
-                  />
-                </>
+                <Route path={routes.path} exact component={routes.component} />
               );
             })}
           </Switch>
