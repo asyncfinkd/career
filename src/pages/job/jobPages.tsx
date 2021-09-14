@@ -64,20 +64,16 @@ const JobPages: React.FC = () => {
   }, [pathname]);
   return (
     <>
-      <Helmet>
-        {data.map((item: any) => {
-          return (
-            <title>
-              {item.title} | JSC Bank of Georgia |
-              &#x10D7;&#x10D1;&#x10D8;&#x10DA;&#x10D8;&#x10E1;&#x10D8;
-            </title>
-          );
-        })}
-      </Helmet>
-      <Navbar />
       {data.map((item: any) => {
         return (
           <>
+            <Helmet>
+              <title>
+                {item.title} | JSC Bank of Georgia |
+                &#x10D7;&#x10D1;&#x10D8;&#x10DA;&#x10D8;&#x10E1;&#x10D8;
+              </title>
+            </Helmet>
+            <Navbar />
             <div className="flex flex-1 ie-no-flex1 max-w-screen-xl mx-auto w-full">
               <div className=" flex-1 flex flex-wrap" id="job-83543">
                 <article className="w-full md:w-7/12 pl-4 pr-6 p-6">
@@ -147,13 +143,15 @@ const JobPages: React.FC = () => {
                           </p>
                           <p className="ql-align-justify">
                             <strong
-                              style={{ backgroundColor: "rgb(244, 244, 245)" }}
+                              style={{
+                                backgroundColor: "rgb(244, 244, 245)",
+                              }}
                             >
                               ფუნქციები:
                             </strong>
                           </p>
                           <ul>
-                          {UseDataListener({
+                            {UseDataListener({
                               condition: isArrayEmpty(
                                 data[0].description[0].functions
                               ),
@@ -172,22 +170,28 @@ const JobPages: React.FC = () => {
                           <p className="ql-align-justify">&nbsp;</p>
                           <p className="ql-align-justify">
                             <strong
-                              style={{ backgroundColor: "rgb(244, 244, 245)" }}
+                              style={{
+                                backgroundColor: "rgb(244, 244, 245)",
+                              }}
                             >
                               საკვალიფიკაციო მოთხოვნები:
                             </strong>
                           </p>
                           <p>
                             <strong
-                              style={{ backgroundColor: "rgb(244, 244, 245)" }}
+                              style={{
+                                backgroundColor: "rgb(244, 244, 245)",
+                              }}
                             >
                               განათლება:{" "}
                             </strong>
-                            <UseDataListener condition={isStringEmpty(
+                            <UseDataListener
+                              condition={isStringEmpty(
                                 data[0].description[0].qualitificationRequire
-                              )}>
-                                  {DataQualitificationRequire()}
-                              </UseDataListener>
+                              )}
+                            >
+                              {DataQualitificationRequire()}
+                            </UseDataListener>
                           </p>
                         </>
                       ),
@@ -203,7 +207,9 @@ const JobPages: React.FC = () => {
                         <>
                           <p>
                             <strong
-                              style={{ backgroundColor: "rgb(244, 244, 245)" }}
+                              style={{
+                                backgroundColor: "rgb(244, 244, 245)",
+                              }}
                             >
                               სამუშაო გამოცდილება:{" "}
                             </strong>
