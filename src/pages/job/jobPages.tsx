@@ -6,7 +6,7 @@ import Navbar from "../../components/navbar/Navbar";
 import { useLocation } from "react-router-dom";
 import dompurify from "dompurify";
 import UseDataListener from "../../hooks/useDataListener";
-import { isArrayEmpty } from "../../utils";
+import { isArrayEmpty, isStringEmpty } from "../../utils";
 import UseElementListener from "../../hooks/useElementListener";
 
 type T = any;
@@ -138,19 +138,32 @@ const JobPages: React.FC = () => {
                         </>
                       ),
                     })}
-                    <p className="ql-align-justify">&nbsp;</p>
-                    <p className="ql-align-justify">
-                      <strong style={{ backgroundColor: "rgb(244, 244, 245)" }}>
-                        საკვალიფიკაციო მოთხოვნები:
-                      </strong>
-                    </p>
-                    <p>
-                      <strong style={{ backgroundColor: "rgb(244, 244, 245)" }}>
-                        განათლება:{" "}
-                      </strong>
-                      {data[0].description[0].qualitificationRequire}
-                      &nbsp;&nbsp;
-                    </p>
+                    {UseElementListener({
+                      condition: isStringEmpty(
+                        data[0].description[0].qualitificationRequire
+                      ),
+                      children: (
+                        <>
+                          <p className="ql-align-justify">&nbsp;</p>
+                          <p className="ql-align-justify">
+                            <strong
+                              style={{ backgroundColor: "rgb(244, 244, 245)" }}
+                            >
+                              საკვალიფიკაციო მოთხოვნები:
+                            </strong>
+                          </p>
+                          <p>
+                            <strong
+                              style={{ backgroundColor: "rgb(244, 244, 245)" }}
+                            >
+                              განათლება:{" "}
+                            </strong>
+                            {data[0].description[0].qualitificationRequire}
+                            &nbsp;&nbsp;
+                          </p>
+                        </>
+                      ),
+                    })}
                     <p>
                       <br />
                     </p>
