@@ -11,6 +11,7 @@ import UseElementListener from "../../hooks/useElementListener";
 import RequirementsList from "../../components/job/RequirementsList";
 import { useParams } from "react-router-dom";
 import JobPagesList from "../../components/job/components/JobPagesList";
+import Footer from "../../components/job/components/Footer";
 
 type T = any;
 
@@ -1659,6 +1660,7 @@ const JobPages: React.FC = () => {
         </div>
       </div>
       {/* CV Enter a Validation */}
+      <Footer />
     </>
   );
 };
