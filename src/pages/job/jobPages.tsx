@@ -215,12 +215,12 @@ const JobPages: React.FC = () => {
                             ),
                             children: DataWorkExperience(),
                           })}
+                          <p>
+                            <br />
+                          </p>
                         </>
                       ),
                     })}
-                    <p>
-                      <br />
-                    </p>
                     <p>
                       <strong style={{ backgroundColor: "rgb(244, 244, 245)" }}>
                         ცოდნა, უნარები:
