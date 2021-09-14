@@ -153,7 +153,7 @@ const JobPages: React.FC = () => {
                             </strong>
                           </p>
                           <ul>
-                            {UseDataListener({
+                          {UseDataListener({
                               condition: isArrayEmpty(
                                 data[0].description[0].functions
                               ),
@@ -183,12 +183,11 @@ const JobPages: React.FC = () => {
                             >
                               განათლება:{" "}
                             </strong>
-                            {UseDataListener({
-                              condition: isStringEmpty(
+                            <UseDataListener condition={isStringEmpty(
                                 data[0].description[0].qualitificationRequire
-                              ),
-                              children: DataQualitificationRequire(),
-                            })}
+                              )}>
+                                  {DataQualitificationRequire()}
+                              </UseDataListener>
                           </p>
                         </>
                       ),

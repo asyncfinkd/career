@@ -42,7 +42,7 @@ const IndexPages: React.FC = () => {
                 <>
                   <div className="hh-jobs-openings">
                     <Link
-                      to={JOB(item.route)}
+                      to={JOB(item._id)}
                       className="bg-white border-1 border-gray-400 p-4 block mt-3 first:mt-0 rounded hh-job-row transition-shadow duration-200 shadow-none hover:shadow-md"
                     >
                       <h3 className="font-semibold text-xl leading-8 hh-job-row-title">
