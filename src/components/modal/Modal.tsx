@@ -2,13 +2,20 @@ import React, { useState } from "react";
 
 const Modal: React.FC = () => {
   const [pages, setPages] = useState<number>(0);
+  const renderSecondPage = (condition: any) => {
+    if (condition) {
+      return "hidden";
+    } else {
+      return null;
+    }
+  };
   return (
     <>
       <div
         id="cookie-disclaimer"
         className="overlay-box-shadow bg-white bottom-0 fixed flex flex-col right-0 px-8 py-4 sm:bottom-6 sm:right-6 sm:max-w-sm sm:rounded-md z-10"
       >
-        <div id="cookies-message">
+        <div id="cookies-message" className={`${renderSecondPage(pages == 1)}`}>
           <p className="">
             This website uses cookies to improve your web experience. By using
             this site, you agree to the use of cookies.{" "}
@@ -27,6 +34,7 @@ const Modal: React.FC = () => {
               id="manageCookies"
               type="button"
               className="underline user-color"
+              onClick={() => setPages(1)}
             >
               Manage cookies
             </button>
@@ -40,7 +48,7 @@ const Modal: React.FC = () => {
             </button>
           </div>
         </div>
-        <div id="cookies-panel" className="hidden">
+        <div id="cookies-panel" className={`${renderSecondPage(pages == 0)}`}>
           <div className="flex">
             <h3 className="text-lg leading-6 font-medium text-gray-900">
               Choose your cookie settings
