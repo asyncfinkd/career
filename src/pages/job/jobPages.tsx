@@ -32,6 +32,16 @@ const JobPages: React.FC = () => {
       </>
     );
   };
+
+  const DataQualitificationRequire = () => {
+    return (
+      <>
+        {data[0].description[0].qualitificationRequire}
+        &nbsp;&nbsp;
+      </>
+    );
+  };
+
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -158,8 +168,12 @@ const JobPages: React.FC = () => {
                             >
                               განათლება:{" "}
                             </strong>
-                            {data[0].description[0].qualitificationRequire}
-                            &nbsp;&nbsp;
+                            {UseDataListener({
+                              condition: isStringEmpty(
+                                data[0].description[0].qualitificationRequire
+                              ),
+                              children: DataQualitificationRequire(),
+                            })}
                           </p>
                         </>
                       ),
