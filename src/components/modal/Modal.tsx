@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Modal: React.FC = () => {
+  const [pages, setPages] = useState<number>(0);
   return (
     <>
       <div
@@ -10,7 +11,7 @@ const Modal: React.FC = () => {
         <div id="cookies-message">
           <p className="">
             This website uses cookies to improve your web experience. By using
-            this site, you agree to the use of cookies.
+            this site, you agree to the use of cookies.{" "}
             <a
               href="https://hirehive.com/privacy-policy/"
               className="user-color underline"
