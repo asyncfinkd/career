@@ -4,6 +4,7 @@ import axios from "axios";
 import { ApplicationContext } from "./context/ApplicationContext";
 import env from "./application/environment/env.json";
 import { Routes } from "./app/routes/Routes";
+import Modal from "./components/modal/Modal";
 
 type T = any;
 
@@ -27,6 +28,7 @@ const App: React.FC = () => {
           </Switch>
         </BrowserRouter>
       </ApplicationContext.Provider>
+      <Modal />
     </>
   );
 };
