@@ -75,9 +75,13 @@ const Modal: React.FC = () => {
               </h3>
 
               <div className="flex items-center ml-auto pl-3">
-                <button
-                  id="closeCookies"
-                  className="inline-flex bg-gray-50 rounded-md p-1.5 user-color hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-50 focus:ring-green-600"
+                <Button
+                  props={{
+                    id: "closeCookies",
+                    className:
+                      "inline-flex bg-gray-50 rounded-md p-1.5 user-color hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-50 focus:ring-green-600",
+                    onClick: () => setPages(0),
+                  }}
                 >
                   <span className="sr-only">Dismiss</span>
                   <svg
@@ -93,7 +97,7 @@ const Modal: React.FC = () => {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                </button>
+                </Button>
               </div>
             </div>
 
