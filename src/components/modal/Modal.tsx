@@ -157,13 +157,16 @@ const Modal: React.FC = () => {
                   </div>
                 </div>
                 <div className="mt-4 flex justify-end">
-                  <button
-                    id="saveSettings"
-                    type="submit"
-                    className="btn-color text-white px-4 py-1 rounded-md"
+                  <Button
+                    props={{
+                      id: "saveSettings",
+                      type: "submit",
+                      className: "btn-color text-white px-4 py-1 rounded-md",
+                      onClick: acceptCookies,
+                    }}
                   >
                     Save settings
-                  </button>
+                  </Button>
                 </div>
               </form>
             </div>
