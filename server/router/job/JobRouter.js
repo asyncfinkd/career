@@ -28,13 +28,8 @@ router.route("/getalljob").post(async (req, res) => {
 });
 
 router.route("/job/:id").get(async (req, res) => {
-  JobSchema.find({}).then((result) => {
-    result.map((item) => {
-      if (item._id.toString() == req.params.id.toString()) {
-        res.json({ data: item });
-      }
-    });
-  });
+  const ress = await JobSchema.findOne({ _id: req.params.id });
+  res.send(ress);
 });
 
 module.exports = router;

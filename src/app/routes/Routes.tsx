@@ -6,6 +6,7 @@ export const Routes = [
     path: "/",
     component: IndexPages,
     authRequired: false,
+    isHome: true,
   },
   {
     path: "/job/:id",
