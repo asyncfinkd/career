@@ -42,6 +42,21 @@ const JobPages: React.FC = () => {
     );
   };
 
+  const DataWorkExperience = () => {
+    return (
+      <>
+        {data[0].description[0].workExperience.map((work: any) => {
+          return (
+            <p>
+              ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              {work.title}
+            </p>
+          );
+        })}
+      </>
+    );
+  };
+
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -181,18 +196,27 @@ const JobPages: React.FC = () => {
                     <p>
                       <br />
                     </p>
-                    <p>
-                      <strong style={{ backgroundColor: "rgb(244, 244, 245)" }}>
-                        სამუშაო გამოცდილება:{" "}
-                      </strong>
-                    </p>
-                    {data[0].description[0].workExperience.map((work: any) => {
-                      return (
-                        <p>
-                          ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          {work.title}
-                        </p>
-                      );
+                    {UseElementListener({
+                      condition: isArrayEmpty(
+                        data[0].description[0].workExperience
+                      ),
+                      children: (
+                        <>
+                          <p>
+                            <strong
+                              style={{ backgroundColor: "rgb(244, 244, 245)" }}
+                            >
+                              სამუშაო გამოცდილება:{" "}
+                            </strong>
+                          </p>
+                          {UseDataListener({
+                            condition: isArrayEmpty(
+                              data[0].description[0].workExperience
+                            ),
+                            children: DataWorkExperience(),
+                          })}
+                        </>
+                      ),
                     })}
                     <p>
                       <br />
