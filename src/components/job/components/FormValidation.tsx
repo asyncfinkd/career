@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Input from "../../../helpers/Input/Input";
+import Textarea from "../../../helpers/Textarea/Textarea";
 import CountrySelect from "./select/CountrySelect";
 
 const FormValidation: React.FC<any> = () => {
@@ -10,6 +11,9 @@ const FormValidation: React.FC<any> = () => {
   const [countrySelect, setCountrySelect] = useState<string>("GE");
   const [lastHire, setLastHire] = useState<string>("");
   const [lastPosition, setLastPosition] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [mobilePhone, setMobilePhone] = useState<string>("");
+  const [motivationMessage, setMotivationMessage] = useState<string>("");
   return (
     <>
       <form
@@ -184,19 +188,15 @@ const FormValidation: React.FC<any> = () => {
                 &#x10D4;&#x10DA;-&#x10E4;&#x10DD;&#x10E1;&#x10E2;&#x10D0;
               </span>
               <span className="req-mark"></span>
-              <input
-                className="form-input required"
-                data-val="true"
-                data-val-length="The field Email must be a string with a maximum length of 150."
-                data-val-length-max="150"
-                data-val-required="The Email field is required."
-                id="Candidate_Email"
-                maxLength={150}
-                name="Candidate.Email"
-                pattern="[A-Za-z0-9._%&#x2B;-]&#x2B;@[A-Za-z0-9.-]&#x2B;\.[A-Za-z]{1,63}$"
-                required
-                type="email"
-                value=""
+              <Input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                props={{
+                  className: "form-input required",
+                  maxLength: 150,
+                  required: true,
+                  type: "email",
+                }}
               />
             </label>
           </div>
@@ -208,16 +208,14 @@ const FormValidation: React.FC<any> = () => {
                 (&#x10E4;&#x10DD;&#x10E0;&#x10DB;&#x10D0;&#x10E2;&#x10D8;:
                 9955XXXXXXXX)
               </span>
-              <input
-                className="form-input"
-                data-val="true"
-                data-val-length="The field Phone must be a string with a maximum length of 100."
-                data-val-length-max="100"
-                id="Candidate_Phone"
-                maxLength={100}
-                name="Candidate.Phone"
-                type="text"
-                value=""
+              <Input
+                value={mobilePhone}
+                onChange={(e) => setMobilePhone(e.target.value)}
+                props={{
+                  className: "form-input",
+                  maxLength: 100,
+                  type: "text",
+                }}
               />
             </label>
           </div>
@@ -243,26 +241,6 @@ const FormValidation: React.FC<any> = () => {
               />
               {/* RESUME or CV */}
             </div>
-
-            <input
-              id="Application_Resume_BlobFolder"
-              name="Application.Resume.BlobFolder"
-              type="hidden"
-              value=""
-            />
-            <input
-              id="Application_Resume_BlobName"
-              name="Application.Resume.BlobName"
-              type="hidden"
-              value=""
-            />
-            <input
-              id="Application_Resume_ContentType"
-              name="Application.Resume.ContentType"
-              type="hidden"
-              value=""
-            />
-
             <span
               className="text-red-500 font-normal text-sm"
               style={{ display: "none" }}
@@ -283,13 +261,14 @@ const FormValidation: React.FC<any> = () => {
                 &#x10D0;&#x10E3;&#x10EA;&#x10D8;&#x10DA;&#x10D4;&#x10D1;&#x10D4;&#x10DA;&#x10D8;
                 &#x10D0;&#x10E0; &#x10D0;&#x10E0;&#x10D8;&#x10E1;&lt;/small&gt;
               </span>
-
-              <textarea
-                className="form-textarea resize-y"
-                id="Application_CoverLetter"
-                name="Application.CoverLetter"
-                rows={3}
-              ></textarea>
+              <Textarea
+                value={motivationMessage}
+                onChange={(e: any) => setMotivationMessage(e.target.value)}
+                props={{
+                  className: "form-textarea resize-y",
+                  rows: 3,
+                }}
+              />
             </label>
           </div>
         </fieldset>
