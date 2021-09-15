@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { HOME } from "../../constants/Routes";
+import Image from "../../assets/logo_1.png";
 
 const Navbar: React.FC = () => {
   const [role, setRole] = useState<number | null>(0);
@@ -19,7 +20,7 @@ const Navbar: React.FC = () => {
             <div className="flex flex-1">
               <img
                 className="hh-company-logo max-h-16"
-                src="https://zartis.blob.core.windows.net/user/Company_8148/logo_1.png?sv=2019-07-07&sr=b&sig=7hbEht7LlYyviLIvR0Ga5e%2Fk3IfPKMSs5evBymTfIaI%3D&se=2021-09-14T14%3A56%3A00Z&sp=r&rscd=inline%3Bfilename%3D%22logo_1.png%22"
+                src={Image}
                 alt="JSC Bank of Georgia Logo"
               />
             </div>
@@ -32,7 +33,7 @@ const Navbar: React.FC = () => {
               <Link to={HOME} title="JSC Bank of Georgia">
                 <img
                   className="hh-company-logo max-h-16"
-                  src="https://zartis.blob.core.windows.net/user/Company_8148/logo_1.png?sv=2019-07-07&sr=b&sig=7hbEht7LlYyviLIvR0Ga5e%2Fk3IfPKMSs5evBymTfIaI%3D&se=2021-09-14T14%3A56%3A00Z&sp=r&rscd=inline%3Bfilename%3D%22logo_1.png%22"
+                  src={Image}
                   alt="JSC Bank of Georgia Logo"
                 />
               </Link>
