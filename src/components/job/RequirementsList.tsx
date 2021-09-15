@@ -1,5 +1,4 @@
 import React from "react";
-import FunctionsList from "./functionsList";
 import dompurify from "dompurify";
 import FunctionsRenderList from "./components/FunctionsRenderList";
 import QualificationRequireRender from "./components/QualitificationRequireRender";
