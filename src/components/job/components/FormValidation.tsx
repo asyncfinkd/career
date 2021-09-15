@@ -8,6 +8,8 @@ const FormValidation: React.FC<any> = () => {
   const [lastName, setLastName] = useState<string>("");
   const [cityOrRegion, setCityOrRegion] = useState<string>("");
   const [countrySelect, setCountrySelect] = useState<string>("GE");
+  const [lastHire, setLastHire] = useState<string>("");
+  const [lastPosition, setLastPosition] = useState<string>("");
   return (
     <>
       <form
@@ -129,24 +131,22 @@ const FormValidation: React.FC<any> = () => {
                 &#x10DB;&#x10D8;&#x10DB;&#x10D3;&#x10D8;&#x10DC;&#x10D0;&#x10E0;&#x10D4;/&#x10D1;&#x10DD;&#x10DA;&#x10DD;
                 &#x10D3;&#x10D0;&#x10DB;&#x10E1;&#x10D0;&#x10E5;&#x10DB;&#x10D4;&#x10D1;&#x10D4;&#x10DA;&#x10D8;
                 &#xD;&#xA;&lt;small
-                className=&quot;hint-text&quot;&gt;&#x10DB;&#x10D8;&#x10E3;&#x10D7;&#x10D8;&#x10D7;&#x10D4;&#x10D7;
+                class=&quot;hint-text&quot;&gt;&#x10DB;&#x10D8;&#x10E3;&#x10D7;&#x10D8;&#x10D7;&#x10D4;&#x10D7;
                 &quot;N/A&quot; &#x10D7;&#x10E3; &#x10D0;&#x10E0;
                 &#x10D2;&#x10D0;&#x10E5;&#x10D5;&#x10D7;
                 &#x10E1;&#x10D0;&#x10DB;&#x10E3;&#x10E8;&#x10D0;&#x10DD;
                 &#x10D2;&#x10D0;&#x10DB;&#x10DD;&#x10EA;&#x10D3;&#x10D8;&#x10DA;&#x10D4;&#x10D1;&#x10D0;&lt;/small&gt;
               </span>
               <span className="req-mark"></span>
-              <input
-                className="form-input required"
-                data-val="true"
-                data-val-length="The field CurrentCompany must be a string with a maximum length of 150."
-                data-val-length-max="150"
-                id="Candidate_CurrentCompany"
-                maxLength={150}
-                name="Candidate.CurrentCompany"
-                required
-                type="text"
-                value=""
+              <Input
+                value={lastHire}
+                onChange={(e) => setLastHire(e.target.value)}
+                props={{
+                  className: "form-input required",
+                  maxLength: 150,
+                  required: true,
+                  type: "text",
+                }}
               />
             </label>
           </div>
@@ -157,7 +157,7 @@ const FormValidation: React.FC<any> = () => {
                 &#x10DB;&#x10D8;&#x10DB;&#x10D3;&#x10D8;&#x10DC;&#x10D0;&#x10E0;&#x10D4;/&#x10D1;&#x10DD;&#x10DA;&#x10DD;
                 &#x10DE;&#x10DD;&#x10D6;&#x10D8;&#x10EA;&#x10D8;&#x10D0;
                 &#xD;&#xA;&lt;small
-                className=&quot;hint-text&quot;&gt;&#x10DB;&#x10D8;&#x10E3;&#x10D7;&#x10D8;&#x10D7;&#x10D4;&#x10D7;
+                class=&quot;hint-text&quot;&gt;&#x10DB;&#x10D8;&#x10E3;&#x10D7;&#x10D8;&#x10D7;&#x10D4;&#x10D7;
                 &quot;N/A&quot; &#x10D7;&#x10E3; &#x10D0;&#x10E0;
                 &#x10D2;&#x10D0;&#x10E5;&#x10D5;&#x10D7;
                 &#x10E1;&#x10D0;&#x10DB;&#x10E3;&#x10E8;&#x10D0;&#x10DD;
@@ -165,17 +165,15 @@ const FormValidation: React.FC<any> = () => {
               </span>
               <span className="req-mark"></span>
             </label>
-            <input
-              className="form-input required"
-              data-val="true"
-              data-val-length="The field CurrentTitle must be a string with a maximum length of 150."
-              data-val-length-max="150"
-              id="Candidate_CurrentTitle"
-              maxLength={150}
-              name="Candidate.CurrentTitle"
-              required
-              type="text"
-              value=""
+            <Input
+              value={lastPosition}
+              onChange={(e) => setLastPosition(e.target.value)}
+              props={{
+                className: "form-input required",
+                maxLength: 150,
+                required: true,
+                type: "text",
+              }}
             />
           </div>
 
@@ -279,7 +277,7 @@ const FormValidation: React.FC<any> = () => {
               <span className="text-gray-700 font-semibold">
                 &#x10E1;&#x10D0;&#x10DB;&#x10DD;&#x10E2;&#x10D8;&#x10D5;&#x10D0;&#x10EA;&#x10D8;&#x10DD;
                 &#x10EC;&#x10D4;&#x10E0;&#x10D8;&#x10DA;&#x10D8; &lt;small
-                className=&quot;hint-text&quot;&gt;&#x10E1;&#x10D0;&#x10DB;&#x10DD;&#x10E2;&#x10D8;&#x10D5;&#x10D0;&#x10EA;&#x10D8;&#x10DD;
+                class=&quot;hint-text&quot;&gt;&#x10E1;&#x10D0;&#x10DB;&#x10DD;&#x10E2;&#x10D8;&#x10D5;&#x10D0;&#x10EA;&#x10D8;&#x10DD;
                 &#x10EC;&#x10D4;&#x10E0;&#x10D8;&#x10DA;&#x10D8;&#x10E1;
                 &#x10E8;&#x10D4;&#x10D5;&#x10E1;&#x10D4;&#x10D1;&#x10D0;
                 &#x10D0;&#x10E3;&#x10EA;&#x10D8;&#x10DA;&#x10D4;&#x10D1;&#x10D4;&#x10DA;&#x10D8;
