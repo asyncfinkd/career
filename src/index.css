@@ -3,3 +3,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.placeholder\:font-family {
+  font-family: "BOG";
+  font-size: 14px;
+}
+
+.button\:font-family {
+  font-family: "MarkGEOCaps";
+  font-size: 14px;
+}

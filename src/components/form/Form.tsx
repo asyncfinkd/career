@@ -22,7 +22,8 @@ const Form: React.FC = () => {
               onChange={(e) => setSearchValue(e.target.value)}
               props={{
                 placeholder: "ძებნა",
-                className: "hh-search-bar form-control form-input mt-0",
+                className:
+                  "hh-search-bar form-control form-input mt-0 placeholder:font-family",
               }}
             />
           </div>
@@ -30,7 +31,7 @@ const Form: React.FC = () => {
             props={{
               type: "submit",
               className:
-                "rounded-r px-4 bg-gray-300 hover:bg-gray-400 loading-button",
+                "rounded-r px-4 bg-gray-300 hover:bg-gray-400 loading-button button:font-family",
               ariaLabel: "Search",
             }}
           >
