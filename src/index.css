@@ -4,12 +4,8 @@
   box-sizing: border-box;
 }
 
-.placeholder\:font-family {
-  font-family: "BOG";
-  font-size: 14px;
-}
-
+.placeholder\:font-family,
 .button\:font-family {
-  font-family: "MarkGEOCaps";
+  font-family: "BOG";
   font-size: 14px;
 }

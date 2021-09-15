@@ -8,6 +8,8 @@ import { ApplicationContext } from "../../context/ApplicationContext";
 import { Link, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { JOB } from "../../constants/Routes";
+import IndexList from "../../components/index/components/IndexList";
+import IndexFooter from "../../components/index/components/IndexFooter";
 
 const IndexPages: React.FC = () => {
   const { jobs } = React.useContext(ApplicationContext);
@@ -40,88 +42,13 @@ const IndexPages: React.FC = () => {
             {jobs.map((item: any) => {
               return (
                 <>
-                  <div className="hh-jobs-openings">
-                    <Link
-                      to={JOB(item._id)}
-                      className="bg-white border-1 border-gray-400 p-4 block mt-3 first:mt-0 rounded hh-job-row transition-shadow duration-200 shadow-none hover:shadow-md"
-                    >
-                      <h3 className="font-semibold text-xl leading-8 hh-job-row-title">
-                        <span className="user-color text-secondary">
-                          {item.title}
-                        </span>
-                      </h3>
-                      <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap">
-                        <div className="mt-2 flex items-center text-sm leading-5 text-gray-600 sm:mr-6 hh-job-row-location">
-                          <svg
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            className="flex-shrink-0 mr-1 h-5 w-5 text-gray-500"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                            ></path>
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                            ></path>
-                          </svg>
-                          {item.location}
-                        </div>
-
-                        <div className="mt-2 flex items-center text-sm leading-5 text-gray-600 sm:mr-6 hh-job-row-experience">
-                          <svg
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            className="flex-shrink-0 mr-1 h-5 w-5 text-gray-500"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                            ></path>
-                          </svg>
-                          {item.time}
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
+                  <IndexList item={item} />
                 </>
               );
             })}
           </div>
         </div>
-        <div className="bg-white p-5 sm:py-10 sm:px-0 hh-text-section border-t-2">
-          <div className="ql-editor max-w-screen-md mx-auto">
-            <p className="ql-align-justify">
-              <span style={{ color: "rgb(113, 111, 114)" }}>
-                თუ ამჟამად გამოცხადებული ვაკანსიების ჩამონათვალში ვერ აღმოაჩინეთ
-                თქვენთვის საინტერესო პოზიცია, შეგიძლიათ სამომავლოდ განსახილველად
-                გამოგვიგზავნოთ თქვენი რეზიუმე{" "}
-              </span>
-              <a
-                href="https://my.hirehive.io/jsc-bank-of-georgia/jobs/35823/"
-                target="_blank"
-              >
-                ბმულზე.
-              </a>
-              <span style={{ color: "rgb(113, 111, 114)" }}>
-                {" "}
-                მიღებული ინფორმაცია აისახება საქართველოს ბანკის აპლიკანტების
-                ბაზაში და ტალანტების მოზიდვის გუნდი დაგიკავშირდებათ თქვენი
-                ინტერესების, ცოდნისა და გამოცდილების შესაბამისი ვაკანსიის
-                არსებობის შემთხვევაში.
-              </span>
-            </p>
-          </div>
-        </div>
+        <IndexFooter />
         <Notification />
       </section>
 
