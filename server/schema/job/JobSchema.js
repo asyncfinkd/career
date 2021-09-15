@@ -45,9 +45,6 @@ const JobSchema = mongoose.Schema({
   lastTime: {
     type: String,
   },
-  route: {
-    type: String,
-  },
 });
 
 const Job = mongoose.model("jobs", JobSchema);
