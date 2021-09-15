@@ -381,14 +381,14 @@ const FormValidation: React.FC<any> = () => {
                   className="inline-flex items-center font-normal"
                   htmlFor="question_73795_62143"
                 >
-                  <input
-                    data-group-name="question_73795_62143"
-                    id="question_73795_62143"
-                    name="Application.Answers[0].SelectedAnswers"
+                  <Input
                     value="62143"
-                    type="checkbox"
-                    className="form-checkbox h-5 w-5"
-                    required
+                    onChange={() => "123"}
+                    props={{
+                      className: "form-checkbox h-5 w-5",
+                      required: true,
+                      type: "checkbox",
+                    }}
                   />
 
                   <span className="ml-2 text-gray-700 leading-tight">
