@@ -10,12 +10,17 @@ const QualificationRequireRender: React.FC<any> = ({
         <strong
           style={{
             backgroundColor: "rgb(244, 244, 245)",
+            fontFamily: "MarkGEO",
           }}
         >
           საკვალიფიკაციო მოთხოვნები:
         </strong>
       </p>
-      <p>
+      <p
+        style={{
+          fontFamily: "MarkGEO",
+        }}
+      >
         <strong
           style={{
             backgroundColor: "rgb(244, 244, 245)",

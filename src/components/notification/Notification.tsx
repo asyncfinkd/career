@@ -9,20 +9,22 @@ export default function Notification() {
             <br />
           </h2>
           <p className="ql-align-center">
-            <span style={{ color: "rgb(91,91,91)" }}>
+            <span style={{ color: "rgb(91,91,91)", fontFamily: "MarkGEO" }}>
               ტალანტების მოზიდვის გუნდი&nbsp;
             </span>
           </p>
           <p className="ql-align-center">
-            <span style={{ color: "rgb(91,91,91)" }}>საქართველოს ბანკი</span>
+            <span style={{ color: "rgb(91,91,91)", fontFamily: "MarkGEO" }}>
+              საქართველოს ბანკი
+            </span>
           </p>
           <p className="ql-align-center">
-            <span style={{ color: "rgb(91,91,91)" }}>
+            <span style={{ color: "rgb(91,91,91)", fontFamily: "MarkGEO" }}>
               ელ.ფოსტა: Careers@bog.ge&nbsp;
             </span>
           </p>
           <p className="ql-align-center">
-            <span style={{ color: "rgb(91,91,91)" }}>
+            <span style={{ color: "rgb(91,91,91)", fontFamily: "MarkGEO" }}>
               ტელეფონი: (+995 32) 2444444 (ext. 4422)
             </span>
             .

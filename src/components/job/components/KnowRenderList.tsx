@@ -7,14 +7,19 @@ const KnowRenderList: React.FC<any> = ({ know }: any) => {
         <br />
       </p>
       <p>
-        <strong style={{ backgroundColor: "rgb(244, 244, 245)" }}>
+        <strong
+          style={{
+            backgroundColor: "rgb(244, 244, 245)",
+            fontFamily: "MarkGEO",
+          }}
+        >
           ცოდნა, უნარები:
         </strong>
       </p>
       {know?.map((item: any) => {
         return (
           <>
-            <p>
+            <p style={{ fontFamily: "MarkGEO" }}>
               ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               {item.title}
             </p>

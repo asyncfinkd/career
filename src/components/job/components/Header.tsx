@@ -4,12 +4,18 @@ const Header: React.FC<any> = ({ data }: any) => {
   return (
     <>
       <div className="pb-4 border-b-2" role="banner">
-        <h1 className="text-2xl font-semibold leading-7 text-gray-900 sm:text-3xl sm:leading-9 hh-job-title">
+        <h1
+          className="text-2xl font-semibold leading-7 text-gray-900 sm:text-3xl sm:leading-9 hh-job-title"
+          style={{ fontFamily: "MarkGEO" }}
+        >
           {data.title}
         </h1>
 
         <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap hh-job-information">
-          <div className="mt-2 flex items-center text-sm leading-5 text-gray-600 sm:mr-6 hh-job-location">
+          <div
+            className="mt-2 flex items-center text-sm leading-5 text-gray-600 sm:mr-6 hh-job-location"
+            style={{ fontFamily: "MarkGEO" }}
+          >
             <svg
               fill="none"
               viewBox="0 0 24 24"
@@ -32,7 +38,10 @@ const Header: React.FC<any> = ({ data }: any) => {
             {data.location}
           </div>
 
-          <div className="mt-2 flex items-center text-sm leading-5 text-gray-600 sm:mr-6 hh-job-type">
+          <div
+            className="mt-2 flex items-center text-sm leading-5 text-gray-600 sm:mr-6 hh-job-type"
+            style={{ fontFamily: "MarkGEO" }}
+          >
             <svg
               fill="none"
               viewBox="0 0 24 24"

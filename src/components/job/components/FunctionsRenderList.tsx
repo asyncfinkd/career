@@ -6,7 +6,12 @@ const FunctionsRenderList: React.FC<any> = ({ list }: any) => {
       <p className="ql-align-justify">
         <strong>&nbsp;</strong>
       </p>
-      <p className="ql-align-justify">
+      <p
+        className="ql-align-justify"
+        style={{
+          fontFamily: "MarkGEO",
+        }}
+      >
         <strong
           style={{
             backgroundColor: "rgb(244, 244, 245)",
@@ -19,7 +24,13 @@ const FunctionsRenderList: React.FC<any> = ({ list }: any) => {
         return (
           <>
             <ul>
-              <li>{item.title}</li>
+              <li
+                style={{
+                  fontFamily: "MarkGEO",
+                }}
+              >
+                {item.title}
+              </li>
             </ul>
           </>
         );

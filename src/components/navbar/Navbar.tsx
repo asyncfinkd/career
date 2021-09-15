@@ -44,6 +44,7 @@ const Navbar: React.FC = () => {
                 to={HOME}
                 title="&#x10DB;&#x10D8;&#x10DB;&#x10D3;&#x10D8;&#x10DC;&#x10D0;&#x10E0;&#x10D4; &#x10D5;&#x10D0;&#x10D9;&#x10D0;&#x10DC;&#x10E1;&#x10D8;&#x10D4;&#x10D1;&#x10D6;&#x10D4; &#x10D3;&#x10D0;&#x10D1;&#x10E0;&#x10E3;&#x10DC;&#x10D4;&#x10D1;&#x10D0;"
                 className="user-color p-2 border-2 rounded hh-back-link"
+                style={{ fontFamily: "MarkGEO" }}
               >
                 &#x10DB;&#x10D8;&#x10DB;&#x10D3;&#x10D8;&#x10DC;&#x10D0;&#x10E0;&#x10D4;
                 &#x10D5;&#x10D0;&#x10D9;&#x10D0;&#x10DC;&#x10E1;&#x10D8;&#x10D4;&#x10D1;&#x10D6;&#x10D4;

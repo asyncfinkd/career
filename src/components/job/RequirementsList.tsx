@@ -22,6 +22,7 @@ const RequirementsList: React.FC<any> = ({ description, lastTime }: any) => {
             <div role="article" className="ql-editor py-6 hh-job-description">
               <p
                 className="ql-align-justify"
+                style={{ fontFamily: "MarkGEO" }}
                 dangerouslySetInnerHTML={{
                   __html: sanitizer(title),
                 }}
@@ -41,7 +42,7 @@ const RequirementsList: React.FC<any> = ({ description, lastTime }: any) => {
               <p>
                 <br />
               </p>
-              <p>
+              <p style={{ fontFamily: "MarkGEO" }}>
                 <span style={{ color: "rgb(91, 91, 91)" }}>
                   დაინტერესების შემთხვევაში გთხოვთ, შეავსეთ მოთხოვნილი
                   ინფორმაცია, ატვირთეთ რეზიუმე/CV და დააჭირეთ ღილაკს
