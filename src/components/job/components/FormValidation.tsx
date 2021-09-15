@@ -21,46 +21,21 @@ const FormValidation: React.FC<any> = () => {
         accept-charset="UTF-8"
         className="hh-application-form"
       >
-        <h3 className="font-semibold text-2xl text-center">
+        <h3
+          className="font-semibold text-2xl text-center"
+          style={{ fontFamily: "MarkGEO" }}
+        >
           &#x10D2;&#x10D0;&#x10DB;&#x10DD;&#x10D0;&#x10D2;&#x10D6;&#x10D0;&#x10D5;&#x10DC;&#x10D4;&#x10D7;
           &#x10D2;&#x10D0;&#x10DC;&#x10D0;&#x10EA;&#x10EE;&#x10D0;&#x10D3;&#x10D8;
         </h3>
-        <div className="flex justify-center my-6">
-          <a
-            href="https://apply.hirehive.com/job/83543/apply/linkedin?returnUrl=https://jsc-bank-of-georgia.hirehive.com/job/83543/-"
-            className="flex items-center text-white bg-blue-700 px-4 py-2 button rounded shadow-sm"
-            title="Apply with LinkedIn"
-          >
-            <svg
-              version="1.1"
-              id="Layer_1"
-              xmlns="http://www.w3.org/2000/svg"
-              x="0px"
-              y="0px"
-              width="16px"
-              height="16px"
-              viewBox="-3.5 0.5 16 16"
-              enable-background="new -3.5 0.5 16 16"
-            >
-              <path
-                fill="#FFFFFF"
-                d="M-3.5,16.5h3.2V5.323h-3.2V16.5z M8.325,5.134C6.4,5.134,5.515,6.157,5.033,6.9V5.323h-3.2
-                c0.046,1.021,0,11.177,0,11.177h3.2l0.023-6.23c0-0.329,0.022-0.652,0.118-0.888c0.263-0.654,0.993-1.415,1.993-1.415
-                c1.312,0,2.133,0.667,2.133,2.133V16.5h3.2v-6.396C12.5,6.754,10.71,5.134,8.325,5.134z"
-              />
-              <path
-                fill="#FFFFFF"
-                d="M-1.927,3.701h0.02c0.99,0,1.607-0.652,1.607-1.467c-0.019-0.834-0.617-1.467-1.588-1.467
-                c-0.976,0-1.612,0.632-1.612,1.467C-3.501,3.049-2.881,3.701-1.927,3.701z"
-              />
-            </svg>
-            <span className="ml-4">ApplyWithLinkedIn</span>
-          </a>
-        </div>
-        <fieldset>
+        <fieldset className="my-6">
           <div className="flex flex-wrap -mx-3 mb-4">
             <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-              <label className="block" htmlFor="FirstName">
+              <label
+                className="block"
+                htmlFor="FirstName"
+                style={{ fontFamily: "MarkGEO" }}
+              >
                 <span className="text-gray-700 font-semibold">
                   &#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10DA;&#x10D8;
                 </span>
@@ -78,7 +53,11 @@ const FormValidation: React.FC<any> = () => {
               </label>
             </div>
             <div className="w-full md:w-1/2 px-3">
-              <label className="block" htmlFor="LastName">
+              <label
+                className="block"
+                htmlFor="LastName"
+                style={{ fontFamily: "MarkGEO" }}
+              >
                 <span className="text-gray-700 font-semibold">
                   &#x10D2;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
                 </span>
@@ -98,7 +77,11 @@ const FormValidation: React.FC<any> = () => {
           </div>
 
           <div className="mt-4">
-            <label className="text-gray-700" htmlFor="Location">
+            <label
+              className="text-gray-700"
+              htmlFor="Location"
+              style={{ fontFamily: "MarkGEO" }}
+            >
               <span className="text-gray-700 font-semibold">
                 &#x10E5;&#x10D0;&#x10DA;&#x10D0;&#x10E5;&#x10D8;/&#x10E0;&#x10D4;&#x10D2;&#x10D8;&#x10DD;&#x10DC;&#x10D8;
               </span>
@@ -117,7 +100,11 @@ const FormValidation: React.FC<any> = () => {
           </div>
 
           <div className="mt-4">
-            <label className="block" htmlFor="Country">
+            <label
+              className="block"
+              htmlFor="Country"
+              style={{ fontFamily: "MarkGEO" }}
+            >
               <span className="text-gray-700 font-semibold">
                 &#x10E5;&#x10D5;&#x10D4;&#x10E7;&#x10D0;&#x10DC;&#x10D0;
               </span>
@@ -130,7 +117,11 @@ const FormValidation: React.FC<any> = () => {
           </div>
 
           <div className="mt-4">
-            <label className="block" htmlFor="CurrentCompany">
+            <label
+              className="block"
+              htmlFor="CurrentCompany"
+              style={{ fontFamily: "MarkGEO" }}
+            >
               <span className="text-gray-700 font-semibold">
                 &#x10DB;&#x10D8;&#x10DB;&#x10D3;&#x10D8;&#x10DC;&#x10D0;&#x10E0;&#x10D4;/&#x10D1;&#x10DD;&#x10DA;&#x10DD;
                 &#x10D3;&#x10D0;&#x10DB;&#x10E1;&#x10D0;&#x10E5;&#x10DB;&#x10D4;&#x10D1;&#x10D4;&#x10DA;&#x10D8;
@@ -156,7 +147,11 @@ const FormValidation: React.FC<any> = () => {
           </div>
 
           <div className="mt-4">
-            <label className="block" htmlFor="CurrentTitle">
+            <label
+              className="block"
+              htmlFor="CurrentTitle"
+              style={{ fontFamily: "MarkGEO" }}
+            >
               <span className="text-gray-700 font-semibold">
                 &#x10DB;&#x10D8;&#x10DB;&#x10D3;&#x10D8;&#x10DC;&#x10D0;&#x10E0;&#x10D4;/&#x10D1;&#x10DD;&#x10DA;&#x10DD;
                 &#x10DE;&#x10DD;&#x10D6;&#x10D8;&#x10EA;&#x10D8;&#x10D0;
@@ -182,7 +177,11 @@ const FormValidation: React.FC<any> = () => {
           </div>
 
           <div className="mt-4">
-            <label className="block" htmlFor="Email">
+            <label
+              className="block"
+              htmlFor="Email"
+              style={{ fontFamily: "MarkGEO" }}
+            >
               <span className="text-gray-700 font-semibold">
                 &#x10DE;&#x10D8;&#x10E0;&#x10D0;&#x10D3;&#x10D8;
                 &#x10D4;&#x10DA;-&#x10E4;&#x10DD;&#x10E1;&#x10E2;&#x10D0;
@@ -202,7 +201,11 @@ const FormValidation: React.FC<any> = () => {
           </div>
 
           <div className="mt-4">
-            <label className="block" htmlFor="Phone">
+            <label
+              className="block"
+              htmlFor="Phone"
+              style={{ fontFamily: "MarkGEO" }}
+            >
               <span className="text-gray-700 font-semibold">
                 &#x10E2;&#x10D4;&#x10DA;&#x10D4;&#x10E4;&#x10DD;&#x10DC;&#x10D8;
                 (&#x10E4;&#x10DD;&#x10E0;&#x10DB;&#x10D0;&#x10E2;&#x10D8;:
@@ -221,7 +224,11 @@ const FormValidation: React.FC<any> = () => {
           </div>
 
           <div className="mt-4">
-            <label className="block" htmlFor="cvUpload">
+            <label
+              className="block"
+              htmlFor="cvUpload"
+              style={{ fontFamily: "MarkGEO" }}
+            >
               <span className="text-gray-700 font-semibold">
                 &#x10D0;&#x10E2;&#x10D5;&#x10D8;&#x10E0;&#x10D7;&#x10D4;&#x10D7;
                 &#x10D7;&#x10E5;&#x10D5;&#x10D4;&#x10DC;&#x10D8;
@@ -251,7 +258,11 @@ const FormValidation: React.FC<any> = () => {
           </div>
 
           <div className="mt-4">
-            <label className="block" htmlFor="CoverLetter">
+            <label
+              className="block"
+              htmlFor="CoverLetter"
+              style={{ fontFamily: "MarkGEO" }}
+            >
               <span className="text-gray-700 font-semibold">
                 &#x10E1;&#x10D0;&#x10DB;&#x10DD;&#x10E2;&#x10D8;&#x10D5;&#x10D0;&#x10EA;&#x10D8;&#x10DD;
                 &#x10EC;&#x10D4;&#x10E0;&#x10D8;&#x10DA;&#x10D8; &lt;small
@@ -282,7 +293,10 @@ const FormValidation: React.FC<any> = () => {
         />{" "}
         <div className="options-default checkbox-required mt-4">
           <div className="block">
-            <span className="text-gray-700 font-semibold">
+            <span
+              className="text-gray-700 font-semibold"
+              style={{ fontFamily: "MarkGEO" }}
+            >
               &#x10DE;&#x10D4;&#x10E0;&#x10E1;&#x10DD;&#x10DC;&#x10D0;&#x10DA;&#x10E3;&#x10E0;&#x10D8;
               &#x10DB;&#x10DD;&#x10DC;&#x10D0;&#x10EA;&#x10D4;&#x10DB;&#x10D4;&#x10D1;&#x10D8;&#x10E1;
               &#x10D3;&#x10D0;&#x10DB;&#x10E3;&#x10E8;&#x10D0;&#x10D5;&#x10D4;&#x10D1;&#x10D0;
@@ -380,6 +394,7 @@ const FormValidation: React.FC<any> = () => {
                 <label
                   className="inline-flex items-center font-normal"
                   htmlFor="question_73795_62143"
+                  style={{ fontFamily: "MarkGEO", fontWeight: 600 }}
                 >
                   <Input
                     value="62143"
@@ -408,7 +423,10 @@ const FormValidation: React.FC<any> = () => {
           value="93811"
         />{" "}
         <div className="options-default  mt-4">
-          <h4 className="font-semibold text-gray-700 mb-1">
+          <h4
+            className="font-semibold text-gray-700 mb-1"
+            style={{ fontFamily: "MarkGEO" }}
+          >
             * &#x10DB;&#x10D8;&#x10E3;&#x10D7;&#x10D8;&#x10D7;&#x10D4;&#x10D7;
             &#x10D7;&#x10E5;&#x10D5;&#x10D4;&#x10DC;&#x10D8;
             &#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10DA;&#x10D8; &#x10D3;&#x10D0;
@@ -429,7 +447,10 @@ const FormValidation: React.FC<any> = () => {
           value="93812"
         />{" "}
         <div className="options-default  mt-4">
-          <h4 className="font-semibold text-gray-700 mb-1">
+          <h4
+            className="font-semibold text-gray-700 mb-1"
+            style={{ fontFamily: "MarkGEO" }}
+          >
             * &#x10D2;&#x10D7;&#x10EE;&#x10DD;&#x10D5;&#x10D7;,
             &#x10E1;&#x10D0;&#x10D0;&#x10DE;&#x10DA;&#x10D8;&#x10D9;&#x10D0;&#x10EA;&#x10D8;&#x10DD;
             &#x10E4;&#x10DD;&#x10E0;&#x10DB;&#x10D0;
@@ -444,6 +465,7 @@ const FormValidation: React.FC<any> = () => {
             id="submitBtn"
             type="submit"
             className="btn-color loading-button px-8 py-2 font-medium text-white rounded shadow-sm button"
+            style={{ fontFamily: "MarkGEO" }}
           >
             <span className="circle-loader text-gray-600"></span>
             <span className="apply-button-text button-content">
