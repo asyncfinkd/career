@@ -388,9 +388,9 @@ const FormValidation: React.FC<any> = () => {
                       className: "form-checkbox h-5 w-5",
                       required: true,
                       type: "checkbox",
+                      id: "question_73795_62143",
                     }}
                   />
-
                   <span className="ml-2 text-gray-700 leading-tight">
                     &#x10D5;&#x10D4;&#x10D7;&#x10D0;&#x10DC;&#x10EE;&#x10DB;&#x10D4;&#x10D1;&#x10D8;
                   </span>
