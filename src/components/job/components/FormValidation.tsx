@@ -25,8 +25,7 @@ const FormValidation: React.FC<any> = () => {
           className="font-semibold text-2xl text-center"
           style={{ fontFamily: "MarkGEO" }}
         >
-          &#x10D2;&#x10D0;&#x10DB;&#x10DD;&#x10D0;&#x10D2;&#x10D6;&#x10D0;&#x10D5;&#x10DC;&#x10D4;&#x10D7;
-          &#x10D2;&#x10D0;&#x10DC;&#x10D0;&#x10EA;&#x10EE;&#x10D0;&#x10D3;&#x10D8;
+          გამოაგზავნეთ განაცხადი
         </h3>
         <fieldset className="my-6">
           <div className="flex flex-wrap -mx-3 mb-4">
@@ -36,9 +35,7 @@ const FormValidation: React.FC<any> = () => {
                 htmlFor="FirstName"
                 style={{ fontFamily: "MarkGEO" }}
               >
-                <span className="text-gray-700 font-semibold">
-                  &#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10DA;&#x10D8;
-                </span>
+                <span className="text-gray-700 font-semibold">სახელი</span>
                 <span className="req-mark"></span>
                 <Input
                   value={firstName}
@@ -58,9 +55,7 @@ const FormValidation: React.FC<any> = () => {
                 htmlFor="LastName"
                 style={{ fontFamily: "MarkGEO" }}
               >
-                <span className="text-gray-700 font-semibold">
-                  &#x10D2;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
-                </span>
+                <span className="text-gray-700 font-semibold">გვარი</span>
                 <span className="req-mark"></span>
                 <Input
                   value={lastName}
@@ -83,7 +78,7 @@ const FormValidation: React.FC<any> = () => {
               style={{ fontFamily: "MarkGEO" }}
             >
               <span className="text-gray-700 font-semibold">
-                &#x10E5;&#x10D0;&#x10DA;&#x10D0;&#x10E5;&#x10D8;/&#x10E0;&#x10D4;&#x10D2;&#x10D8;&#x10DD;&#x10DC;&#x10D8;
+                ქალაქი/რეგიონი
               </span>
               <span className="req-mark"></span>
               <Input
@@ -105,9 +100,7 @@ const FormValidation: React.FC<any> = () => {
               htmlFor="Country"
               style={{ fontFamily: "MarkGEO" }}
             >
-              <span className="text-gray-700 font-semibold">
-                &#x10E5;&#x10D5;&#x10D4;&#x10E7;&#x10D0;&#x10DC;&#x10D0;
-              </span>
+              <span className="text-gray-700 font-semibold">ქვეყანა</span>
               <span className="req-mark"></span>
               <CountrySelect
                 countrySelect={countrySelect}
