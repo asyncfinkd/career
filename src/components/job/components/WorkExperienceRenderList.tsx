@@ -6,30 +6,38 @@ const WorkExperienceRenderList: React.FC<any> = ({ workExperience }: any) => {
       <p>
         <br />
       </p>
-      <p>
+      <p
+        style={{
+          fontFamily: "MarkGEO",
+        }}
+      >
         <strong
           style={{
             backgroundColor: "rgb(244, 244, 245)",
-            fontFamily: "MarkGEO",
           }}
         >
           სამუშაო გამოცდილება:{" "}
         </strong>
+        {workExperience.length == 1 && <>{workExperience[0].title}</>}
       </p>
-      {workExperience?.map((item: any) => {
-        return (
-          <>
-            <p
-              style={{
-                fontFamily: "MarkGEO",
-              }}
-            >
-              ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              {item.title}
-            </p>
-          </>
-        );
-      })}
+      {workExperience.length != 1 && (
+        <>
+          {workExperience?.map((item: any) => {
+            return (
+              <>
+                <p
+                  style={{
+                    fontFamily: "MarkGEO",
+                  }}
+                >
+                  ·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  {item.title}
+                </p>
+              </>
+            );
+          })}
+        </>
+      )}
     </>
   );
 };
