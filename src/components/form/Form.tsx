@@ -3,11 +3,7 @@ import Button from "../../helpers/Button/Button";
 import Input from "../../helpers/Input/Input";
 import FormElement from "../../helpers/Form/Form";
 
-const Form: React.FC = () => {
-  const [searchValue, setSearchValue] = useState<string>("");
-  const renderSearch = () => {
-    console.log(searchValue);
-  };
+const Form: React.FC<any> = ({ searchValue, setSearchValue }: any) => {
   return (
     <>
       <FormElement
@@ -36,7 +32,6 @@ const Form: React.FC = () => {
               className:
                 "rounded-r px-4 bg-gray-300 hover:bg-gray-400 loading-button button:font-family",
               ariaLabel: "Search",
-              onClick: () => renderSearch(),
             }}
           >
             <span className="circle-loader dark"></span>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "../../components/banner/Banner";
 import Footer from "../../components/footer/Footer";
 import Form from "../../components/form/Form";
@@ -14,6 +14,7 @@ import IndexFooter from "../../components/index/components/IndexFooter";
 const IndexPages: React.FC = () => {
   const { jobs } = React.useContext(ApplicationContext);
   const { pathname } = useLocation();
+  const [searchValue, setSearchValue] = useState<string>("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -36,16 +37,24 @@ const IndexPages: React.FC = () => {
         >
           <div className="fade-in animate-slow max-w-screen-md mx-auto">
             <div className="bg-white p-4 rounded shadow-md">
-              <Form />
+              <Form searchValue={searchValue} setSearchValue={setSearchValue} />
             </div>
 
-            {jobs.map((item: any) => {
-              return (
-                <>
-                  <IndexList item={item} />
-                </>
-              );
-            })}
+            {jobs
+              .filter((val: any) => {
+                if (
+                  val.title.toLowerCase().includes(searchValue.toLowerCase())
+                ) {
+                  return val;
+                }
+              })
+              .map((item: any) => {
+                return (
+                  <>
+                    <IndexList item={item} />
+                  </>
+                );
+              })}
           </div>
         </div>
         <IndexFooter />
