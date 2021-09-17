@@ -35,41 +35,47 @@ const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
         });
     }
   });
-  const onSubmit: SubmitHandler<Inputs | any> = (data: any) => {
-    const application = {
-      applicationTitle: title,
-      aplicationLocation: location,
-      aplicationTime: time,
-    };
-    axios
-      .post(`${env.host}/api/add/users`, {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        cityOrRegion: data.cityOrRegion,
-        // country
-        lastHired: data.lastHired,
-        lastPosition: data.lastPosition,
-        email: data.email,
-        mobilePhone: data.phone,
-        motivationMessage: data.motivationMessage,
-        checked: false,
-        ipAddress: ipAddress,
-        applicationTitle: title,
-        applicationLocation: location,
-        applicationTime: time,
-      })
-      .then((res: any) => {
-        if (res.data.success) {
-          Swal.fire(
-            "გილოცავთ!",
-            "თქვენი განაცხადი წარმატებით გაიგზავნა!",
-            "success"
-          ).then(() => {
-            window.location.href = "/";
-          });
-        }
-      });
-    console.log(application);
+  const onSubmit: SubmitHandler<Inputs | any> = async (data: any) => {
+    try {
+      await axios
+        .post(`${env.host}/api/add/users`, {
+          firstName: data.firstName,
+          lastName: data.lastName,
+          cityOrRegion: data.cityOrRegion,
+          // country
+          lastHired: data.lastHired,
+          lastPosition: data.lastPosition,
+          email: data.email,
+          mobilePhone: data.phone,
+          motivationMessage: data.motivationMessage,
+          checked: false,
+          ipAddress: ipAddress,
+          applicationTitle: title,
+          applicationLocation: location,
+          applicationTime: time,
+        })
+        .then((res: any) => {
+          if (res.data.success) {
+            Swal.fire(
+              "გილოცავთ!",
+              "თქვენი განაცხადი წარმატებით გაიგზავნა!",
+              "success"
+            ).then(() => {
+              window.location.href = "/";
+            });
+          } else {
+            Swal.fire(
+              "ვწუხვართ!",
+              "თქვენი განაცხადი ვერ გაიგზავნა!",
+              "success"
+            ).then(() => {
+              window.location.href = "/";
+            });
+          }
+        });
+    } catch (err) {
+      console.log(err);
+    }
   };
   console.log(watch("firstName"));
 
