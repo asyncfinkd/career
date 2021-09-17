@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 @font-face {
   font-family: "MarkGEO";
   src: url("https://webstatic.bog.ge/fonts/markgeo/MarkGEO-Light/MarkGEO-Light.eot");
