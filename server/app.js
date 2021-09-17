@@ -23,6 +23,9 @@ app.use(express.json());
 const Job = require("./router/job/JobRouter");
 app.use("/api", Job);
 
+const Users = require("./router/users/UsersRouter");
+app.use("/api", Users);
+
 const PORT = process.env.PORT || 3002;
 
 app.listen(PORT, () => {

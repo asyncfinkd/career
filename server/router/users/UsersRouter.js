@@ -1,4 +1,4 @@
-const express = require("express").Router();
+const router = require("express").Router();
 const UsersSchema = require("../../schema/users/UsersSchema");
 
 router.route("/add/users").post(async (req, res) => {

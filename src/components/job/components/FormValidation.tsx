@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Input from "../../../helpers/Input/Input";
 import CountrySelect from "./select/CountrySelect";
@@ -24,9 +24,34 @@ const FormValidation: React.FC<any> = () => {
     watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    // axios.post(`${env.host}/api`)
-    // next time will be add.
+  const [ipAddress, setIpAddress] = useState<string | null>("");
+  useEffect(() => {
+    if (!ipAddress || ipAddress.length == 0) {
+      fetch("http://api.ipify.org/?format=json")
+        .then((data) => data.json())
+        .then((result) => {
+          setIpAddress(result.ip);
+        });
+    }
+  });
+  const onSubmit: SubmitHandler<Inputs | any> = (data: any) => {
+    axios
+      .post(`${env.host}/api/add/users`, {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        cityOrRegion: data.cityOrRegion,
+        // country
+        lastHired: data.lastHired,
+        lastPosition: data.lastPosition,
+        email: data.email,
+        mobilePhone: data.phone,
+        motivationMessage: data.motivationMessage,
+        checked: false,
+        ipAddress: ipAddress,
+      })
+      .then((res: object | null) => {
+        console.log(res);
+      });
   };
   console.log(watch("firstName"));
 
