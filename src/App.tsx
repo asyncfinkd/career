@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import { ApplicationContext } from "./context/ApplicationContext";
@@ -11,9 +11,17 @@ type T = any;
 const App: React.FC = () => {
   const [jobs, setJobs] = React.useState<Array<T> | null>([]);
   React.useEffect(() => {
-    axios.post(`${env.host}/api/getalljob`).then((res) => {
-      setJobs(res.data.data);
-    });
+    async function fetchAPI() {
+      try {
+        await axios.post(`${env.host}/api/getalljob`).then((res) => {
+          setJobs(res.data.data);
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    fetchAPI();
   }, []);
   return (
     <>

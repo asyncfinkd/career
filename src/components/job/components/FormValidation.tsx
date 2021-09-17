@@ -5,6 +5,7 @@ import Input from "../../../helpers/Input/Input";
 import CountrySelect from "./select/CountrySelect";
 import env from "../../../application/environment/env.json";
 import Swal from "sweetalert2";
+import { ToastContainer, toast } from "react-toastify";
 
 type Inputs = {
   firstName: string;
@@ -36,6 +37,16 @@ const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
     }
   });
   const onSubmit: SubmitHandler<Inputs | any> = async (data: any) => {
+    let promise = (state: string) => {
+      const resolveAfter3Sec = new Promise((resolve, reject) => {
+        setTimeout(state == "resolve" ? resolve : reject, 2000);
+      });
+      toast.promise(resolveAfter3Sec, {
+        pending: "გთხოვთ დაელოდოთ...",
+        success: "თქვენი განაცხადი წარმატებით გაიგზავნა!",
+        error: "თქვენი განაცხადი ვერ გაიგზავნა!",
+      });
+    };
     try {
       await axios
         .post(`${env.host}/api/add/users`, {
@@ -56,27 +67,25 @@ const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
         })
         .then((res: any) => {
           if (res.data.success) {
-            Swal.fire(
-              "გილოცავთ!",
-              "თქვენი განაცხადი წარმატებით გაიგზავნა!",
-              "success"
-            ).then(() => {
-              window.location.href = "/";
-            });
+            promise("resolve");
+            // Swal.fire(
+            //   "გილოცავთ!",
+            //   "თქვენი განაცხადი წარმატებით გაიგზავნა!",
+            //   "success"
+            // ).then(() => {
+            //   window.location.href = "/";
+            // });
           }
         });
     } catch (err) {
-      Swal.fire("ვწუხვართ!", "თქვენი განაცხადი ვერ გაიგზავნა!", "error").then(
-        () => {
-          window.location.href = "/";
-        }
-      );
+      promise("reject");
     }
   };
   console.log(watch("firstName"));
 
   return (
     <>
+      <ToastContainer />
       <form
         onSubmit={(e) => e.preventDefault()}
         className="hh-application-form"

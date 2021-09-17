@@ -405,6 +405,7 @@ html {
     var(--tw-shadow, 0 0 transparent) !important;
 }
 
-.swal2-popup {
-  font-family: "MarkGEO", sans-serif;
+.swal2-popup,
+.Toastify__toast {
+  font-family: "MarkGEO", sans-serif !important;
 }
