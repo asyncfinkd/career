@@ -1,7 +1,9 @@
+import axios from "axios";
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Input from "../../../helpers/Input/Input";
 import CountrySelect from "./select/CountrySelect";
+import env from "../../../application/environment/env.json";
 
 type Inputs = {
   firstName: string;
@@ -22,7 +24,10 @@ const FormValidation: React.FC<any> = () => {
     watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    // axios.post(`${env.host}/api`)
+    // next time will be add.
+  };
   console.log(watch("firstName"));
 
   return (
