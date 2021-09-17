@@ -63,18 +63,14 @@ const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
             ).then(() => {
               window.location.href = "/";
             });
-          } else {
-            Swal.fire(
-              "ვწუხვართ!",
-              "თქვენი განაცხადი ვერ გაიგზავნა!",
-              "success"
-            ).then(() => {
-              window.location.href = "/";
-            });
           }
         });
     } catch (err) {
-      console.log(err);
+      Swal.fire("ვწუხვართ!", "თქვენი განაცხადი ვერ გაიგზავნა!", "error").then(
+        () => {
+          window.location.href = "/";
+        }
+      );
     }
   };
   console.log(watch("firstName"));

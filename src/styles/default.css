@@ -405,6 +405,6 @@ html {
     var(--tw-shadow, 0 0 transparent) !important;
 }
 
-.swal2-popup.swal2-modal.swal2-icon-success.swal2-show {
+.swal2-popup {
   font-family: "MarkGEO", sans-serif;
 }
