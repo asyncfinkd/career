@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import Input from "../../../helpers/Input/Input";
 import CountrySelect from "./select/CountrySelect";
 import env from "../../../application/environment/env.json";
 import { ToastContainer, toast } from "react-toastify";
@@ -15,10 +14,11 @@ type Inputs = {
   email: string;
   phone: string;
   motivationMessage: string;
-  checked: boolean;
+  acceptTerms: boolean;
 };
 
 const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
+  const [country, setCountry] = useState<string>("GE");
   const {
     register,
     handleSubmit,
@@ -52,13 +52,13 @@ const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
           firstName: data.firstName,
           lastName: data.lastName,
           cityOrRegion: data.cityOrRegion,
-          // country
+          country: country,
           lastHired: data.lastHired,
           lastPosition: data.lastPosition,
           email: data.email,
           mobilePhone: data.phone,
           motivationMessage: data.motivationMessage,
-          checked: false,
+          checked: data.acceptTerms,
           ipAddress: ipAddress,
           applicationTitle: title,
           applicationLocation: location,
@@ -81,6 +81,7 @@ const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
             value.map((item: any) => {
               setValue(item, "");
             });
+            setValue("acceptTerms", false);
           }
         });
     } catch (err) {
@@ -212,7 +213,10 @@ const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
             >
               <span className="text-gray-700 font-semibold">ქვეყანა</span>
               <span className="req-mark"></span>
-              <CountrySelect />
+              <CountrySelect
+                countrySelect={country}
+                setCountrySelect={(e: any) => setCountry(e.target.value)}
+              />
             </label>
           </div>
 
@@ -524,19 +528,34 @@ const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
                   htmlFor="question_73795_62143"
                   style={{ fontFamily: "MarkGEO", fontWeight: 600 }}
                 >
-                  <Input
-                    value="62143"
-                    onChange={() => "123"}
-                    props={{
-                      className: "form-checkbox h-5 w-5",
-                      type: "checkbox",
-                      id: "question_73795_62143",
-                    }}
+                  <input
+                    type="checkbox"
+                    {...register("acceptTerms", { required: true })}
+                    id="question_73795_62143"
+                    className={`form-checkbox h-5 w-5 ${
+                      errors.acceptTerms && "red__signed"
+                    }`}
+                    name="acceptTerms"
                   />
                   <span className="ml-2 text-gray-700 leading-tight">
                     &#x10D5;&#x10D4;&#x10D7;&#x10D0;&#x10DC;&#x10EE;&#x10DB;&#x10D4;&#x10D1;&#x10D8;
                   </span>
                 </label>
+                {errors.acceptTerms && (
+                  <>
+                    <p
+                      className="form-error-txt"
+                      style={{
+                        marginTop: "3px",
+                        fontFamily: "MarkGEO",
+                        fontSize: "14px",
+                      }}
+                    >
+                      გთხოვთ დააჭიროთ "ვეთანხმები" ღილაკს თუ გსურთ პროცესის
+                      გაგრძელება
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           </div>

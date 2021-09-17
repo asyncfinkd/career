@@ -1,5 +1,4 @@
 import React from "react";
-import Select from "../../../../helpers/Select/Select";
 
 const CountrySelect: React.FC<any> = ({
   countrySelect,
@@ -7,13 +6,10 @@ const CountrySelect: React.FC<any> = ({
 }: any) => {
   return (
     <>
-      <Select
+      <select
         value={countrySelect}
         onChange={setCountrySelect}
-        props={{
-          className: "form-select text-gray-700",
-          required: true,
-        }}
+        className="form-select text-gray-700"
       >
         <option value="231">
           &#x10D0;&#x10DB;&#x10D4;&#x10E0;&#x10D8;&#x10D9;&#x10D8;&#x10E1;
@@ -989,7 +985,7 @@ const CountrySelect: React.FC<any> = ({
           &#x10DB;&#x10E3;&#x10E8;&#x10D0;&#x10DD;&#x10D1;&#x10D0;
           &#x10D3;&#x10D8;&#x10E1;&#x10E2;&#x10D0;&#x10DC;&#x10EA;&#x10D8;&#x10E3;&#x10E0;&#x10D0;&#x10D3;
         </option>
-      </Select>
+      </select>
     </>
   );
 };
