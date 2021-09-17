@@ -1,8 +1,8 @@
 import React from "react";
 
 interface Props {
-  value: string;
-  onChange: (e: any) => void;
+  value?: string;
+  onChange?: (e: any) => void;
   props?: object;
 }
 

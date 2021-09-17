@@ -392,3 +392,15 @@ html {
   font-style: normal;
   font-display: swap;
 }
+
+.red__signed {
+  border-color: rgba(239, 68, 68, var(--tw-border-opacity)) !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+}
+
+.red__signed:focus {
+  border: 2px solid #0284c7 !important;
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
+    var(--tw-shadow, 0 0 transparent) !important;
+}

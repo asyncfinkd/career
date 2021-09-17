@@ -1,24 +1,34 @@
 import React from "react";
-import { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import Input from "../../../helpers/Input/Input";
 import Textarea from "../../../helpers/Textarea/Textarea";
 import CountrySelect from "./select/CountrySelect";
 
+type Inputs = {
+  firstName: string;
+  lastName: string;
+  cityOrRegion: string;
+  lastHired: string;
+  lastPosition: string;
+  email: string;
+  phone: string;
+  motivationMessage: string;
+};
+
 const FormValidation: React.FC<any> = () => {
-  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
-  const [cityOrRegion, setCityOrRegion] = useState<string>("");
-  const [countrySelect, setCountrySelect] = useState<string>("GE");
-  const [lastHire, setLastHire] = useState<string>("");
-  const [lastPosition, setLastPosition] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [mobilePhone, setMobilePhone] = useState<string>("");
-  const [motivationMessage, setMotivationMessage] = useState<string>("");
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  console.log(watch("firstName"));
+
   return (
     <>
       <form
-        name="ApplicationForm"
-        accept-charset="UTF-8"
+        onSubmit={(e) => e.preventDefault()}
         className="hh-application-form"
       >
         <h3
@@ -37,17 +47,29 @@ const FormValidation: React.FC<any> = () => {
               >
                 <span className="text-gray-700 font-semibold">სახელი</span>
                 <span className="req-mark"></span>
-                <Input
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  props={{
-                    className: "form-input required",
-                    maxLength: 100,
-                    required: true,
-                    type: "text",
-                  }}
+                <input
+                  type="text"
+                  {...register("firstName", { required: true })}
+                  className={
+                    errors.firstName
+                      ? "form-input required red__signed"
+                      : "form-input required"
+                  }
+                  maxLength={100}
                 />
               </label>
+              {errors.firstName && (
+                <p
+                  className="form-error-txt"
+                  style={{
+                    marginTop: "3px",
+                    fontFamily: "MarkGEO",
+                    fontSize: "14px",
+                  }}
+                >
+                  სავალდებულო ველი
+                </p>
+              )}
             </div>
             <div className="w-full md:w-1/2 px-3">
               <label
@@ -57,17 +79,29 @@ const FormValidation: React.FC<any> = () => {
               >
                 <span className="text-gray-700 font-semibold">გვარი</span>
                 <span className="req-mark"></span>
-                <Input
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  props={{
-                    className: "form-input required",
-                    maxLength: 100,
-                    required: true,
-                    type: "text",
-                  }}
+                <input
+                  type="text"
+                  {...register("lastName", { required: true })}
+                  maxLength={100}
+                  className={
+                    errors.lastName
+                      ? "form-input required red__signed"
+                      : "form-input required"
+                  }
                 />
               </label>
+              {errors.lastName && (
+                <p
+                  className="form-error-txt"
+                  style={{
+                    marginTop: "3px",
+                    fontFamily: "MarkGEO",
+                    fontSize: "14px",
+                  }}
+                >
+                  სავალდებულო ველი
+                </p>
+              )}
             </div>
           </div>
 
@@ -81,17 +115,29 @@ const FormValidation: React.FC<any> = () => {
                 ქალაქი/რეგიონი
               </span>
               <span className="req-mark"></span>
-              <Input
-                value={cityOrRegion}
-                onChange={(e) => setCityOrRegion(e.target.value)}
-                props={{
-                  className: "form-input required",
-                  maxLength: 150,
-                  required: true,
-                  type: "text",
-                }}
+              <input
+                type="text"
+                {...register("cityOrRegion", { required: true })}
+                maxLength={150}
+                className={
+                  errors.cityOrRegion
+                    ? "form-input required red__signed"
+                    : "form-input required"
+                }
               />
             </label>
+            {errors.cityOrRegion && (
+              <p
+                className="form-error-txt"
+                style={{
+                  marginTop: "3px",
+                  fontFamily: "MarkGEO",
+                  fontSize: "14px",
+                }}
+              >
+                სავალდებულო ველი
+              </p>
+            )}
           </div>
 
           <div className="mt-4">
@@ -102,10 +148,7 @@ const FormValidation: React.FC<any> = () => {
             >
               <span className="text-gray-700 font-semibold">ქვეყანა</span>
               <span className="req-mark"></span>
-              <CountrySelect
-                countrySelect={countrySelect}
-                setCountrySelect={(e: any) => setCountrySelect(e.target.value)}
-              />
+              <CountrySelect />
             </label>
           </div>
 
@@ -126,17 +169,29 @@ const FormValidation: React.FC<any> = () => {
                 &#x10D2;&#x10D0;&#x10DB;&#x10DD;&#x10EA;&#x10D3;&#x10D8;&#x10DA;&#x10D4;&#x10D1;&#x10D0;&lt;/small&gt;
               </span>
               <span className="req-mark"></span>
-              <Input
-                value={lastHire}
-                onChange={(e) => setLastHire(e.target.value)}
-                props={{
-                  className: "form-input required",
-                  maxLength: 150,
-                  required: true,
-                  type: "text",
-                }}
+              <input
+                type="text"
+                maxLength={150}
+                className={
+                  errors.lastHired
+                    ? "form-input required red__signed"
+                    : "form-input required"
+                }
+                {...register("lastHired", { required: true })}
               />
             </label>
+            {errors.lastHired && (
+              <p
+                className="form-error-txt"
+                style={{
+                  marginTop: "3px",
+                  fontFamily: "MarkGEO",
+                  fontSize: "14px",
+                }}
+              >
+                სავალდებულო ველი
+              </p>
+            )}
           </div>
 
           <div className="mt-4">
@@ -157,16 +212,28 @@ const FormValidation: React.FC<any> = () => {
               </span>
               <span className="req-mark"></span>
             </label>
-            <Input
-              value={lastPosition}
-              onChange={(e) => setLastPosition(e.target.value)}
-              props={{
-                className: "form-input required",
-                maxLength: 150,
-                required: true,
-                type: "text",
-              }}
+            <input
+              type="text"
+              maxLength={150}
+              {...register("lastPosition", { required: true })}
+              className={
+                errors.lastPosition
+                  ? "form-input required red__signed"
+                  : "form-input required"
+              }
             />
+            {errors.lastPosition && (
+              <p
+                className="form-error-txt"
+                style={{
+                  marginTop: "3px",
+                  fontFamily: "MarkGEO",
+                  fontSize: "14px",
+                }}
+              >
+                სავალდებულო ველი
+              </p>
+            )}
           </div>
 
           <div className="mt-4">
@@ -180,17 +247,29 @@ const FormValidation: React.FC<any> = () => {
                 &#x10D4;&#x10DA;-&#x10E4;&#x10DD;&#x10E1;&#x10E2;&#x10D0;
               </span>
               <span className="req-mark"></span>
-              <Input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                props={{
-                  className: "form-input required",
-                  maxLength: 150,
-                  required: true,
-                  type: "email",
-                }}
+              <input
+                type="email"
+                {...register("email", { required: true })}
+                maxLength={150}
+                className={
+                  errors.email
+                    ? "form-input required red__signed"
+                    : "form-input required"
+                }
               />
             </label>
+            {errors.email && (
+              <p
+                className="form-error-txt"
+                style={{
+                  marginTop: "3px",
+                  fontFamily: "MarkGEO",
+                  fontSize: "14px",
+                }}
+              >
+                სავალდებულო ველი
+              </p>
+            )}
           </div>
 
           <div className="mt-4">
@@ -204,50 +283,29 @@ const FormValidation: React.FC<any> = () => {
                 (&#x10E4;&#x10DD;&#x10E0;&#x10DB;&#x10D0;&#x10E2;&#x10D8;:
                 9955XXXXXXXX)
               </span>
-              <Input
-                value={mobilePhone}
-                onChange={(e) => setMobilePhone(e.target.value)}
-                props={{
-                  className: "form-input",
-                  maxLength: 100,
-                  type: "text",
-                }}
-              />
-            </label>
-          </div>
-
-          <div className="mt-4">
-            <label
-              className="block"
-              htmlFor="cvUpload"
-              style={{ fontFamily: "MarkGEO" }}
-            >
-              <span className="text-gray-700 font-semibold">
-                &#x10D0;&#x10E2;&#x10D5;&#x10D8;&#x10E0;&#x10D7;&#x10D4;&#x10D7;
-                &#x10D7;&#x10E5;&#x10D5;&#x10D4;&#x10DC;&#x10D8;
-                &#x10E0;&#x10D4;&#x10D6;&#x10D8;&#x10E3;&#x10DB;&#x10D4;/CV
-                <span className="req-mark"></span>
-              </span>
-            </label>
-
-            <div className="file-input-container">
               <input
-                hidden
-                id="Application_Resume_Name"
-                name="Application.Resume.Name"
-                required
                 type="text"
-                value=""
+                className={
+                  errors.phone
+                    ? "form-input required red__signed"
+                    : "form-input required"
+                }
+                maxLength={100}
+                {...register("phone", { required: true })}
               />
-              {/* RESUME or CV */}
-            </div>
-            <span
-              className="text-red-500 font-normal text-sm"
-              style={{ display: "none" }}
-              id="icloud-error"
-            >
-              iCloud files currently not available
-            </span>
+            </label>
+            {errors.phone && (
+              <p
+                className="form-error-txt"
+                style={{
+                  marginTop: "3px",
+                  fontFamily: "MarkGEO",
+                  fontSize: "14px",
+                }}
+              >
+                სავალდებულო ველი
+              </p>
+            )}
           </div>
 
           <div className="mt-4">
@@ -265,15 +323,28 @@ const FormValidation: React.FC<any> = () => {
                 &#x10D0;&#x10E3;&#x10EA;&#x10D8;&#x10DA;&#x10D4;&#x10D1;&#x10D4;&#x10DA;&#x10D8;
                 &#x10D0;&#x10E0; &#x10D0;&#x10E0;&#x10D8;&#x10E1;&lt;/small&gt;
               </span>
-              <Textarea
-                value={motivationMessage}
-                onChange={(e: any) => setMotivationMessage(e.target.value)}
-                props={{
-                  className: "form-textarea resize-y",
-                  rows: 3,
-                }}
-              />
+              <textarea
+                rows={3}
+                {...register("motivationMessage", { required: true })}
+                className={
+                  errors.motivationMessage
+                    ? "form-textarea resize-y red__signed"
+                    : "form-textarea resize-y"
+                }
+              ></textarea>
             </label>
+            {errors.motivationMessage && (
+              <p
+                className="form-error-txt"
+                style={{
+                  marginTop: "3px",
+                  fontFamily: "MarkGEO",
+                  fontSize: "14px",
+                }}
+              >
+                სავალდებულო ველი
+              </p>
+            )}
           </div>
         </fieldset>
         <input
@@ -394,7 +465,6 @@ const FormValidation: React.FC<any> = () => {
                     onChange={() => "123"}
                     props={{
                       className: "form-checkbox h-5 w-5",
-                      required: true,
                       type: "checkbox",
                       id: "question_73795_62143",
                     }}
@@ -459,6 +529,7 @@ const FormValidation: React.FC<any> = () => {
             type="submit"
             className="btn-color loading-button px-8 py-2 font-medium text-white rounded shadow-sm button"
             style={{ fontFamily: "MarkGEO" }}
+            onClick={handleSubmit(onSubmit)}
           >
             <span className="circle-loader text-gray-600"></span>
             <span className="apply-button-text button-content">

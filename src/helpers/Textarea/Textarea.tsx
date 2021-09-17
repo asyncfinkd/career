@@ -1,8 +1,8 @@
 import React from "react";
 
 interface Props {
-  value: any;
-  onChange: any;
+  value?: any;
+  onChange?: any;
   props?: any;
   children?: any;
 }
