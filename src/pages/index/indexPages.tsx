@@ -51,7 +51,6 @@ const IndexPages: React.FC = () => {
   }, [pathname]);
   return (
     <>
-      {console.log(data)}
       <Helmet>
         <title>
           &#x10D9;&#x10D0;&#x10E0;&#x10D8;&#x10D4;&#x10E0;&#x10D0; |
