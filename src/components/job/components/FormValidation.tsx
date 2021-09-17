@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Input from "../../../helpers/Input/Input";
-import Textarea from "../../../helpers/Textarea/Textarea";
 import CountrySelect from "./select/CountrySelect";
 
 type Inputs = {
@@ -13,6 +12,7 @@ type Inputs = {
   email: string;
   phone: string;
   motivationMessage: string;
+  checked: boolean;
 };
 
 const FormValidation: React.FC<any> = () => {
