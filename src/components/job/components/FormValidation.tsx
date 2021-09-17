@@ -4,6 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import Input from "../../../helpers/Input/Input";
 import CountrySelect from "./select/CountrySelect";
 import env from "../../../application/environment/env.json";
+import Swal from "sweetalert2";
 
 type Inputs = {
   firstName: string;
@@ -57,8 +58,16 @@ const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
         applicationLocation: location,
         applicationTime: time,
       })
-      .then((res: object | null) => {
-        console.log(res);
+      .then((res: any) => {
+        if (res.data.success) {
+          Swal.fire(
+            "გილოცავთ!",
+            "თქვენი განაცხადი წარმატებით გაიგზავნა!",
+            "success"
+          ).then(() => {
+            window.location.href = "/";
+          });
+        }
       });
     console.log(application);
   };
