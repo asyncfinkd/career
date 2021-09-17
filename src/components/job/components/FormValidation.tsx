@@ -38,7 +38,7 @@ const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
   const onSubmit: SubmitHandler<Inputs | any> = async (data: any) => {
     let promise = (state: string) => {
       const result = new Promise((resolve: any, reject: any) => {
-        setTimeout(state == "resolve" ? resolve : reject, 2000);
+        setTimeout(state == "resolve" ? resolve : reject, 0);
       });
       toast.promise(result, {
         pending: "გთხოვთ დაელოდოთ...",
@@ -67,20 +67,12 @@ const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
         .then((res: any) => {
           if (res.data.success) {
             promise("resolve");
-            // Swal.fire(
-            //   "გილოცავთ!",
-            //   "თქვენი განაცხადი წარმატებით გაიგზავნა!",
-            //   "success"
-            // ).then(() => {
-            //   window.location.href = "/";
-            // });
           }
         });
     } catch (err) {
       promise("reject");
     }
   };
-  console.log(watch("firstName"));
 
   return (
     <>
