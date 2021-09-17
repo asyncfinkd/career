@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
 const ApplicationInformation = mongoose.Schema({
-  aplicationTitle: {
+  applicationTitle: {
     type: String,
   },
   applicationLocation: {
@@ -47,7 +47,7 @@ const UsersSchema = mongoose.Schema({
   ipAddress: {
     type: String,
   },
-  application: [ApplicationInformation],
+  application: ApplicationInformation,
 });
 
 const UserSchema = mongoose.model("users", UsersSchema);

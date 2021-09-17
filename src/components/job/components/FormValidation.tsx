@@ -17,7 +17,7 @@ type Inputs = {
   checked: boolean;
 };
 
-const FormValidation: React.FC<any> = () => {
+const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
   const {
     register,
     handleSubmit,
@@ -35,6 +35,11 @@ const FormValidation: React.FC<any> = () => {
     }
   });
   const onSubmit: SubmitHandler<Inputs | any> = (data: any) => {
+    const application = {
+      applicationTitle: title,
+      aplicationLocation: location,
+      aplicationTime: time,
+    };
     axios
       .post(`${env.host}/api/add/users`, {
         firstName: data.firstName,
@@ -48,10 +53,14 @@ const FormValidation: React.FC<any> = () => {
         motivationMessage: data.motivationMessage,
         checked: false,
         ipAddress: ipAddress,
+        applicationTitle: title,
+        applicationLocation: location,
+        applicationTime: time,
       })
       .then((res: object | null) => {
         console.log(res);
       });
+    console.log(application);
   };
   console.log(watch("firstName"));
 

@@ -14,16 +14,7 @@ router.route("/add/users").post(async (req, res) => {
     motivationMessage,
     checked,
     ipAddress,
-    applicationTitle,
-    applicationLocation,
-    applicationTime,
   } = req.body;
-
-  const application = {
-    applicationTitle: applicationTitle,
-    applicationLocation: applicationLocation,
-    applicationTime: applicationTime,
-  };
 
   const Users = new UsersSchema({
     firstName: firstName,
@@ -37,7 +28,11 @@ router.route("/add/users").post(async (req, res) => {
     motivationMessage: motivationMessage,
     checked: checked,
     ipAddress: ipAddress,
-    application: [application],
+    application: {
+      applicationTitle: req.body.applicationTitle,
+      applicationLocation: req.body.applicationLocation,
+      applicationTime: req.body.applicationTime,
+    },
   });
   Users.save();
   res.json({ success: true });

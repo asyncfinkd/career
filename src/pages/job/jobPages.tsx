@@ -48,7 +48,7 @@ const JobPages: React.FC = () => {
             />
           </article>
           <div className="border-l-2 flex-1 flex-col h-auto opacity-0 md:opacity-100 hidden md:block"></div>
-          <Form />
+          <Form title={data.title} location={data.location} time={data.time} />
         </div>
       </div>
       {/* CV Enter a Validation */}
