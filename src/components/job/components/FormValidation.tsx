@@ -22,7 +22,7 @@ const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
   const {
     register,
     handleSubmit,
-    watch,
+    setValue,
     formState: { errors },
   } = useForm<Inputs>();
   const [ipAddress, setIpAddress] = useState<string | null>("");
@@ -67,6 +67,20 @@ const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
         .then((res: any) => {
           if (res.data.success) {
             promise("resolve");
+            window.scrollTo(0, 0);
+            const value: Array<string> = [
+              "firstName",
+              "lastName",
+              "cityOrRegion",
+              "lastHired",
+              "lastPosition",
+              "email",
+              "phone",
+              "motivationMessage",
+            ];
+            value.map((item: any) => {
+              setValue(item, "");
+            });
           }
         });
     } catch (err) {
