@@ -29,6 +29,7 @@ const JobPages: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
   return (
     <>
       <Helmet>
@@ -48,7 +49,12 @@ const JobPages: React.FC = () => {
             />
           </article>
           <div className="border-l-2 flex-1 flex-col h-auto opacity-0 md:opacity-100 hidden md:block"></div>
-          <Form title={data.title} location={data.location} time={data.time} />
+          <Form
+            title={data.title}
+            location={data.location}
+            time={data.time}
+            data={data.description}
+          />
         </div>
       </div>
       {/* CV Enter a Validation */}

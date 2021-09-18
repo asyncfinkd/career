@@ -4,6 +4,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import CountrySelect from "./select/CountrySelect";
 import env from "../../../application/environment/env.json";
 import { ToastContainer, toast } from "react-toastify";
+import { ErrorMessage } from "@hookform/error-message";
+import dompurify from "dompurify";
 
 type Inputs = {
   firstName: string;
@@ -17,8 +19,20 @@ type Inputs = {
   acceptTerms: boolean;
 };
 
-const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
+const FormValidation: React.FC<any> = ({
+  title,
+  location,
+  time,
+  data,
+}: any) => {
+  const sanitizer = dompurify.sanitize;
   const [country, setCountry] = useState<string>("GE");
+  // const [inputsArray, setInputsArray] = useState<any>(data);
+  useEffect(() => {
+    // data.map((item: any) => {
+    //   console.log(item);
+    // });
+  });
   const {
     register,
     handleSubmit,
@@ -169,251 +183,179 @@ const FormValidation: React.FC<any> = ({ title, location, time }: any) => {
               )}
             </div>
           </div>
-
-          <div className="mt-4">
-            <label
-              className="text-gray-700"
-              htmlFor="Location"
-              style={{ fontFamily: "MarkGEO" }}
-            >
-              <span className="text-gray-700 font-semibold">
-                ქალაქი/რეგიონი
-              </span>
-              <span className="req-mark"></span>
-              <input
-                type="text"
-                {...register("cityOrRegion", { required: true })}
-                maxLength={150}
-                className={
-                  errors.cityOrRegion
-                    ? "form-input required red__signed"
-                    : "form-input required"
-                }
-              />
-            </label>
-            {errors.cityOrRegion && (
-              <p
-                className="form-error-txt"
-                style={{
-                  marginTop: "3px",
-                  fontFamily: "MarkGEO",
-                  fontSize: "14px",
-                }}
-              >
-                სავალდებულო ველი
-              </p>
-            )}
-          </div>
-
-          <div className="mt-4">
-            <label
-              className="block"
-              htmlFor="Country"
-              style={{ fontFamily: "MarkGEO" }}
-            >
-              <span className="text-gray-700 font-semibold">ქვეყანა</span>
-              <span className="req-mark"></span>
-              <CountrySelect
-                countrySelect={country}
-                setCountrySelect={(e: any) => setCountry(e.target.value)}
-              />
-            </label>
-          </div>
-
-          <div className="mt-4">
-            <label
-              className="block"
-              htmlFor="CurrentCompany"
-              style={{ fontFamily: "MarkGEO" }}
-            >
-              <span className="text-gray-700 font-semibold">
-                &#x10DB;&#x10D8;&#x10DB;&#x10D3;&#x10D8;&#x10DC;&#x10D0;&#x10E0;&#x10D4;/&#x10D1;&#x10DD;&#x10DA;&#x10DD;
-                &#x10D3;&#x10D0;&#x10DB;&#x10E1;&#x10D0;&#x10E5;&#x10DB;&#x10D4;&#x10D1;&#x10D4;&#x10DA;&#x10D8;
-                &#xD;&#xA;&lt;small
-                class=&quot;hint-text&quot;&gt;&#x10DB;&#x10D8;&#x10E3;&#x10D7;&#x10D8;&#x10D7;&#x10D4;&#x10D7;
-                &quot;N/A&quot; &#x10D7;&#x10E3; &#x10D0;&#x10E0;
-                &#x10D2;&#x10D0;&#x10E5;&#x10D5;&#x10D7;
-                &#x10E1;&#x10D0;&#x10DB;&#x10E3;&#x10E8;&#x10D0;&#x10DD;
-                &#x10D2;&#x10D0;&#x10DB;&#x10DD;&#x10EA;&#x10D3;&#x10D8;&#x10DA;&#x10D4;&#x10D1;&#x10D0;&lt;/small&gt;
-              </span>
-              <span className="req-mark"></span>
-              <input
-                type="text"
-                maxLength={150}
-                className={
-                  errors.lastHired
-                    ? "form-input required red__signed"
-                    : "form-input required"
-                }
-                {...register("lastHired", { required: true })}
-              />
-            </label>
-            {errors.lastHired && (
-              <p
-                className="form-error-txt"
-                style={{
-                  marginTop: "3px",
-                  fontFamily: "MarkGEO",
-                  fontSize: "14px",
-                }}
-              >
-                სავალდებულო ველი
-              </p>
-            )}
-          </div>
-
-          <div className="mt-4">
-            <label
-              className="block"
-              htmlFor="CurrentTitle"
-              style={{ fontFamily: "MarkGEO" }}
-            >
-              <span className="text-gray-700 font-semibold">
-                &#x10DB;&#x10D8;&#x10DB;&#x10D3;&#x10D8;&#x10DC;&#x10D0;&#x10E0;&#x10D4;/&#x10D1;&#x10DD;&#x10DA;&#x10DD;
-                &#x10DE;&#x10DD;&#x10D6;&#x10D8;&#x10EA;&#x10D8;&#x10D0;
-                &#xD;&#xA;&lt;small
-                class=&quot;hint-text&quot;&gt;&#x10DB;&#x10D8;&#x10E3;&#x10D7;&#x10D8;&#x10D7;&#x10D4;&#x10D7;
-                &quot;N/A&quot; &#x10D7;&#x10E3; &#x10D0;&#x10E0;
-                &#x10D2;&#x10D0;&#x10E5;&#x10D5;&#x10D7;
-                &#x10E1;&#x10D0;&#x10DB;&#x10E3;&#x10E8;&#x10D0;&#x10DD;
-                &#x10D2;&#x10D0;&#x10DB;&#x10DD;&#x10EA;&#x10D3;&#x10D8;&#x10DA;&#x10D4;&#x10D1;&#x10D0;&lt;/small&gt;
-              </span>
-              <span className="req-mark"></span>
-            </label>
-            <input
-              type="text"
-              maxLength={150}
-              {...register("lastPosition", { required: true })}
-              className={
-                errors.lastPosition
-                  ? "form-input required red__signed"
-                  : "form-input required"
-              }
-            />
-            {errors.lastPosition && (
-              <p
-                className="form-error-txt"
-                style={{
-                  marginTop: "3px",
-                  fontFamily: "MarkGEO",
-                  fontSize: "14px",
-                }}
-              >
-                სავალდებულო ველი
-              </p>
-            )}
-          </div>
-
-          <div className="mt-4">
-            <label
-              className="block"
-              htmlFor="Email"
-              style={{ fontFamily: "MarkGEO" }}
-            >
-              <span className="text-gray-700 font-semibold">
-                &#x10DE;&#x10D8;&#x10E0;&#x10D0;&#x10D3;&#x10D8;
-                &#x10D4;&#x10DA;-&#x10E4;&#x10DD;&#x10E1;&#x10E2;&#x10D0;
-              </span>
-              <span className="req-mark"></span>
-              <input
-                type="email"
-                {...register("email", { required: true })}
-                maxLength={150}
-                className={
-                  errors.email
-                    ? "form-input required red__signed"
-                    : "form-input required"
-                }
-              />
-            </label>
-            {errors.email && (
-              <p
-                className="form-error-txt"
-                style={{
-                  marginTop: "3px",
-                  fontFamily: "MarkGEO",
-                  fontSize: "14px",
-                }}
-              >
-                სავალდებულო ველი
-              </p>
-            )}
-          </div>
-
-          <div className="mt-4">
-            <label
-              className="block"
-              htmlFor="Phone"
-              style={{ fontFamily: "MarkGEO" }}
-            >
-              <span className="text-gray-700 font-semibold">
-                &#x10E2;&#x10D4;&#x10DA;&#x10D4;&#x10E4;&#x10DD;&#x10DC;&#x10D8;
-                (&#x10E4;&#x10DD;&#x10E0;&#x10DB;&#x10D0;&#x10E2;&#x10D8;:
-                9955XXXXXXXX)
-              </span>
-              <input
-                type="text"
-                className={
-                  errors.phone
-                    ? "form-input required red__signed"
-                    : "form-input required"
-                }
-                maxLength={100}
-                {...register("phone", { required: true })}
-              />
-            </label>
-            {errors.phone && (
-              <p
-                className="form-error-txt"
-                style={{
-                  marginTop: "3px",
-                  fontFamily: "MarkGEO",
-                  fontSize: "14px",
-                }}
-              >
-                სავალდებულო ველი
-              </p>
-            )}
-          </div>
-
-          <div className="mt-4">
-            <label
-              className="block"
-              htmlFor="CoverLetter"
-              style={{ fontFamily: "MarkGEO" }}
-            >
-              <span className="text-gray-700 font-semibold">
-                &#x10E1;&#x10D0;&#x10DB;&#x10DD;&#x10E2;&#x10D8;&#x10D5;&#x10D0;&#x10EA;&#x10D8;&#x10DD;
-                &#x10EC;&#x10D4;&#x10E0;&#x10D8;&#x10DA;&#x10D8; &lt;small
-                class=&quot;hint-text&quot;&gt;&#x10E1;&#x10D0;&#x10DB;&#x10DD;&#x10E2;&#x10D8;&#x10D5;&#x10D0;&#x10EA;&#x10D8;&#x10DD;
-                &#x10EC;&#x10D4;&#x10E0;&#x10D8;&#x10DA;&#x10D8;&#x10E1;
-                &#x10E8;&#x10D4;&#x10D5;&#x10E1;&#x10D4;&#x10D1;&#x10D0;
-                &#x10D0;&#x10E3;&#x10EA;&#x10D8;&#x10DA;&#x10D4;&#x10D1;&#x10D4;&#x10DA;&#x10D8;
-                &#x10D0;&#x10E0; &#x10D0;&#x10E0;&#x10D8;&#x10E1;&lt;/small&gt;
-              </span>
-              <textarea
-                rows={3}
-                {...register("motivationMessage", { required: true })}
-                className={
-                  errors.motivationMessage
-                    ? "form-textarea resize-y red__signed"
-                    : "form-textarea resize-y"
-                }
-              ></textarea>
-            </label>
-            {errors.motivationMessage && (
-              <p
-                className="form-error-txt"
-                style={{
-                  marginTop: "3px",
-                  fontFamily: "MarkGEO",
-                  fontSize: "14px",
-                }}
-              >
-                სავალდებულო ველი
-              </p>
-            )}
-          </div>
+          {data?.map((input: any) => {
+            return (
+              <>
+                {input.inputs.map((secondInput: any) => {
+                  return (
+                    <>
+                      {secondInput.type == "text" && (
+                        <>
+                          <div className="mt-4">
+                            <label
+                              className="text-gray-700"
+                              htmlFor={secondInput.name}
+                              style={{ fontFamily: "MarkGEO" }}
+                            >
+                              <span className="text-gray-700 font-semibold">
+                                {secondInput.text}
+                              </span>
+                              <span className="req-mark"></span>
+                              <input
+                                type={secondInput.type}
+                                {...register(secondInput.name, {
+                                  required: "სავალდებულო ველი",
+                                })}
+                                maxLength={
+                                  secondInput.maxLength != "" &&
+                                  secondInput.maxLength
+                                }
+                                className={
+                                  errors
+                                    ? "form-input required red__signed"
+                                    : "form-input required"
+                                }
+                              />
+                            </label>
+                            <ErrorMessage
+                              errors={errors}
+                              name={secondInput.name}
+                              render={({ message }) => (
+                                <p
+                                  className="form-error-txt"
+                                  style={{
+                                    marginTop: "3px",
+                                    fontFamily: "MarkGEO",
+                                    fontSize: "14px",
+                                  }}
+                                >
+                                  {message}
+                                </p>
+                              )}
+                            />
+                          </div>
+                        </>
+                      )}
+                      {secondInput.type == "select" && (
+                        <>
+                          <div className="mt-4">
+                            <label
+                              className="block"
+                              htmlFor="Country"
+                              style={{ fontFamily: "MarkGEO" }}
+                            >
+                              <span
+                                className="text-gray-700 font-semibold"
+                                dangerouslySetInnerHTML={{
+                                  __html: sanitizer(secondInput.text),
+                                }}
+                              ></span>
+                              <span className="req-mark"></span>
+                              <CountrySelect
+                                countrySelect={country}
+                                setCountrySelect={(e: any) =>
+                                  setCountry(e.target.value)
+                                }
+                              />
+                            </label>
+                          </div>
+                        </>
+                      )}
+                      {secondInput.type == "email" && (
+                        <>
+                          <div className="mt-4">
+                            <label
+                              className="text-gray-700"
+                              htmlFor={secondInput.name}
+                              style={{ fontFamily: "MarkGEO" }}
+                            >
+                              <span className="text-gray-700 font-semibold">
+                                {secondInput.text}
+                              </span>
+                              <span className="req-mark"></span>
+                              <input
+                                type={secondInput.type}
+                                {...register(secondInput.name, {
+                                  required: "სავალდებულო ველი",
+                                })}
+                                maxLength={
+                                  secondInput.maxLength != "" &&
+                                  secondInput.maxLength
+                                }
+                                className={
+                                  errors.cityOrRegion
+                                    ? "form-input required red__signed"
+                                    : "form-input required"
+                                }
+                              />
+                            </label>
+                            <ErrorMessage
+                              errors={errors}
+                              name={secondInput.name}
+                              render={({ message }) => (
+                                <p
+                                  className="form-error-txt"
+                                  style={{
+                                    marginTop: "3px",
+                                    fontFamily: "MarkGEO",
+                                    fontSize: "14px",
+                                  }}
+                                >
+                                  {message}
+                                </p>
+                              )}
+                            />
+                          </div>
+                        </>
+                      )}
+                      {secondInput.type == "textarea" && (
+                        <>
+                          <div className="mt-4">
+                            <label
+                              className="block"
+                              htmlFor={secondInput.name}
+                              style={{ fontFamily: "MarkGEO" }}
+                            >
+                              <span className="text-gray-700 font-semibold">
+                                {secondInput.text}
+                              </span>
+                              <textarea
+                                rows={3}
+                                {...register(secondInput.name, {
+                                  required: "სავალდებულო ველი",
+                                })}
+                                className={
+                                  errors.motivationMessage
+                                    ? "form-textarea resize-y red__signed"
+                                    : "form-textarea resize-y"
+                                }
+                              ></textarea>
+                            </label>
+                            <ErrorMessage
+                              errors={errors}
+                              name={secondInput.name}
+                              render={({ message }) => (
+                                <p
+                                  className="form-error-txt"
+                                  style={{
+                                    marginTop: "3px",
+                                    fontFamily: "MarkGEO",
+                                    fontSize: "14px",
+                                  }}
+                                >
+                                  {message}
+                                </p>
+                              )}
+                            />
+                          </div>
+                        </>
+                      )}
+                    </>
+                  );
+                })}
+              </>
+            );
+          })}
         </fieldset>
         <input
           data-val="true"

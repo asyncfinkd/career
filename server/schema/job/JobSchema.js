@@ -28,11 +28,10 @@ const Inputs = mongoose.Schema({
     type: String,
     required: true,
   },
-  errorMessage: {
-    type: String,
-    required: true,
-  },
   maxLength: {
+    type: String,
+  },
+  text: {
     type: String,
   },
 });
