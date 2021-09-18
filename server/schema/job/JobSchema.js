@@ -29,6 +29,9 @@ const JobDescription = mongoose.Schema({
   },
   workExperience: [WorkExperiences],
   know: [knows],
+  salary: {
+    type: String,
+  },
 });
 
 const JobSchema = mongoose.Schema({
