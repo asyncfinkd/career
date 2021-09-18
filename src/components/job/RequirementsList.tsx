@@ -4,6 +4,7 @@ import FunctionsRenderList from "./components/FunctionsRenderList";
 import QualificationRequireRender from "./components/QualitificationRequireRender";
 import WorkExperienceRenderList from "./components/WorkExperienceRenderList";
 import KnowRenderList from "./components/KnowRenderList";
+import SalaryRender from "./components/SalaryRender";
 
 const RequirementsList: React.FC<any> = ({ description, lastTime }: any) => {
   const sanitizer = dompurify.sanitize;
@@ -16,6 +17,7 @@ const RequirementsList: React.FC<any> = ({ description, lastTime }: any) => {
           know,
           functions,
           workExperience,
+          salary,
         } = item;
         return (
           <>
@@ -37,6 +39,11 @@ const RequirementsList: React.FC<any> = ({ description, lastTime }: any) => {
               )}
               {workExperience.length != 0 && (
                 <WorkExperienceRenderList workExperience={workExperience} />
+              )}
+              {salary != "" && (
+                <>
+                  <SalaryRender salary={salary} />
+                </>
               )}
               {know.length != 0 && <KnowRenderList know={know} />}
               <p>
