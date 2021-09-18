@@ -19,6 +19,24 @@ const knows = mongoose.Schema({
   },
 });
 
+const Inputs = mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  type: {
+    type: String,
+    required: true,
+  },
+  errorMessage: {
+    type: String,
+    required: true,
+  },
+  maxLength: {
+    type: String,
+  },
+});
+
 const JobDescription = mongoose.Schema({
   title: {
     type: String,
@@ -32,6 +50,7 @@ const JobDescription = mongoose.Schema({
   salary: {
     type: String,
   },
+  inputs: [Inputs],
 });
 
 const JobSchema = mongoose.Schema({
