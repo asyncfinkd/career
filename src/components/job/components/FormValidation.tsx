@@ -27,12 +27,6 @@ const FormValidation: React.FC<any> = ({
 }: any) => {
   const sanitizer = dompurify.sanitize;
   const [country, setCountry] = useState<string>("GE");
-  // const [inputsArray, setInputsArray] = useState<any>(data);
-  useEffect(() => {
-    // data.map((item: any) => {
-    //   console.log(item);
-    // });
-  });
   const {
     register,
     handleSubmit,
@@ -210,11 +204,7 @@ const FormValidation: React.FC<any> = ({
                                   secondInput.maxLength != "" &&
                                   secondInput.maxLength
                                 }
-                                className={
-                                  errors
-                                    ? "form-input required red__signed"
-                                    : "form-input required"
-                                }
+                                className="form-input required"
                               />
                             </label>
                             <ErrorMessage
@@ -282,11 +272,7 @@ const FormValidation: React.FC<any> = ({
                                   secondInput.maxLength != "" &&
                                   secondInput.maxLength
                                 }
-                                className={
-                                  errors.cityOrRegion
-                                    ? "form-input required red__signed"
-                                    : "form-input required"
-                                }
+                                className="form-input required"
                               />
                             </label>
                             <ErrorMessage
@@ -324,11 +310,7 @@ const FormValidation: React.FC<any> = ({
                                 {...register(secondInput.name, {
                                   required: "სავალდებულო ველი",
                                 })}
-                                className={
-                                  errors.motivationMessage
-                                    ? "form-textarea resize-y red__signed"
-                                    : "form-textarea resize-y"
-                                }
+                                className="form-input required"
                               ></textarea>
                             </label>
                             <ErrorMessage
