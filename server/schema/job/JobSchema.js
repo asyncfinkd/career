@@ -34,6 +34,9 @@ const Inputs = mongoose.Schema({
   text: {
     type: String,
   },
+  isHalf: {
+    type: String,
+  },
 });
 
 const JobDescription = mongoose.Schema({
