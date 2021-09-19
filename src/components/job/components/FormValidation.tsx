@@ -119,7 +119,6 @@ const FormValidation: React.FC<any> = ({
                     <>
                       {secondInput.isHalf == "true" && (
                         <>
-                          {console.log(secondInput)}
                           <div className="flex flex-wrap -mx-3 mb-4">
                             <div
                               className={`w-full md:w-1/2 px-3 ${
@@ -464,41 +463,61 @@ const FormValidation: React.FC<any> = ({
             </span>
             <span className="req-mark"></span>
             <div className="mt-2">
-              <div className="mb-1">
-                <label
-                  className="inline-flex items-center font-normal"
-                  htmlFor="question_73795_62143"
-                  style={{ fontFamily: "MarkGEO", fontWeight: 600 }}
-                >
-                  <input
-                    type="checkbox"
-                    {...register("acceptTerms", { required: true })}
-                    id="question_73795_62143"
-                    className={`form-checkbox h-5 w-5 ${
-                      errors.acceptTerms && "red__signed"
-                    }`}
-                    name="acceptTerms"
-                  />
-                  <span className="ml-2 text-gray-700 leading-tight">
-                    &#x10D5;&#x10D4;&#x10D7;&#x10D0;&#x10DC;&#x10EE;&#x10DB;&#x10D4;&#x10D1;&#x10D8;
-                  </span>
-                </label>
-                {errors.acceptTerms && (
+              {data?.map((item: any) => {
+                return (
                   <>
-                    <p
-                      className="form-error-txt"
-                      style={{
-                        marginTop: "3px",
-                        fontFamily: "MarkGEO",
-                        fontSize: "14px",
-                      }}
-                    >
-                      გთხოვთ დააჭიროთ "ვეთანხმები" ღილაკს თუ გსურთ პროცესის
-                      გაგრძელება
-                    </p>
+                    {item.inputs.map((secondItem: any) => {
+                      return (
+                        <>
+                          {secondItem.type == "checkbox" && (
+                            <>
+                              <div className="mb-1">
+                                <label
+                                  className="inline-flex items-center font-normal"
+                                  htmlFor={secondItem.name}
+                                  style={{
+                                    fontFamily: "MarkGEO",
+                                    fontWeight: 600,
+                                  }}
+                                >
+                                  <input
+                                    type="checkbox"
+                                    {...register(secondItem.name, {
+                                      required: 'გთხოვთ დააჭიროთ "ვეთანხმები" ღილაკს თუ გსურთ პროცესის გაგრძელება',
+                                    })}
+                                    id={secondItem.name}
+                                    className="form-checkbox h-5 w-5"
+                                    name={secondItem.name}
+                                  />
+                                  <span className="ml-2 text-gray-700 leading-tight">
+                                    {secondItem.text}
+                                  </span>
+                                </label>
+                                <ErrorMessage
+                              errors={errors}
+                              name={secondItem.name}
+                              render={({ message }) => (
+                                <p
+                                  className="form-error-txt"
+                                  style={{
+                                    marginTop: "3px",
+                                    fontFamily: "MarkGEO",
+                                    fontSize: "14px",
+                                  }}
+                                >
+                                  {message}
+                                </p>
+                              )}
+                            />
+                              </div>
+                            </>
+                          )}
+                        </>
+                      );
+                    })}
                   </>
-                )}
-              </div>
+                );
+              })}
             </div>
           </div>
         </div>
