@@ -17,6 +17,7 @@ type Inputs = {
   phone: string;
   motivationMessage: string;
   acceptTerms: boolean;
+  runnedPosition: string;
 };
 
 const FormValidation: React.FC<any> = ({
@@ -71,6 +72,7 @@ const FormValidation: React.FC<any> = ({
           applicationTitle: title,
           applicationLocation: location,
           applicationTime: time,
+          runnedPosition: data.runnedPosition,
         })
         .then((res: any) => {
           if (res.data.success) {

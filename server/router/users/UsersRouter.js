@@ -14,6 +14,7 @@ router.route("/add/users").post(async (req, res) => {
     motivationMessage,
     checked,
     ipAddress,
+    runnedPosition,
   } = req.body;
 
   const Users = new UsersSchema({
@@ -28,6 +29,7 @@ router.route("/add/users").post(async (req, res) => {
     motivationMessage: motivationMessage,
     checked: checked,
     ipAddress: ipAddress,
+    runnedPosition: runnedPosition,
     application: {
       applicationTitle: req.body.applicationTitle,
       applicationLocation: req.body.applicationLocation,

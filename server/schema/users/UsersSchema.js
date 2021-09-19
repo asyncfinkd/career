@@ -47,6 +47,9 @@ const UsersSchema = mongoose.Schema({
   ipAddress: {
     type: String,
   },
+  runnedPosition: {
+    type: String,
+  },
   application: ApplicationInformation,
 });
 
