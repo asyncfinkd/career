@@ -111,80 +111,98 @@ const FormValidation: React.FC<any> = ({
           გამოაგზავნეთ განაცხადი
         </h3>
         <fieldset className="my-6">
+          <div className="flex flex-wrap -mx-3 mb-4">
+            <div className="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+              <label
+                className="block"
+                htmlFor="FirstName"
+                style={{ fontFamily: "MarkGEO" }}
+              >
+                <span className="text-gray-700 font-semibold">სახელი</span>
+                <span className="req-mark"></span>
+                <input
+                  type="text"
+                  {...register("firstName", { required: true })}
+                  className="form-input required"
+                  maxLength={100}
+                />
+              </label>
+              {errors.firstName && (
+                <p
+                  className="form-error-txt"
+                  style={{
+                    marginTop: "3px",
+                    fontFamily: "MarkGEO",
+                    fontSize: "14px",
+                  }}
+                >
+                  სავალდებულო ველი
+                </p>
+              )}
+            </div>
+            <div className="w-full md:w-1/2 px-3">
+              <label
+                className="block"
+                htmlFor="LastName"
+                style={{ fontFamily: "MarkGEO" }}
+              >
+                <span className="text-gray-700 font-semibold">გვარი</span>
+                <span className="req-mark"></span>
+                <input
+                  type="text"
+                  {...register("lastName", { required: true })}
+                  maxLength={100}
+                  className="form-input required"
+                />
+              </label>
+              {errors.lastName && (
+                <p
+                  className="form-error-txt"
+                  style={{
+                    marginTop: "3px",
+                    fontFamily: "MarkGEO",
+                    fontSize: "14px",
+                  }}
+                >
+                  სავალდებულო ველი
+                </p>
+              )}
+            </div>
+          </div>
           {data?.map((input: any) => {
             return (
               <>
                 {input.inputs.map((secondInput: any) => {
                   return (
                     <>
-                      {secondInput.isHalf == "true" && (
+                      {secondInput.type == "text" && (
                         <>
-                          <div className="flex flex-wrap -mx-3 mb-4">
-                            <div
-                              className={`w-full md:w-1/2 px-3 ${
-                                secondInput.name == "firstName" &&
-                                "mb-4 md:mb-0"
-                              }`}
+                          <div className="mt-4">
+                            <label
+                              className="text-gray-700"
+                              htmlFor={secondInput.name}
+                              style={{ fontFamily: "MarkGEO" }}
                             >
-                              <label
-                                className="block"
-                                htmlFor={secondInput.name}
-                                style={{ fontFamily: "MarkGEO" }}
-                              >
-                                <span className="text-gray-700 font-semibold">
-                                  {secondInput.text}
-                                </span>
-                                <span className="req-mark"></span>
-                                <input
-                                  type="text"
-                                  {...register(secondInput.name, {
-                                    required: true,
-                                  })}
-                                  className="form-input required"
-                                  maxLength={secondInput.maxLength}
-                                />
-                              </label>
-                              <ErrorMessage
-                                errors={errors}
-                                name={secondInput.name}
-                                render={({ message }) => (
-                                  <p
-                                    className="form-error-txt"
-                                    style={{
-                                      marginTop: "3px",
-                                      fontFamily: "MarkGEO",
-                                      fontSize: "14px",
-                                    }}
-                                  >
-                                    {message}
-                                  </p>
-                                )}
+                              <span className="text-gray-700 font-semibold">
+                                {secondInput.text}
+                              </span>
+                              <span className="req-mark"></span>
+                              <input
+                                type={secondInput.type}
+                                {...register(secondInput.name, {
+                                  required: "სავალდებულო ველი",
+                                })}
+                                maxLength={
+                                  secondInput.maxLength != "" &&
+                                  secondInput.maxLength
+                                }
+                                className="form-input required"
                               />
-                            </div>
-                          </div>
-
-                          {/* <div className="w-full md:w-1/2 px-3">
-                              <label
-                                className="block"
-                                htmlFor="LastName"
-                                style={{ fontFamily: "MarkGEO" }}
-                              >
-                                <span className="text-gray-700 font-semibold">
-                                  გვარი
-                                </span>
-                                <span className="req-mark"></span>
-                                <input
-                                  type="text"
-                                  {...register("lastName", { required: true })}
-                                  maxLength={100}
-                                  className={
-                                    errors.lastName
-                                      ? "form-input required red__signed"
-                                      : "form-input required"
-                                  }
-                                />
-                              </label>
-                              {errors.lastName && (
+                            </label>
+                            <ErrorMessage
+                              errors={errors}
+                              name={secondInput.name}
+                              render={({ message }) => (
                                 <p
                                   className="form-error-txt"
                                   style={{
@@ -193,56 +211,13 @@ const FormValidation: React.FC<any> = ({
                                     fontSize: "14px",
                                   }}
                                 >
-                                  სავალდებულო ველი
+                                  {message}
                                 </p>
                               )}
-                            </div> */}
+                            />
+                          </div>
                         </>
                       )}
-                      {secondInput.type == "text" &&
-                        secondInput.isHalf != "true" && (
-                          <>
-                            <div className="mt-4">
-                              <label
-                                className="text-gray-700"
-                                htmlFor={secondInput.name}
-                                style={{ fontFamily: "MarkGEO" }}
-                              >
-                                <span className="text-gray-700 font-semibold">
-                                  {secondInput.text}
-                                </span>
-                                <span className="req-mark"></span>
-                                <input
-                                  type={secondInput.type}
-                                  {...register(secondInput.name, {
-                                    required: "სავალდებულო ველი",
-                                  })}
-                                  maxLength={
-                                    secondInput.maxLength != "" &&
-                                    secondInput.maxLength
-                                  }
-                                  className="form-input required"
-                                />
-                              </label>
-                              <ErrorMessage
-                                errors={errors}
-                                name={secondInput.name}
-                                render={({ message }) => (
-                                  <p
-                                    className="form-error-txt"
-                                    style={{
-                                      marginTop: "3px",
-                                      fontFamily: "MarkGEO",
-                                      fontSize: "14px",
-                                    }}
-                                  >
-                                    {message}
-                                  </p>
-                                )}
-                              />
-                            </div>
-                          </>
-                        )}
                       {secondInput.type == "select" && (
                         <>
                           <div className="mt-4">
@@ -483,7 +458,8 @@ const FormValidation: React.FC<any> = ({
                                   <input
                                     type="checkbox"
                                     {...register(secondItem.name, {
-                                      required: 'გთხოვთ დააჭიროთ "ვეთანხმები" ღილაკს თუ გსურთ პროცესის გაგრძელება',
+                                      required:
+                                        'გთხოვთ დააჭიროთ "ვეთანხმები" ღილაკს თუ გსურთ პროცესის გაგრძელება',
                                     })}
                                     id={secondItem.name}
                                     className="form-checkbox h-5 w-5"
@@ -494,21 +470,21 @@ const FormValidation: React.FC<any> = ({
                                   </span>
                                 </label>
                                 <ErrorMessage
-                              errors={errors}
-                              name={secondItem.name}
-                              render={({ message }) => (
-                                <p
-                                  className="form-error-txt"
-                                  style={{
-                                    marginTop: "3px",
-                                    fontFamily: "MarkGEO",
-                                    fontSize: "14px",
-                                  }}
-                                >
-                                  {message}
-                                </p>
-                              )}
-                            />
+                                  errors={errors}
+                                  name={secondItem.name}
+                                  render={({ message }) => (
+                                    <p
+                                      className="form-error-txt"
+                                      style={{
+                                        marginTop: "3px",
+                                        fontFamily: "MarkGEO",
+                                        fontSize: "14px",
+                                      }}
+                                    >
+                                      {message}
+                                    </p>
+                                  )}
+                                />
                               </div>
                             </>
                           )}
