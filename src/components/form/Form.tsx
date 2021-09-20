@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import Button from "../../helpers/Button/Button";
 import Input from "../../helpers/Input/Input";
 import FormElement from "../../helpers/Form/Form";
 
 const Form: React.FC<any> = ({ searchValue, setSearchValue }: any) => {
+  const searchRef = useRef<any>(null);
+  const identificationSearch = () => {
+    if (!searchValue) {
+      searchRef.current?.focus();
+    }
+  };
   return (
     <>
       <FormElement
@@ -23,6 +29,7 @@ const Form: React.FC<any> = ({ searchValue, setSearchValue }: any) => {
                 placeholder: "ძებნა",
                 className:
                   "hh-search-bar form-control form-input mt-0 placeholder:font-family",
+                ref: searchRef,
               }}
             />
           </div>
@@ -32,6 +39,7 @@ const Form: React.FC<any> = ({ searchValue, setSearchValue }: any) => {
               className:
                 "rounded-r px-4 bg-gray-300 hover:bg-gray-400 loading-button button:font-family",
               ariaLabel: "Search",
+              onClick: () => identificationSearch(),
             }}
           >
             <span className="circle-loader dark"></span>
