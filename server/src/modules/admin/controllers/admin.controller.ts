@@ -2,7 +2,7 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { AdminService } from '../service/admin.service';
 import { AdminDto } from '../dto';
 
-@Controller('api')
+@Controller()
 export class AdminController {
   constructor(private readonly adminService: AdminService) {}
 
