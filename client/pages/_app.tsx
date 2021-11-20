@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import Head from "next/head";
 import type { AppProps } from "next/app";
 import Modal from "../ui/modal";
+import { readCookie } from "shared/read-cookie";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -27,7 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </title>
       </Head>
       <Component {...pageProps} />
-      <Modal />
+      {!readCookie("accept__cookie") && <Modal />}
     </>
   );
 }
