@@ -5,16 +5,16 @@ export type AdminDocument = AdminSchema & Document;
 
 @Schema({ collection: 'admins' })
 export class AdminSchema {
-  @Prop({ required: true, maxlength: 100 })
+  @Prop()
   fullName: string;
 
-  @Prop({ required: true, lowercase: true })
+  @Prop()
   email: string;
 
-  @Prop({ required: true })
+  @Prop()
   password: string;
 
-  @Prop({ required: true })
+  @Prop()
   role: string;
 
   @Prop()
