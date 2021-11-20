@@ -1,13 +1,24 @@
-import "../styles/globals.css";
-import Head from "next/head";
-import type { AppProps } from "next/app";
-import Modal from "../ui/modal";
-import { readCookie } from "shared/read-cookie";
+import Actions from 'actions/pages/_app';
+import type { AppProps } from 'next/app';
+import { PageComponent } from 'types/pages/_app';
+import '../styles/globals.css';
+import 'nprogress/nprogress.css';
+
+Actions.Router.events.on('routeChangeStart', () => Actions.NProgress.start());
+Actions.Router.events.on('routeChangeComplete', () => Actions.NProgress.done());
+Actions.Router.events.on('routeChangeError', () => Actions.NProgress.done());
 
 function MyApp({ Component, pageProps }: AppProps) {
+  if (
+    Actions.isServer &&
+    !Component.getInitialProps &&
+    (Component as PageComponent<unknown>).ws
+  ) {
+    return null;
+  }
   return (
     <>
-      <Head>
+      <Actions.Head>
         <link
           rel="shortcut icon"
           type="image/x-icon"
@@ -26,9 +37,11 @@ function MyApp({ Component, pageProps }: AppProps) {
           &#x10E1;&#x10D0;&#x10DB;&#x10E3;&#x10E8;&#x10D0;&#x10DD;&#x10D4;&#x10D1;&#x10D8;
           JSC Bank of Georgia
         </title>
-      </Head>
-      <Component {...pageProps} />
-      {!readCookie("accept__cookie") && <Modal />}
+      </Actions.Head>
+      <Actions.QueryClientProvider client={Actions.client}>
+        <Component {...pageProps} />
+        {!Actions.readCookie('accept__cookie') && <Actions.Modal />}
+      </Actions.QueryClientProvider>
     </>
   );
 }

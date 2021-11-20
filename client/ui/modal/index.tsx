@@ -1,4 +1,4 @@
-import Actions from "actions/ui/modal";
+import Actions from 'actions/ui/modal';
 
 export default function Modal() {
   const [pages, setPages] = Actions.useState<number>(0);
@@ -6,14 +6,14 @@ export default function Modal() {
 
   const renderSecondPage = (condition: any) => {
     if (condition) {
-      return "hidden";
+      return 'hidden';
     } else {
       return null;
     }
   };
 
   const acceptCookies = () => {
-    document.cookie = "accept__cookie=true";
+    document.cookie = 'accept__cookie=true';
     setShowModal(false);
   };
 
@@ -30,7 +30,7 @@ export default function Modal() {
           >
             <p className="">
               This website uses cookies to improve your web experience. By using
-              this site, you agree to the use of cookies.{" "}
+              this site, you agree to the use of cookies.{' '}
               <a
                 href="https://hirehive.com/privacy-policy/"
                 className="user-color underline"
@@ -110,7 +110,7 @@ export default function Modal() {
                   <div className="flex items-center">
                     <input
                       value="analytics"
-                      onChange={(e: any) => "analytics"}
+                      onChange={(e: any) => 'analytics'}
                       id="settings-option-2"
                       name="privacy_setting"
                       type="checkbox"
