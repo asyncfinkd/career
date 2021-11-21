@@ -43,9 +43,13 @@ export class PostService {
     }
   };
 
-  deleteItem = (_id: string) => {
-    return this.postModel.findByIdAndRemove({ _id: _id }).then(() => {
-      return { success: true, msg: 'Congratulation, you delete post!' };
-    });
+  deleteItem = async (_id: string) => {
+    try {
+      return this.postModel.findByIdAndRemove({ _id: _id }).then(() => {
+        return { success: true, msg: 'Congratulation, you delete post!' };
+      });
+    } catch (err) {
+      return { success: false, msg: 'something is wrong.', err };
+    }
   };
 }

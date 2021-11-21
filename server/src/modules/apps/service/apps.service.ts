@@ -32,4 +32,14 @@ export class AppsService {
       return { success: false, msg: 'something is wrong.', err };
     }
   };
+
+  deleteItem = async (_id: string) => {
+    try {
+      return this.appsModel.findByIdAndRemove({ _id: _id }).then(() => {
+        return { success: true, msg: 'Congratulation, you delete app!' };
+      });
+    } catch (err) {
+      return { success: false, msg: 'something is wrong.', err };
+    }
+  };
 }
