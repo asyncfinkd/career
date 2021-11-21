@@ -9,6 +9,8 @@ Actions.Router.events.on('routeChangeComplete', () => Actions.NProgress.done());
 Actions.Router.events.on('routeChangeError', () => Actions.NProgress.done());
 
 function MyApp({ Component, pageProps }: AppProps) {
+  Actions.NProgress.settings.showSpinner = false;
+
   if (
     Actions.isServer &&
     !Component.getInitialProps &&
