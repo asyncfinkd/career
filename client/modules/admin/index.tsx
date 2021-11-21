@@ -42,6 +42,9 @@ export default function AdminModules() {
             </>
           );
         })}
+        <Actions.Button variant="contained" sx={{ width: '100%', height: 40 }}>
+          შესვლა
+        </Actions.Button>
       </Actions.Box>
     </>
   );
