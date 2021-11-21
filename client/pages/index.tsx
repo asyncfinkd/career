@@ -1,9 +1,10 @@
 import type { NextPage } from 'next';
+import Header from 'ui/header';
 
 const Home: NextPage = () => {
   return (
     <>
-      <p>Hello</p>
+      <Header />
     </>
   );
 };
