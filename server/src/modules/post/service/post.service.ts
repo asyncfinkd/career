@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { PostDocument, PostSchema } from '../model/post.model';
+import { PostDocument, PostInterface, PostSchema } from '../model/post.model';
 
 @Injectable()
 export class PostService {
@@ -31,7 +31,7 @@ export class PostService {
     }
   };
 
-  addItem = async (req: any) => {
+  addItem = async (req: PostInterface) => {
     try {
       const newItem = new this.postModel(req);
 

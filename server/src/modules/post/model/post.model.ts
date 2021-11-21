@@ -18,4 +18,12 @@ export class PostSchema {
   time: string;
 }
 
+export interface PostInterface {
+  _id: string;
+  title: string;
+  description: string;
+  location: string;
+  time: string;
+}
+
 export const Post = SchemaFactory.createForClass(PostSchema);

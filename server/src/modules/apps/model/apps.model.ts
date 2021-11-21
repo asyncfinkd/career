@@ -36,4 +36,18 @@ export class AppsSchema {
   motivationMessage: string;
 }
 
+export interface AppsInterface {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  cityOrRegion: string;
+  country: string;
+  lastHired: string;
+  lastPosition: string;
+  email: string;
+  phone: string;
+  resume: string;
+  motivitationMessage: string;
+}
+
 export const Apps = SchemaFactory.createForClass(AppsSchema);
