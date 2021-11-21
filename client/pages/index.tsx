@@ -1,18 +1,34 @@
-import type { NextPage } from 'next';
-import Footer from 'ui/footer';
-import Header from 'ui/header';
-import Hero from 'ui/hero';
-import Notification from 'ui/notification';
+import IndexModules from 'modules/index';
+import type {
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  NextPage,
+} from 'next';
+import { useState } from 'react';
 
-const Home: NextPage = () => {
+const Home: NextPage = ({
+  response,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const [data, setData] = useState(response);
+
   return (
     <>
-      <Header />
-      <Hero />
-      <Notification />
-      <Footer />
+      <IndexModules data={data} />
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const request = await fetch(`${process.env.SERVER_API_URL}/api/get/posts`, {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
+
+  const response = await request.json();
+
+  return { props: { response } };
 };
 
 export default Home;

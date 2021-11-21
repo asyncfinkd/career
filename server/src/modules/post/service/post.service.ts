@@ -11,7 +11,7 @@ export class PostService {
 
   getItem = async () => {
     try {
-      const item = await this.postModel.find();
+      const item = await this.postModel.find().select('title time location');
 
       if (!item) return { success: true, msg: 'not found' };
 

@@ -41,6 +41,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Actions.QueryClientProvider client={Actions.client}>
         <Component {...pageProps} />
         {!Actions.readCookie('accept__cookie') && <Actions.Modal />}
+        <Actions.ReactQueryDevtools initialIsOpen={false} />
       </Actions.QueryClientProvider>
     </>
   );
