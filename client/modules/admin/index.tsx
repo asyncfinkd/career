@@ -1,6 +1,6 @@
 import React from 'react';
 import Actions from 'actions/pages/admin';
-import { AdminLoginProps } from 'types/pages/admin';
+import { AdminMapProps, AdminLoginProps } from 'types/pages/admin';
 
 export default function AdminModules() {
   const { register, handleSubmit, formState } =
@@ -26,18 +26,20 @@ export default function AdminModules() {
           gap: 3,
         }}
       >
-        <Actions.TextField
-          id="filled-basic"
-          sx={{ width: '100%' }}
-          label="Email address"
-          variant="filled"
-        />
-        <Actions.TextField
-          id="filled-basic"
-          sx={{ width: '100%' }}
-          label="Password"
-          variant="filled"
-        />
+        {Actions.AdminFixtures.map((item: AdminMapProps) => {
+          return (
+            <>
+              <Actions.TextField
+                type={item.type}
+                id="filled-basic"
+                sx={{ width: '100%' }}
+                label={item.label}
+                variant="filled"
+                {...register(item.name)}
+              />
+            </>
+          );
+        })}
       </Actions.Box>
     </>
   );
