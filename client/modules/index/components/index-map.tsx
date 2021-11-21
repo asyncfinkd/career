@@ -1,5 +1,5 @@
+import Actions from 'actions/modules/index/components/index-map';
 import React from 'react';
-import Link from 'next/link';
 
 export default function IndexMap({ item }: any) {
   const { _id, title, location, time } = item;
@@ -7,7 +7,7 @@ export default function IndexMap({ item }: any) {
   return (
     <>
       <div className="hh-jobs-openings">
-        <Link href={_id}>
+        <Actions.Link href={_id}>
           <a className="bg-white border-1 border-gray-400 p-4 block mt-3 first:mt-0 rounded hh-job-row transition-shadow duration-200 shadow-none hover:shadow-md">
             <h3 className="font-semibold text-xl leading-8 hh-job-row-title">
               <span
@@ -65,7 +65,7 @@ export default function IndexMap({ item }: any) {
               </div>
             </div>
           </a>
-        </Link>
+        </Actions.Link>
       </div>
     </>
   );

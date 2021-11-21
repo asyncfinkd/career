@@ -1,18 +1,12 @@
+import Actions from 'actions/modules/index';
 import React from 'react';
-import Header from 'ui/header';
-import Hero from 'ui/hero';
-import Notification from 'ui/notification';
-import Footer from 'ui/footer';
-import IndexMap from './components/index-map';
 
 export default function IndexModules({ data }: any) {
   return (
     <>
-      {console.log(data)}
-      <Header />
+      <Actions.Header />
       <section className="flex-1 ie-no-flex1">
-        <Hero />
-        {/* <Banner /> */}
+        <Actions.Hero />
         <div
           id="jobs"
           className="bg-gray-200 border-t-2 p-4 md:py-10 md:px-0 hh-job-listings"
@@ -25,15 +19,15 @@ export default function IndexModules({ data }: any) {
             {data?.item?.map((item: any) => {
               return (
                 <>
-                  <IndexMap item={item} />
+                  <Actions.IndexMap item={item} />
                 </>
               );
             })}
           </div>
         </div>
-        <Notification />
+        <Actions.Notification />
       </section>
-      <Footer />
+      <Actions.Footer />
     </>
   );
 }

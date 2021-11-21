@@ -1,19 +1,18 @@
-import IndexModules from 'modules/index';
+import Actions from 'actions/pages/index';
 import type {
   GetServerSideProps,
   InferGetServerSidePropsType,
   NextPage,
 } from 'next';
-import { useState } from 'react';
 
 const Home: NextPage = ({
   response,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const [data, setData] = useState(response);
+  const [data, setData] = Actions.useState(response);
 
   return (
     <>
-      <IndexModules data={data} />
+      <Actions.IndexModules data={data} />
     </>
   );
 };
