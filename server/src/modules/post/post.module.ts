@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { useMongooseConnect } from 'src/shared/use-mongoose';
-import { PostController } from './controller/post.controller';
+import { PostController } from './controllers/post.controller';
 import { PostSchema, Post } from './model/post.model';
 import { PostService } from './service/post.service';
 

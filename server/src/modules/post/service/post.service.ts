@@ -20,4 +20,22 @@ export class PostService {
       return { success: false, msg: 'something is wrong.', err };
     }
   };
+
+  addItem = async (req: any) => {
+    try {
+      const newItem = new this.postModel(req);
+
+      return newItem.save().then(() => {
+        return { success: true, msg: 'Congratulation, you add new post!' };
+      });
+    } catch (error) {
+      return { success: false, msg: 'something is wrong.', error };
+    }
+  };
+
+  deleteItem = (_id: string) => {
+    return this.postModel.findByIdAndRemove({ _id: _id }).then(() => {
+      return { success: true, msg: 'Congratulation, you delete post!' };
+    });
+  };
 }
