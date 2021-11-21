@@ -27,15 +27,17 @@ export default function AdminModules() {
         }}
       >
         {Actions.AdminFixtures.map((item: AdminMapProps) => {
+          const { type, label, name } = item;
+
           return (
             <>
               <Actions.TextField
-                type={item.type}
+                type={type}
                 id="filled-basic"
                 sx={{ width: '100%' }}
-                label={item.label}
+                label={label}
                 variant="filled"
-                {...register(item.name)}
+                {...register(name)}
               />
             </>
           );
