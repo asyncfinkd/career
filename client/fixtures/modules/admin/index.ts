@@ -4,7 +4,7 @@ export const AdminFixtures = [
     name: 'email',
     type: 'text',
     required: {
-      message: 'Valid email is required',
+      message: 'შეიყვანეთ სწორი ელ.ფოსტა',
     },
   },
   {
@@ -12,7 +12,7 @@ export const AdminFixtures = [
     name: 'password',
     type: 'password',
     required: {
-      message: 'Password is required',
+      message: 'შეიყვანეთ პაროლი',
     },
   },
 ];
