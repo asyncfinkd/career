@@ -1,4 +1,12 @@
-import { Controller, Get, Res, Post, Body, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Res,
+  Post,
+  Body,
+  Delete,
+  Param,
+} from '@nestjs/common';
 import { PostDto, PostDeleteDto } from '../dto';
 import { PostService } from '../service/post.service';
 
@@ -9,6 +17,11 @@ export class PostController {
   @Get('get/posts')
   async getItem(@Res() res) {
     return res.json(await this.postService.getItem());
+  }
+
+  @Get('get/post/:_id')
+  getOnceItem(@Param('_id') _id: string) {
+    return this.postService.getOnceItem(_id);
   }
 
   @Post('add/post')

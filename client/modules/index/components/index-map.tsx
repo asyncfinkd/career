@@ -7,7 +7,7 @@ export default function IndexMap({ item }: any) {
   return (
     <>
       <div className="hh-jobs-openings">
-        <Actions.Link href={_id}>
+        <Actions.Link href={`job/${_id}`}>
           <a className="bg-white border-1 border-gray-400 p-4 block mt-3 first:mt-0 rounded hh-job-row transition-shadow duration-200 shadow-none hover:shadow-md">
             <h3 className="font-semibold text-xl leading-8 hh-job-row-title">
               <span

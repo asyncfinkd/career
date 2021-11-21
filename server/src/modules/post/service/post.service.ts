@@ -21,6 +21,16 @@ export class PostService {
     }
   };
 
+  getOnceItem = async (_id: string) => {
+    try {
+      return await this.postModel.findOne({ _id: _id }).then((result) => {
+        return { success: true, result };
+      });
+    } catch (err) {
+      return { success: false, msg: 'something is wrong.', err };
+    }
+  };
+
   addItem = async (req: any) => {
     try {
       const newItem = new this.postModel(req);
