@@ -5,14 +5,18 @@ import {
 } from 'next';
 import React, { useState } from 'react';
 import Header from 'ui/header';
+import Head from 'next/head';
 
 export default function JobPages({
   response,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const [data, setData] = useState(response);
+  const [data, setData] = useState(response.result);
 
   return (
     <>
+      <Head>
+        <title>{data?.title} | JSC Bank of Georgia</title>
+      </Head>
       <Header />
     </>
   );
