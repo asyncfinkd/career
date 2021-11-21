@@ -1,0 +1,44 @@
+import React from 'react';
+import Actions from 'actions/pages/admin';
+import { AdminLoginProps } from 'types/pages/admin';
+
+export default function AdminModules() {
+  const { register, handleSubmit, formState } =
+    Actions.useForm<AdminLoginProps>({
+      resolver: Actions.yupResolver(Actions.AdminSchema),
+    });
+
+  return (
+    <>
+      <Actions.Head>
+        <title>ადმინისტრატორით შესვლა | სამუშაოები JSC Bank of Georgia</title>
+      </Actions.Head>
+      <Actions.Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100vh',
+          width: 300,
+          margin: 'auto',
+          maxWidth: '100%',
+          flexDirection: 'column',
+          gap: 3,
+        }}
+      >
+        <Actions.TextField
+          id="filled-basic"
+          sx={{ width: '100%' }}
+          label="Email address"
+          variant="filled"
+        />
+        <Actions.TextField
+          id="filled-basic"
+          sx={{ width: '100%' }}
+          label="Password"
+          variant="filled"
+        />
+      </Actions.Box>
+    </>
+  );
+}
