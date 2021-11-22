@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { AppsModule } from './modules/apps/apps.module';
 import { PostModule } from './modules/post/post.module';
@@ -15,6 +16,7 @@ import { PostModule } from './modules/post/post.module';
     AdminModule,
     PostModule,
     AppsModule,
+    AuthModule,
     MongooseModule.forRoot(process.env.MONGO),
   ],
   controllers: [AppController],
