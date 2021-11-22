@@ -3,6 +3,7 @@ import Header from 'ui/header';
 import Head from 'next/head';
 import JobHeader from './components/job-header';
 import JobDescription from './components/job-description';
+import JobForm from './components/job-form';
 
 export default function JobModules({ data }: any) {
   return (
@@ -18,12 +19,7 @@ export default function JobModules({ data }: any) {
             <JobDescription data={data} />
           </article>
           <div className="border-l-2 flex-1 flex-col h-auto opacity-0 md:opacity-100 hidden md:block"></div>
-          {/* <Form
-            title={data.title}
-            location={data.location}
-            time={data.time}
-            data={data.description}
-          /> */}
+          <JobForm />
         </div>
       </div>
     </>

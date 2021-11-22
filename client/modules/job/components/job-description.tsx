@@ -10,6 +10,7 @@ export default function JobDescription({ data }: any) {
         className="ql-editor py-6 hh-job-description"
         style={{
           color: 'rgba(45,55,72, 1)',
+          fontFamily: 'MarkGEO',
         }}
         dangerouslySetInnerHTML={{
           __html: sanitizer(data.description),
