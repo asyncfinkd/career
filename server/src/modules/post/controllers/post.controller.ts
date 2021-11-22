@@ -25,7 +25,7 @@ export class PostController {
   }
 
   @Post('add/post')
-  addItem(@Body() req: PostDto) {
+  addItem(@Body() req: PostDto): Promise<{ success: boolean; msg: string }> {
     return this.postService.addItem(req);
   }
 
