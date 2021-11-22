@@ -1,7 +1,9 @@
 import { JobFormFixtures, JobFormMultipleFixtures } from 'fixtures/modules/job';
 import React from 'react';
+import DOMPurify from 'isomorphic-dompurify';
 
 export default function JobForm() {
+  const sanitizer = DOMPurify.sanitize;
   return (
     <>
       <div
@@ -73,9 +75,12 @@ export default function JobForm() {
                   <>
                     <div className="mt-4">
                       <label className="text-gray-700" htmlFor={item?.id}>
-                        <span className="text-gray-700 font-semibold">
-                          {item?.text}
-                        </span>
+                        <span
+                          className="text-gray-700 font-semibold"
+                          dangerouslySetInnerHTML={{
+                            __html: sanitizer(item?.text),
+                          }}
+                        ></span>
                         {item?.required && <span className="req-mark"></span>}
                         {item?.type === 'select' ? (
                           <>
@@ -85,7 +90,7 @@ export default function JobForm() {
                               defaultValue={item?.defaultValue}
                             >
                               {item?.options.map((country: any) => {
-                                return <option>{country.name}</option>;
+                                return <option>{country?.name}</option>;
                               })}
                             </select>
                           </>
@@ -95,7 +100,7 @@ export default function JobForm() {
                               className="form-input required"
                               id={item?.id}
                               maxLength={item?.maxLength}
-                              type={item.type}
+                              type={item?.type}
                             />
                           </>
                         )}

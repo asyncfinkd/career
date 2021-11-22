@@ -281,4 +281,12 @@ export const JobFormFixtures = [
       { name: 'Zimbabwe', code: 'ZW' },
     ],
   },
+  {
+    text: 'მიმდინარე/ბოლო დამსაქმებელი <small class="hint-text">მიუთითეთ "N/A" თუ არ გაქვთ სამუშაო გამოცდილება</small>',
+    maxLength: 150,
+    id: 'CurrentCompany',
+    type: 'text',
+    name: 'currentCompany',
+    required: true,
+  },
 ];
