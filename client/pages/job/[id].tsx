@@ -6,6 +6,7 @@ import {
 import React, { useState } from 'react';
 import Header from 'ui/header';
 import Head from 'next/head';
+import JobModules from 'modules/job';
 
 export default function JobPages({
   response,
@@ -14,10 +15,7 @@ export default function JobPages({
 
   return (
     <>
-      <Head>
-        <title>{data?.title} | JSC Bank of Georgia</title>
-      </Head>
-      <Header />
+      <JobModules data={data} />
     </>
   );
 }
