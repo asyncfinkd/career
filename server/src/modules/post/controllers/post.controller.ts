@@ -9,18 +9,19 @@ import {
 } from '@nestjs/common';
 import { PostDto, PostDeleteDto } from '../dto';
 import { PostService } from '../service/post.service';
+import { OPostInterface, TPostInterface } from '../types';
 
 @Controller()
 export class PostController {
   constructor(private readonly postService: PostService) {}
 
   @Get('get/posts')
-  async getItem(@Res() res) {
+  async getItem(@Res() res): Promise<TPostInterface> {
     return res.json(await this.postService.getItem());
   }
 
   @Get('get/post/:_id')
-  getOnceItem(@Param('_id') _id: string) {
+  getOnceItem(@Param('_id') _id: string): Promise<OPostInterface> {
     return this.postService.getOnceItem(_id);
   }
 
@@ -30,7 +31,9 @@ export class PostController {
   }
 
   @Delete('delete/post')
-  deleteItem(@Body() req: PostDeleteDto) {
+  deleteItem(
+    @Body() req: PostDeleteDto,
+  ): Promise<{ success: boolean; msg: string }> {
     return this.postService.deleteItem(req._id);
   }
 }
