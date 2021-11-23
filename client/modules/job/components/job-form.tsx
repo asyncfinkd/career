@@ -82,26 +82,38 @@ export default function JobForm() {
                           }}
                         ></span>
                         {item?.required && <span className="req-mark"></span>}
-                        {item?.type === 'select' ? (
+                        {item?.element === 'textarea' ? (
                           <>
-                            <select
-                              className="form-select text-gray-700"
+                            <textarea
+                              className="form-textarea resize-y"
                               id={item?.id}
-                              defaultValue={item?.defaultValue}
-                            >
-                              {item?.options.map((country: any) => {
-                                return <option>{country?.name}</option>;
-                              })}
-                            </select>
+                              rows={3}
+                            ></textarea>
                           </>
                         ) : (
                           <>
-                            <input
-                              className="form-input required"
-                              id={item?.id}
-                              maxLength={item?.maxLength}
-                              type={item?.type}
-                            />
+                            {item?.type === 'select' ? (
+                              <>
+                                <select
+                                  className="form-select text-gray-700"
+                                  id={item?.id}
+                                  defaultValue={item?.defaultValue}
+                                >
+                                  {item?.options.map((country: any) => {
+                                    return <option>{country?.name}</option>;
+                                  })}
+                                </select>
+                              </>
+                            ) : (
+                              <>
+                                <input
+                                  className="form-input required"
+                                  id={item?.id}
+                                  maxLength={item?.maxLength}
+                                  type={item?.type}
+                                />
+                              </>
+                            )}
                           </>
                         )}
                       </label>
