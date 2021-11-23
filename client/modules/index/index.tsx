@@ -1,5 +1,6 @@
 import Actions from 'actions/modules/index';
 import React, { useState, useEffect } from 'react';
+import Form from './components/index-form';
 
 export default function IndexModules({ data, setData }: any) {
   const [search, setSearch] = useState<string>('');
@@ -36,12 +37,7 @@ export default function IndexModules({ data, setData }: any) {
         >
           <div className="fade-in animate-slow max-w-screen-md mx-auto">
             <div className="bg-white p-4 rounded shadow-md">
-              <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              {/* <Form searchValue={searchValue} setSearchValue={setSearchValue} /> */}
+              <Form searchValue={search} setSearchValue={setSearch} />
             </div>
 
             {data.map((item: any) => {
