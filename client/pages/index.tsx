@@ -8,7 +8,7 @@ import type {
 const Home: NextPage = ({
   response,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const [data, setData] = Actions.useState(response);
+  const [data, setData] = Actions.useState(response?.item);
 
   return (
     <>

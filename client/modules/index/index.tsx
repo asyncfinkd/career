@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 export default function IndexModules({ data, setData }: any) {
   const [search, setSearch] = useState<string>('');
-  const [result, setResult] = useState<any>(data?.item);
+  const [result, setResult] = useState<any>(data);
 
   function identificationSearch(): void {
     if (search.length == 0) {
