@@ -1,6 +1,7 @@
 import { JobFormFixtures, JobFormMultipleFixtures } from 'fixtures/modules/job';
 import React from 'react';
 import DOMPurify from 'isomorphic-dompurify';
+import JobFormFooter from './job-form-footer';
 
 export default function JobForm() {
   const sanitizer = DOMPurify.sanitize;
@@ -122,6 +123,7 @@ export default function JobForm() {
                 );
               })}
             </fieldset>
+            <JobFormFooter />
           </form>
         </div>
       </div>
