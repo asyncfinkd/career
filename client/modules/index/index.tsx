@@ -1,7 +1,30 @@
 import Actions from 'actions/modules/index';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function IndexModules({ data }: any) {
+export default function IndexModules({ data, setData }: any) {
+  const [search, setSearch] = useState<string>('');
+  const [result, setResult] = useState<any>(data?.item);
+
+  function identificationSearch(): void {
+    if (search.length == 0) {
+      setData(result);
+    } else {
+      setData(
+        result.filter((val: any) => {
+          if (search == '') {
+            return val;
+          } else if (val.title.toLowerCase().includes(search.toLowerCase())) {
+            return val;
+          }
+        }),
+      );
+    }
+  }
+
+  useEffect(() => {
+    identificationSearch();
+  }, [search]);
+
   return (
     <>
       <Actions.Header />
@@ -13,10 +36,15 @@ export default function IndexModules({ data }: any) {
         >
           <div className="fade-in animate-slow max-w-screen-md mx-auto">
             <div className="bg-white p-4 rounded shadow-md">
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
               {/* <Form searchValue={searchValue} setSearchValue={setSearchValue} /> */}
             </div>
 
-            {data?.item?.map((item: any) => {
+            {data.map((item: any) => {
               return (
                 <>
                   <Actions.IndexMap item={item} />

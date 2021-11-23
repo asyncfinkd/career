@@ -12,7 +12,7 @@ const Home: NextPage = ({
 
   return (
     <>
-      <Actions.IndexModules data={data} />
+      <Actions.IndexModules data={data} setData={setData} />
     </>
   );
 };
