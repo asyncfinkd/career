@@ -1,6 +1,7 @@
 import Actions from 'actions/modules/index';
 import React, { useState, useEffect } from 'react';
 import Form from './components/index-form';
+import IndexNotFound from './components/index-not-found';
 
 export default function IndexModules({ data, setData }: any) {
   const [search, setSearch] = useState<string>('');
@@ -47,6 +48,7 @@ export default function IndexModules({ data, setData }: any) {
                 </>
               );
             })}
+            {data.length === 0 && <IndexNotFound setSearchValue={setSearch} />}
           </div>
         </div>
         <Actions.Notification />
