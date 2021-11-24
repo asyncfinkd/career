@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/asyncfinkd/career/issues"
   },
-  "homepage": "https://github.com/asyncfinkd/career#readme"
+  "homepage": "https://github.com/asyncfinkd/career#readme",
+  "dependencies": {}
 }
