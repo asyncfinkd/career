@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Actions from 'actions/pages/admin';
 import { AdminMapProps, AdminLoginProps } from 'types/pages/admin';
 
@@ -7,6 +7,7 @@ export default function AdminModules() {
     Actions.useForm<AdminLoginProps>({
       resolver: Actions.yupResolver(Actions.AdminSchema),
     });
+  const [errorMessage, setErrorMessage] = useState(false);
 
   return (
     <>
@@ -15,7 +16,24 @@ export default function AdminModules() {
       </Actions.Head>
       <form
         onSubmit={handleSubmit((data: AdminLoginProps) => {
-          console.log(data);
+          fetch(`${process.env.SERVER_API_URL}/api/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          })
+            .then((response) => response.json())
+            .then((result: any) => {
+              if (result.statusCode == 401) {
+                setErrorMessage(true);
+              } else {
+                setErrorMessage(false);
+                console.log(result);
+                document.cookie = `cookie=${result.access_token};path=/`;
+              }
+            })
+            .catch((err) => {
+              console.log('err: ' + err);
+            });
         })}
       >
         <Actions.Box

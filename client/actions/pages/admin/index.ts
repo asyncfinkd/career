@@ -6,6 +6,7 @@ import { useForm, get } from 'react-hook-form';
 import { AdminSchema } from 'schema/pages/admin';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { AdminFixtures } from 'fixtures/modules/admin';
+import axios from "axios";
 
 export default {
   Box,
@@ -17,4 +18,5 @@ export default {
   AdminFixtures,
   Button,
   get,
+  axios
 };
