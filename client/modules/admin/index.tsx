@@ -73,6 +73,11 @@ export default function AdminModules() {
               </>
             );
           })}
+          {errorMessage && (
+            <p style={{ fontFamily: 'MarkGEO', fontSize: 14, color: '#f00' }}>
+              გთხოვთ შეიყვანოთ სწორი ინფორმაცია
+            </p>
+          )}
           <Actions.Button
             variant="contained"
             sx={{ width: '100%', height: 40 }}
