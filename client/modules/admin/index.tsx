@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Actions from 'actions/pages/admin';
 import { AdminMapProps, AdminLoginProps } from 'types/pages/admin';
+import router from 'next/router';
 
 export default function AdminModules() {
   const { register, handleSubmit, formState } =
@@ -27,8 +28,8 @@ export default function AdminModules() {
                 setErrorMessage(true);
               } else {
                 setErrorMessage(false);
-                console.log(result);
                 document.cookie = `cookie=${result.access_token};path=/`;
+                router.push('/admin/dashboard');
               }
             })
             .catch((err) => {
