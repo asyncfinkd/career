@@ -8,6 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import AdminSidebar from 'ui/admin/sidebar';
+import Head from 'next/head';
 
 const drawerWidth = 240;
 
@@ -32,6 +33,9 @@ export default function AdminDashboardModules(props: Props) {
 
   return (
     <>
+      <Head>
+        <title>ადმინისტრატორის გვერდი - სამუშაოები JSC Bank of Georgia</title>
+      </Head>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar
