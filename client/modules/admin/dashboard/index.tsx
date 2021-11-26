@@ -1,14 +1,5 @@
 import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import AdminSidebar from 'ui/admin/sidebar';
-import Head from 'next/head';
+import Actions from 'actions/modules/admin/dashboard';
 
 const drawerWidth = 240;
 
@@ -33,40 +24,40 @@ export default function AdminDashboardModules(props: Props) {
 
   return (
     <>
-      <Head>
+      <Actions.Head>
         <title>ადმინისტრატორის გვერდი - სამუშაოები JSC Bank of Georgia</title>
-      </Head>
-      <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
-        <AppBar
+      </Actions.Head>
+      <Actions.Box sx={{ display: 'flex' }}>
+        <Actions.CssBaseline />
+        <Actions.AppBar
           position="fixed"
           sx={{
             width: { sm: `calc(100% - ${drawerWidth}px)` },
             ml: { sm: `${drawerWidth}px` },
           }}
         >
-          <Toolbar>
-            <IconButton
+          <Actions.Toolbar>
+            <Actions.IconButton
               color="inherit"
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
               sx={{ mr: 2, display: { sm: 'none' } }}
             >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" noWrap component="div">
+              <Actions.MenuIcon />
+            </Actions.IconButton>
+            <Actions.Typography variant="h6" noWrap component="div">
               Dashboard
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Box
+            </Actions.Typography>
+          </Actions.Toolbar>
+        </Actions.AppBar>
+        <Actions.Box
           component="nav"
           sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
           aria-label="mailbox folders"
         >
           {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-          <Drawer
+          <Actions.Drawer
             container={container}
             variant="temporary"
             open={mobileOpen}
@@ -82,9 +73,9 @@ export default function AdminDashboardModules(props: Props) {
               },
             }}
           >
-            <AdminSidebar />
-          </Drawer>
-          <Drawer
+            <Actions.AdminSidebar />
+          </Actions.Drawer>
+          <Actions.Drawer
             variant="permanent"
             sx={{
               display: { xs: 'none', sm: 'block' },
@@ -95,10 +86,10 @@ export default function AdminDashboardModules(props: Props) {
             }}
             open
           >
-            <AdminSidebar />
-          </Drawer>
-        </Box>
-        <Box
+            <Actions.AdminSidebar />
+          </Actions.Drawer>
+        </Actions.Box>
+        <Actions.Box
           component="main"
           sx={{
             flexGrow: 1,
@@ -106,8 +97,8 @@ export default function AdminDashboardModules(props: Props) {
             width: { sm: `calc(100% - ${drawerWidth}px)` },
           }}
         >
-          <Toolbar />
-          <Typography paragraph>
+          <Actions.Toolbar />
+          <Actions.Typography paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
             dolor purus non enim praesent elementum facilisis leo vel. Risus at
@@ -121,8 +112,8 @@ export default function AdminDashboardModules(props: Props) {
             vivamus at augue. At augue eget arcu dictum varius duis at
             consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
             donec massa sapien faucibus et molestie ac.
-          </Typography>
-          <Typography paragraph>
+          </Actions.Typography>
+          <Actions.Typography paragraph>
             Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
             ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
             elementum integer enim neque volutpat ac tincidunt. Ornare
@@ -136,9 +127,9 @@ export default function AdminDashboardModules(props: Props) {
             euismod elementum nisi quis eleifend. Commodo viverra maecenas
             accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
             ultrices sagittis orci a.
-          </Typography>
-        </Box>
-      </Box>
+          </Actions.Typography>
+        </Actions.Box>
+      </Actions.Box>
     </>
   );
 }
