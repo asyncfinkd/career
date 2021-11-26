@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Put, Delete } from '@nestjs/common';
+import { Body, Controller, Post, Res } from '@nestjs/common';
 import { Auth } from 'src/utils/guards/jwt-auth.guard';
 import { AuthService } from '../service/auth.service';
 import { TAuth } from '../types';
@@ -12,5 +12,11 @@ export class AuthController {
     @Body() dto: TAuth,
   ): Promise<{ success: boolean; msg: string; access_token: string }> {
     return this.authService.signinLocal(dto);
+  }
+
+  @Auth()
+  @Post('check/logged')
+  checkLogged(@Res() res) {
+    res.json(true);
   }
 }
