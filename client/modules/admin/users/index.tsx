@@ -12,7 +12,7 @@ interface Props {
   window?: () => Window;
 }
 
-export default function AdminUsersModules(props: Props) {
+export default function AdminUsersModules({ item }: any, props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -104,7 +104,7 @@ export default function AdminUsersModules(props: Props) {
           }}
         >
           <Actions.Toolbar />
-          <UsersHero />
+          <UsersHero item={item} />
         </Actions.Box>
       </Actions.Box>
     </>

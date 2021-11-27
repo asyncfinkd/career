@@ -23,7 +23,7 @@ export class AdminService {
 
   getUsers = async () => {
     try {
-      const item = this.adminModel.find();
+      const item = await this.adminModel.find();
 
       if (!item) return { success: true, msg: 'Item is not found.' };
 
