@@ -3,12 +3,27 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { PostDocument, PostInterface, PostSchema } from '../model/post.model';
 
+/**
+ * Injectable
+ */
 @Injectable()
 export class PostService {
+  /**
+   * Creates an instance of post service.
+   * @param postModel
+   */
   constructor(
     @InjectModel(PostSchema.name) private postModel: Model<PostDocument>,
   ) {}
 
+  /**
+   * Get item of post service
+   */
+
+  /**
+   * Items get item
+   * @returns
+   */
   getItem = async () => {
     try {
       const item = await this.postModel.find().select('title time location');
@@ -21,6 +36,15 @@ export class PostService {
     }
   };
 
+  /**
+   * get once item
+   * @param _id
+   * @returns
+   */
+
+  /**
+   * Param  of post service
+   */
   getOnceItem = async (_id: string) => {
     try {
       return await this.postModel.findOne({ _id: _id }).then((result) => {
@@ -31,6 +55,15 @@ export class PostService {
     }
   };
 
+  /**
+   * Add item of post service
+   */
+
+  /**
+   * Reqs add item
+   * @param req
+   * @returns
+   */
   addItem = async (req: PostInterface) => {
     try {
       const newItem = new this.postModel(req);
@@ -43,6 +76,15 @@ export class PostService {
     }
   };
 
+  /**
+   * delete item
+   * @param _id
+   * @returns
+   */
+
+  /**
+   * Param  of post service
+   */
   deleteItem = async (_id: string) => {
     try {
       return this.postModel.findByIdAndRemove({ _id: _id }).then(() => {

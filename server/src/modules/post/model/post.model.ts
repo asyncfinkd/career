@@ -3,6 +3,9 @@ import { Document } from 'mongoose';
 
 export type PostDocument = PostSchema & Document;
 
+/**
+ * Schema
+ */
 @Schema({ collection: 'posts' })
 export class PostSchema {
   @Prop()
@@ -18,6 +21,9 @@ export class PostSchema {
   time: string;
 }
 
+/**
+ * Post interface
+ */
 export interface PostInterface {
   _id: string;
   title: string;

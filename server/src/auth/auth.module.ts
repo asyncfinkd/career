@@ -6,6 +6,9 @@ import { JwtStrategy } from './strategy/jwt.strategy';
 import { AdminSchema, Admin } from 'src/modules/admin/model/admin.model';
 import { useMongooseConnect } from 'src/shared/use-mongoose';
 
+/**
+ * Module
+ */
 @Module({
   imports: [
     useMongooseConnect(AdminSchema, Admin),

@@ -3,6 +3,9 @@ import { Document } from 'mongoose';
 
 export type AppsDocument = AppsSchema & Document;
 
+/**
+ * Schema
+ */
 @Schema({ collection: 'apps' })
 export class AppsSchema {
   @Prop()
@@ -36,6 +39,9 @@ export class AppsSchema {
   motivationMessage: string;
 }
 
+/**
+ * Apps interface
+ */
 export interface AppsInterface {
   _id: string;
   firstName: string;

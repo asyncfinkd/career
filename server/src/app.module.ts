@@ -8,6 +8,9 @@ import { AdminModule } from './modules/admin/admin.module';
 import { AppsModule } from './modules/apps/apps.module';
 import { PostModule } from './modules/post/post.module';
 
+/**
+ * Module
+ */
 @Module({
   imports: [
     ConfigModule.forRoot({

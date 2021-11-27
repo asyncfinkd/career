@@ -8,14 +8,27 @@ import {
 import { Model } from 'mongoose';
 import { TAuth } from '../types';
 
+/**
+ * Injectable
+ */
 @Injectable()
 export class AuthService {
+  /**
+   * Creates an instance of auth service.
+   * @param authModel
+   * @param jwtService
+   */
   constructor(
     @InjectModel(AdminSchema.name)
     private authModel: Model<AdminDocument>,
     private jwtService: JwtService,
   ) {}
 
+  /**
+   * Signins local
+   * @param user
+   * @returns
+   */
   async signinLocal(user: TAuth) {
     return this.authModel
       .findOne({ email: user.email })
@@ -44,6 +57,15 @@ export class AuthService {
       });
   }
 
+  /**
+   * Signs user
+   * @param id
+   * @param email
+   * @param type
+   * @param image
+   * @param fullName
+   * @returns
+   */
   signUser(
     id: number,
     email: string,

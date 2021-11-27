@@ -1,5 +1,8 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
+/**
+ * Post dto
+ */
 export class PostDto {
   _id: string;
 
@@ -20,6 +23,9 @@ export class PostDto {
   location: string;
 }
 
+/**
+ * Post delete dto
+ */
 export class PostDeleteDto {
   @IsNotEmpty()
   @IsString()
