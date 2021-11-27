@@ -3,7 +3,6 @@ import TextField from '@mui/material/TextField';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import FormControl from '@mui/material/FormControl';
 import { UsersForm } from 'fixtures/modules/admin/users';
 import Button from 'components/button';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
@@ -44,8 +43,8 @@ export default function UsersModal({ handleClose, open }: any) {
           >
             ადმინისტრატორის დამატება
           </Typography>
-          <FormControl
-            sx={{ marginTop: '10px', width: '100%' }}
+          <form
+            style={{ marginTop: '10px', width: '100%' }}
             onSubmit={handleSubmit((data: AdminUsersProps) => {
               console.log(data);
             })}
@@ -68,12 +67,13 @@ export default function UsersModal({ handleClose, open }: any) {
                     get(formState.errors, name) && item.required.message
                   }
                   {...register(name)}
+                  style={{ width: '100%' }}
                   InputProps={{ style: { fontFamily: 'MarkGEO' } }}
                 />
               );
             })}
             <Button>დამატება</Button>
-          </FormControl>
+          </form>
         </Box>
       </Modal>
     </>

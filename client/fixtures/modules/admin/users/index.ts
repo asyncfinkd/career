@@ -4,7 +4,7 @@ export const UsersForm = [
     name: 'fullName',
     type: 'text',
     required: {
-      message: 'q',
+      message: 'გთხოვთ შეიყვანოთ სახელი გვარი',
     },
   },
   {
@@ -12,7 +12,7 @@ export const UsersForm = [
     name: 'email',
     type: 'text',
     required: {
-      message: 'q',
+      message: 'გთხოვთ შეიყვანოთ სწორი ელ.ფოსტა',
     },
   },
   {
@@ -20,7 +20,7 @@ export const UsersForm = [
     name: 'password',
     type: 'password',
     required: {
-      message: 'q',
+      message: 'გთხოვთ შეიყვანოთ პაროლი',
     },
   },
 ];

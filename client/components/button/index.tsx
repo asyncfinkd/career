@@ -45,7 +45,7 @@ function CustomButton(props: ButtonUnstyledProps) {
     <ButtonUnstyled
       {...props}
       component={CustomButtonRoot}
-      sx={{ marginTop: 2, FontFamily: 'MarkGEO' }}
+      sx={{ marginTop: 3, FontFamily: 'MarkGEO', width: '100%' }}
     />
   );
 }
