@@ -20,4 +20,16 @@ export class AdminService {
       return { success: false, err };
     }
   };
+
+  getUsers = async () => {
+    try {
+      const item = this.adminModel.find();
+
+      if (!item) return { success: true, msg: 'Item is not found.' };
+
+      return { success: true, item };
+    } catch (err) {
+      return { success: false, err };
+    }
+  };
 }
