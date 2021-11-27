@@ -1,10 +1,12 @@
 import AdminDashboardModules from 'modules/admin/dashboard';
 import React from 'react';
 
-export default function AdminDashboardPages() {
+function AdminDashboardPages() {
   return (
     <>
       <AdminDashboardModules />
     </>
   );
 }
+
+export default AdminDashboardPages;
