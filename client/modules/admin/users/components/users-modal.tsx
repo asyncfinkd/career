@@ -6,6 +6,10 @@ import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import { UsersForm } from 'fixtures/modules/admin/users';
 import Button from 'components/button';
+import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
+import { useForm, get } from 'react-hook-form';
+import { AdminUserSchema } from 'schema/pages/admin/users';
+import { AdminUsersProps } from 'types/pages/admin/users';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -20,6 +24,9 @@ const style = {
 };
 
 export default function UsersModal({ handleClose, open }: any) {
+  const { register, handleSubmit, formState } = useForm<AdminUsersProps>({
+    resolver: yupResolver(AdminUserSchema),
+  });
   return (
     <>
       <Modal
@@ -37,17 +44,30 @@ export default function UsersModal({ handleClose, open }: any) {
           >
             ადმინისტრატორის დამატება
           </Typography>
-          <FormControl sx={{ marginTop: '10px', width: '100%' }}>
+          <FormControl
+            sx={{ marginTop: '10px', width: '100%' }}
+            onSubmit={handleSubmit((data: AdminUsersProps) => {
+              console.log(data);
+            })}
+          >
             {UsersForm.map((item: any) => {
+              const { type, text, name } = item;
+
               return (
                 <TextField
                   id="outlined-basic"
-                  label={item.text}
+                  label={text}
                   variant="outlined"
+                  type={type}
                   sx={{ marginTop: '20px' }}
+                  error={get(formState.errors, name)}
                   InputLabelProps={{
                     style: { fontFamily: 'MarkGEO' },
                   }}
+                  helperText={
+                    get(formState.errors, name) && item.required.message
+                  }
+                  {...register(name)}
                   InputProps={{ style: { fontFamily: 'MarkGEO' } }}
                 />
               );

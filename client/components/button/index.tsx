@@ -51,5 +51,5 @@ function CustomButton(props: ButtonUnstyledProps) {
 }
 
 export default function Button({ children }: any) {
-  return <CustomButton>{children}</CustomButton>;
+  return <CustomButton type="submit">{children}</CustomButton>;
 }
