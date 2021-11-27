@@ -32,7 +32,6 @@ export default function UsersTable({ rows }: any) {
                 key={row._id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                {console.log(row)}
                 <TableCell
                   component="th"
                   scope="row"

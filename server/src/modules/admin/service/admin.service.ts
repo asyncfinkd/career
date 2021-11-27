@@ -13,8 +13,12 @@ export class AdminService {
     try {
       const newUser = new this.adminModel(req);
 
-      return newUser.save().then(() => {
-        return { success: true, msg: 'Congratulation, New Admin is added!' };
+      return newUser.save().then((doc) => {
+        return {
+          success: true,
+          msg: 'Congratulation, New Admin is added!',
+          item: doc._id,
+        };
       });
     } catch (err) {
       return { success: false, err };

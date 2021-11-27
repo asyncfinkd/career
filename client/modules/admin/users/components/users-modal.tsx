@@ -71,8 +71,8 @@ export default function UsersModal({ handleClose, open, rows }: any) {
                       'გილოცავთ, ახალი მომხმარებელი წარმატებით დაემატა',
                     );
                     console.log(result);
-                    // const updatedRow = { ...newData, _id: result.item._id }
-                    // rows.push(updatedRow);
+                    const updatedRow = { ...newData, _id: result.item };
+                    rows.push(updatedRow);
                     handleClose();
 
                     setValue('fullName', '');
