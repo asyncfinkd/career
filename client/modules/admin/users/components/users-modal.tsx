@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import { UsersForm } from 'fixtures/modules/admin/users';
+import Button from 'components/button';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -51,6 +52,7 @@ export default function UsersModal({ handleClose, open }: any) {
                 />
               );
             })}
+            <Button>დამატება</Button>
           </FormControl>
         </Box>
       </Modal>
