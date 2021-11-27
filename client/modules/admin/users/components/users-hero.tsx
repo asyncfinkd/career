@@ -1,10 +1,8 @@
 import React from 'react';
-
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import UsersTable from './users-table';
-import Modal from '@mui/material/Modal';
-import Typography from '@mui/material/Typography';
+import UsersModal from './users-modal';
 
 function createData(
   _id: string,
@@ -14,18 +12,6 @@ function createData(
 ) {
   return { _id, fullName, email, status };
 }
-
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
 
 export default function UsersHero({ item }: any) {
   const rows = item.map((sec: any) =>
@@ -57,21 +43,7 @@ export default function UsersHero({ item }: any) {
           დამატება
         </Button>
       </Box>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
-      </Modal>
+      <UsersModal handleClose={handleClose} open={open} />
       <UsersTable rows={rows} />
     </>
   );

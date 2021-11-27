@@ -415,3 +415,7 @@ a {
   font-family: 'BOG';
   font-size: 14px;
 }
+
+.geo__font {
+  font-family: 'MarkGEO' !important;
+}
