@@ -43,7 +43,7 @@ export default function UsersHero({ item }: any) {
           დამატება
         </Button>
       </Box>
-      <UsersModal handleClose={handleClose} open={open} />
+      <UsersModal handleClose={handleClose} open={open} rows={item} />
       <UsersTable rows={rows} />
     </>
   );

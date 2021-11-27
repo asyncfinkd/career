@@ -24,7 +24,7 @@ const style = {
   p: 4,
 };
 
-export default function UsersModal({ handleClose, open }: any) {
+export default function UsersModal({ handleClose, open, rows }: any) {
   const { register, handleSubmit, formState } = useForm<AdminUsersProps>({
     resolver: yupResolver(AdminUserSchema),
   });
@@ -69,6 +69,7 @@ export default function UsersModal({ handleClose, open }: any) {
                     toast.success(
                       'გილოცავთ, ახალი მომხმარებელი წარმატებით დაემატა',
                     );
+                    rows.push(newData);
                     handleClose();
                   }
                 });
