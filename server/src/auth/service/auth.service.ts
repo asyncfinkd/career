@@ -26,6 +26,8 @@ export class AuthService {
               result._id,
               result.email,
               'admin',
+              result.image,
+              result.fullName,
             );
 
             return {
@@ -42,11 +44,19 @@ export class AuthService {
       });
   }
 
-  signUser(id: number, email: string, type: string) {
+  signUser(
+    id: number,
+    email: string,
+    type: string,
+    image: string,
+    fullName: string,
+  ) {
     return this.jwtService.sign({
       userId: id,
       email,
       role: type,
+      image,
+      fullName,
     });
   }
 }

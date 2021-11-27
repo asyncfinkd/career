@@ -7,7 +7,6 @@ function AdminDashboardPages({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <>
-      {console.log(data)}
       <AdminDashboardModules />
     </>
   );
