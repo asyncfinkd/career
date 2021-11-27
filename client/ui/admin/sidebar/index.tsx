@@ -7,6 +7,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { AdminSidebarInterface } from 'types/pages/admin/sidebar';
+import Link from 'next/link';
 
 export default function AdminSidebar() {
   return (
@@ -15,14 +17,39 @@ export default function AdminSidebar() {
         <Toolbar />
         <Divider />
         <List>
-          {['Dashboard', 'Add Post', 'Users', 'Contacts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          {[
+            {
+              text: 'მთავარი',
+              route: '/admin/dashboard',
+              key: 0,
+            },
+            {
+              text: 'პოსტის დამატება',
+              route: '/admin/add/post',
+              key: 1,
+            },
+            {
+              text: 'მომხმარებლები',
+              route: '/admin/users',
+              key: 2,
+            },
+            {
+              text: 'კონტაქტები',
+              route: 'admin/contacts',
+              key: 3,
+            },
+          ].map((item: AdminSidebarInterface) => {
+            return (
+              <Link href={item.route}>
+                <ListItem button key={item.text}>
+                  <ListItemIcon>
+                    {item.key % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={item.text} />
+                </ListItem>
+              </Link>
+            );
+          })}
         </List>
       </div>
     </>
