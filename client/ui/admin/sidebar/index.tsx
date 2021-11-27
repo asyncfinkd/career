@@ -24,7 +24,7 @@ export default function AdminSidebar() {
               key: 0,
             },
             {
-              text: 'პოსტის დამატება',
+              text: 'CV დამატება',
               route: '/admin/add/post',
               key: 1,
             },
@@ -45,7 +45,11 @@ export default function AdminSidebar() {
                   <ListItemIcon>
                     {item.key % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                   </ListItemIcon>
-                  <ListItemText primary={item.text} />
+                  <ListItemText
+                    disableTypography={true}
+                    sx={{ fontFamily: 'MarkGEO', fontSize: 16 }}
+                    primary={item.text}
+                  />
                 </ListItem>
               </Link>
             );

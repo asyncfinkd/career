@@ -46,8 +46,13 @@ export default function AdminUsersModules(props: Props) {
             >
               <Actions.MenuIcon />
             </Actions.IconButton>
-            <Actions.Typography variant="h6" noWrap component="div">
-              Users
+            <Actions.Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ fontFamily: 'MarkGEO' }}
+            >
+              მომხმარებლები
             </Actions.Typography>
           </Actions.Toolbar>
         </Actions.AppBar>

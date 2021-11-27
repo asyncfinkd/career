@@ -47,7 +47,7 @@ export default function AdminDashboardModules(props: Props) {
               <Actions.MenuIcon />
             </Actions.IconButton>
             <Actions.Typography variant="h6" noWrap component="div">
-              Dashboard
+              მთავარი
             </Actions.Typography>
           </Actions.Toolbar>
         </Actions.AppBar>
