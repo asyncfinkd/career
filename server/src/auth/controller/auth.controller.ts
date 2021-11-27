@@ -1,4 +1,5 @@
 import { Body, Controller, Post, Res } from '@nestjs/common';
+import { GetCurrentUserById } from 'src/utils';
 import { Auth } from 'src/utils/guards/jwt-auth.guard';
 import { AuthService } from '../service/auth.service';
 import { TAuth } from '../types';
@@ -16,7 +17,7 @@ export class AuthController {
 
   @Auth()
   @Post('check/logged')
-  checkLogged(@Res() res) {
-    res.json(true);
+  checkLogged(@Res() res, @GetCurrentUserById() user: any) {
+    res.json({ success: true, user });
   }
 }
