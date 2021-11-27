@@ -10,6 +10,7 @@ import { useForm, get } from 'react-hook-form';
 import { AdminUserSchema } from 'schema/pages/admin/users';
 import { AdminUsersProps } from 'types/pages/admin/users';
 import { readCookie } from 'shared/read-cookie';
+import { toast } from 'react-toastify';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -61,11 +62,16 @@ export default function UsersModal({ handleClose, open }: any) {
                   Authorization: `Bearer ${readCookie('cookie')}`,
                 },
                 body: JSON.stringify(newData),
-              }).then((result: any) => {
-                if (result.success) {
-                  alert(1);
-                }
-              });
+              })
+                .then((response) => response.json())
+                .then((result: any) => {
+                  if (result.success) {
+                    toast.success(
+                      'გილოცავთ, ახალი მომხმარებელი წარმატებით დაემატა',
+                    );
+                    handleClose();
+                  }
+                });
             })}
           >
             {UsersForm.map((item: any) => {

@@ -1,8 +1,10 @@
 import Actions from 'actions/pages/_app';
 import type { AppProps } from 'next/app';
 import { PageComponent } from 'types/pages/_app';
+import { ToastContainer } from 'react-toastify';
 import '../styles/globals.css';
 import 'nprogress/nprogress.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 Actions.Router.events.on('routeChangeStart', () => Actions.NProgress.start());
 Actions.Router.events.on('routeChangeComplete', () => Actions.NProgress.done());
@@ -41,6 +43,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </title>
       </Actions.Head>
 
+      <ToastContainer />
       <Component {...pageProps} />
       {!Actions.readCookie('accept__cookie') && <Actions.Modal />}
     </>
