@@ -9,6 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { useForm, get } from 'react-hook-form';
 import { AdminUserSchema } from 'schema/pages/admin/users';
 import { AdminUsersProps } from 'types/pages/admin/users';
+import { readCookie } from 'shared/read-cookie';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -46,7 +47,25 @@ export default function UsersModal({ handleClose, open }: any) {
           <form
             style={{ marginTop: '10px', width: '100%' }}
             onSubmit={handleSubmit((data: AdminUsersProps) => {
-              console.log(data);
+              const newData = {
+                fullName: data.fullName,
+                email: data.email,
+                password: data.password,
+                role: 'admin',
+                image: 'none',
+              };
+              fetch(`${process.env.SERVER_API_URL}/api/add/user`, {
+                method: 'POST',
+                headers: {
+                  'Content-type': 'application/json',
+                  Authorization: `Bearer ${readCookie('cookie')}`,
+                },
+                body: JSON.stringify(newData),
+              }).then((result: any) => {
+                if (result.success) {
+                  alert(1);
+                }
+              });
             })}
           >
             {UsersForm.map((item: any) => {
