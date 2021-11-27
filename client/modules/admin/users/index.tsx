@@ -25,7 +25,7 @@ export default function AdminUsersModules(props: Props) {
   return (
     <>
       <Actions.Head>
-        <title>ადმინისტრატორის გვერდი - სამუშაოები JSC Bank of Georgia</title>
+        <title>მომხმარებლები - სამუშაოები JSC Bank of Georgia</title>
       </Actions.Head>
       <Actions.Box sx={{ display: 'flex' }}>
         <Actions.CssBaseline />
