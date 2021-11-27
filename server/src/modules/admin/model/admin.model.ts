@@ -1,8 +1,11 @@
 import { Prop, SchemaFactory, Schema } from '@nestjs/mongoose';
-import { Document, SchemaTypes } from 'mongoose';
+import { Document } from 'mongoose';
 
 export type AdminDocument = AdminSchema & Document;
 
+/**
+ * Schema
+ */
 @Schema({ collection: 'admins' })
 export class AdminSchema {
   @Prop()
@@ -19,18 +22,6 @@ export class AdminSchema {
 
   @Prop()
   image: string;
-
-  @Prop({
-    type: SchemaTypes.ObjectId,
-    ref: 'posts',
-  })
-  addedPosts: { type: string }[];
-
-  @Prop({
-    type: SchemaTypes.ObjectId,
-    ref: 'admins',
-  })
-  addedAdmins: { type: string }[];
 }
 
 export const Admin = SchemaFactory.createForClass(AdminSchema);

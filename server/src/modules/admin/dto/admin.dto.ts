@@ -1,5 +1,8 @@
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
+/**
+ * Admin dto
+ */
 export class AdminDto {
   @IsNotEmpty()
   @IsString()
