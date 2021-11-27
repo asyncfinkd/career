@@ -10,14 +10,14 @@ import AdminSidebar from 'ui/admin/sidebar';
 import Head from 'next/head';
 
 export default {
-    Head,
-    AdminSidebar,
-    Typography,
-    Toolbar,
-    MenuIcon,
-    IconButton,
-    Drawer,
-    CssBaseline,
-    Box,
-    AppBar
-}
+  Head,
+  AdminSidebar,
+  Typography,
+  Toolbar,
+  MenuIcon,
+  IconButton,
+  Drawer,
+  CssBaseline,
+  Box,
+  AppBar,
+};
