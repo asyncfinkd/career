@@ -10,7 +10,7 @@ function AdminUsersPages({
 
   return (
     <>
-      <AdminUsersModules item={newItem} />
+      <AdminUsersModules item={newItem} setItem={setNewItem} />
     </>
   );
 }
