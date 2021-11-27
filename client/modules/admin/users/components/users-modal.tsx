@@ -25,9 +25,10 @@ const style = {
 };
 
 export default function UsersModal({ handleClose, open, rows }: any) {
-  const { register, handleSubmit, formState } = useForm<AdminUsersProps>({
-    resolver: yupResolver(AdminUserSchema),
-  });
+  const { register, handleSubmit, setValue, formState } =
+    useForm<AdminUsersProps>({
+      resolver: yupResolver(AdminUserSchema),
+    });
   return (
     <>
       <Modal
@@ -63,14 +64,20 @@ export default function UsersModal({ handleClose, open, rows }: any) {
                 },
                 body: JSON.stringify(newData),
               })
-                .then((response) => response.json())
+                .then((res) => res.json())
                 .then((result: any) => {
                   if (result.success) {
                     toast.success(
                       'გილოცავთ, ახალი მომხმარებელი წარმატებით დაემატა',
                     );
-                    rows.push(newData);
+                    console.log(result);
+                    // const updatedRow = { ...newData, _id: result.item._id }
+                    // rows.push(updatedRow);
                     handleClose();
+
+                    setValue('fullName', '');
+                    setValue('email', '');
+                    setValue('password', '');
                   }
                 });
             })}
