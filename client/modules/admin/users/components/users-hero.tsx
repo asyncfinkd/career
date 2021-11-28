@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import UsersTable from './users-table';
 import UsersModal from './users-modal';
 import TextField from '@mui/material/TextField';
+import UsersEditModal from './users-edit-modal';
 
 function createData(
   _id: string,
@@ -17,6 +18,7 @@ function createData(
 export default function UsersHero({ item, setItem }: any) {
   const [result, setResult] = useState(item);
   const [input, setInput] = useState<string>('');
+
   function identificationSearch(): void {
     if (input.length == 0) {
       setItem(result);
@@ -48,6 +50,9 @@ export default function UsersHero({ item, setItem }: any) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const [secondModal, setSecondModal] = React.useState(false);
+  const secondHandleToOpen = () => setSecondModal(true);
+  const secondHandleToClose = () => setSecondModal(false);
   return (
     <>
       <Box
@@ -68,18 +73,35 @@ export default function UsersHero({ item, setItem }: any) {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <Button
-          variant="contained"
-          color="success"
-          sx={{
-            marginBottom: 2,
-          }}
-          onClick={handleOpen}
-        >
-          დამატება
-        </Button>
+        <Box sx={{ gap: '15px', display: 'flex', flexWrap: 'wrap' }}>
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              marginBottom: 2,
+            }}
+            onClick={secondHandleToOpen}
+          >
+            რედაქტირება
+          </Button>
+          <Button
+            variant="contained"
+            color="success"
+            sx={{
+              marginBottom: 2,
+            }}
+            onClick={handleOpen}
+          >
+            დამატება
+          </Button>
+        </Box>
       </Box>
       <UsersModal handleClose={handleClose} open={open} rows={item} />
+      <UsersEditModal
+        handleClose={secondHandleToClose}
+        open={secondModal}
+        item={item}
+      />
       <UsersTable rows={rows} />
     </>
   );
