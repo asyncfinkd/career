@@ -2,9 +2,7 @@ import React, { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-import Chip from '@mui/material/Chip';
 import {
   FormControl,
   InputLabel,
@@ -14,6 +12,10 @@ import {
 } from '@mui/material';
 import { UsersForm } from 'fixtures/modules/admin/users';
 import Button from 'components/button';
+import { useForm, get } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
+import { AdminUsersEditProps } from 'types/pages/admin/users/edit';
+import { AdminUserEditSchema } from 'schema/pages/admin/users/edit';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -35,16 +37,24 @@ export default function UsersEditModal({ open, handleClose, item }: any) {
     setAge(event.target.value as string);
   };
 
+  const { register, handleSubmit, formState } = useForm<AdminUsersEditProps>({
+    resolver: yupResolver(AdminUserEditSchema),
+  });
+
   return (
     <>
-      <form>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <form
+            onSubmit={handleSubmit((data: AdminUsersEditProps) => {
+              console.log(data);
+            })}
+          >
             <Typography
               sx={{ fontFamily: 'MarkGEO' }}
               id="modal-modal-title"
@@ -72,21 +82,29 @@ export default function UsersEditModal({ open, handleClose, item }: any) {
             {age != '' && (
               <>
                 {UsersForm.map((secItem: any) => {
+                  const { type, label, name, text } = secItem;
+
                   return (
                     <TextField
                       id="outlined-basic"
                       sx={{ marginTop: '20px', width: '100%' }}
-                      label={secItem.text}
+                      label={text}
                       variant="outlined"
+                      type={type}
+                      error={get(formState.errors, name)}
+                      helperText={
+                        get(formState.errors, name) && secItem.required.message
+                      }
+                      {...register(name)}
                     />
                   );
                 })}
-                <Button>დამატება</Button>
+                <Button>რედაქტირება</Button>
               </>
             )}
-          </Box>
-        </Modal>
-      </form>
+          </form>
+        </Box>
+      </Modal>
     </>
   );
 }
