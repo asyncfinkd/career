@@ -47,6 +47,11 @@ export class AdminController {
     return this.adminService.editItem(req);
   }
 
+  /**
+   * Auths admin controller
+   * @param req
+   * @returns
+   */
   @Auth()
   @Delete('delete/users')
   deleteUser(@Body() req) {

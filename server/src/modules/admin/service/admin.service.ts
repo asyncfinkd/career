@@ -88,6 +88,15 @@ export class AdminService {
     }
   };
 
+  /**
+   * Delete item of admin service
+   */
+
+  /**
+   * delete item
+   * @param _id
+   * @returns
+   */
   deleteItem = (_id: string) => {
     try {
       return this.adminModel.findByIdAndRemove({ _id: _id }).then(() => {
