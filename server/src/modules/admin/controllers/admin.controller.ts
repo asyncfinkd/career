@@ -44,6 +44,6 @@ export class AdminController {
   @Auth()
   @Post('edit/users')
   async editUsers(@Body() req) {
-    return await this.adminService.editItem(req);
+    return this.adminService.editItem(req);
   }
 }

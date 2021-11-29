@@ -78,6 +78,10 @@ export class AdminService {
         result.password = req.password;
         result.role = req.role;
         result.image = req.image;
+
+        return result.save().then(() => {
+          return { success: true, msg: 'Congratulation, you edit user info' };
+        });
       });
     } catch (err) {
       return { success: false, err };
