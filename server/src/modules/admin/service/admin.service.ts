@@ -87,4 +87,14 @@ export class AdminService {
       return { success: false, err };
     }
   };
+
+  deleteItem = (_id: string) => {
+    try {
+      return this.adminModel.findByIdAndRemove({ _id: _id }).then(() => {
+        return { success: true, msg: 'Congratulation, you delete user' };
+      });
+    } catch (err) {
+      return { success: false, msg: 'something is wrong.', err };
+    }
+  };
 }
