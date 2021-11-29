@@ -1,6 +1,6 @@
 import { Body, Controller, Post, Get, Res, Delete } from '@nestjs/common';
 import { AdminService } from '../service/admin.service';
-import { AdminDto } from '../dto';
+import { AdminDeleteDto, AdminDto, AdminEditDto } from '../dto';
 import { Auth } from 'src/utils/guards/jwt-auth.guard';
 
 /**
@@ -43,7 +43,7 @@ export class AdminController {
    */
   @Auth()
   @Post('edit/users')
-  editUsers(@Body() req) {
+  editUsers(@Body() req: AdminEditDto) {
     return this.adminService.editItem(req);
   }
 
@@ -54,7 +54,7 @@ export class AdminController {
    */
   @Auth()
   @Delete('delete/users')
-  deleteUser(@Body() req) {
+  deleteUser(@Body() req: AdminDeleteDto) {
     return this.adminService.deleteItem(req._id);
   }
 }

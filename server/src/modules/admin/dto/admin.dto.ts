@@ -23,3 +23,30 @@ export class AdminDto {
   @IsString()
   image: string;
 }
+
+/**
+ * Admin delete dto
+ */
+export class AdminDeleteDto {
+  @IsNotEmpty()
+  @IsString()
+  _id: string;
+}
+
+export class AdminEditDto {
+  @IsNotEmpty()
+  @IsString()
+  _id: string;
+
+  @IsNotEmpty()
+  @IsString()
+  email: string;
+
+  @IsNotEmpty()
+  @IsString()
+  fullName: string;
+
+  @IsNotEmpty()
+  @IsString()
+  password: string;
+}
