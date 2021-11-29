@@ -70,7 +70,7 @@ export class AdminService {
    * @param req
    * @returns
    */
-  editItem = async (req: any) => {
+  editItem = (req: any) => {
     try {
       return this.adminModel.findById({ _id: req._id }).then((result) => {
         result.fullName = req.fullName;
