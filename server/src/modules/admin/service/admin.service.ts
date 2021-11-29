@@ -84,7 +84,7 @@ export class AdminService {
         });
       });
     } catch (err) {
-      return { success: false, err };
+      return { success: false, msg: 'something is wrong.', err };
     }
   };
 
