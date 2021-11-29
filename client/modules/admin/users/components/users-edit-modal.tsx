@@ -32,7 +32,12 @@ const style = {
   p: 4,
 };
 
-export default function UsersEditModal({ open, handleClose, item }: any) {
+export default function UsersEditModal({
+  open,
+  handleClose,
+  item,
+  setItem,
+}: any) {
   const [age, setAge] = React.useState('');
   const [data, setData] = React.useState(item);
 
@@ -70,6 +75,16 @@ export default function UsersEditModal({ open, handleClose, item }: any) {
                     toast.success(
                       'გილოცავთ, მომხმარებლის ინფორმაცია წარმატებით შეიცვალა',
                     );
+
+                    let secData: any = [];
+                    item.map((secItem: any) => {
+                      if (secItem._id == age) {
+                        secItem.email = data.email;
+                        secItem.fullName = data.fullName;
+                      }
+                      secData.push(secItem);
+                    });
+                    setItem(secData);
 
                     setValue('email', '');
                     setValue('fullName', '');

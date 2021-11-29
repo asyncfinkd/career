@@ -101,6 +101,7 @@ export default function UsersHero({ item, setItem }: any) {
         handleClose={secondHandleToClose}
         open={secondModal}
         item={item}
+        setItem={setItem}
       />
       <UsersTable rows={rows} />
     </>
