@@ -76,8 +76,8 @@ export class AdminService {
         result.fullName = req.fullName;
         result.email = req.email;
         result.password = req.password;
-        result.role = req.role;
-        result.image = req.image;
+        result.role = 'admin';
+        result.image = 'none';
 
         return result.save().then(() => {
           return { success: true, msg: 'Congratulation, you edit user info' };

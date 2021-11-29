@@ -16,6 +16,9 @@ import { useForm, get } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { AdminUsersEditProps } from 'types/pages/admin/users/edit';
 import { AdminUserEditSchema } from 'schema/pages/admin/users/edit';
+import axios from 'axios';
+import { readCookie } from 'shared/read-cookie';
+import { toast } from 'react-toastify';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -37,9 +40,10 @@ export default function UsersEditModal({ open, handleClose, item }: any) {
     setAge(event.target.value as string);
   };
 
-  const { register, handleSubmit, formState } = useForm<AdminUsersEditProps>({
-    resolver: yupResolver(AdminUserEditSchema),
-  });
+  const { register, handleSubmit, formState, setValue } =
+    useForm<AdminUsersEditProps>({
+      resolver: yupResolver(AdminUserEditSchema),
+    });
 
   return (
     <>
@@ -52,7 +56,26 @@ export default function UsersEditModal({ open, handleClose, item }: any) {
         <Box sx={style}>
           <form
             onSubmit={handleSubmit((data: AdminUsersEditProps) => {
-              console.log(data);
+              const reData = { ...data, _id: age };
+              axios
+                .post(`${process.env.SERVER_API_URL}/api/edit/users`, reData, {
+                  headers: {
+                    Authorization: `Bearer ${readCookie('cookie')}`,
+                  },
+                })
+                .then((result) => {
+                  if (result.data.success) {
+                    handleClose();
+
+                    toast.success(
+                      'გილოცავთ, მომხმარებლის ინფორმაცია წარმატებით შეიცვალა',
+                    );
+
+                    setValue('email', '');
+                    setValue('fullName', '');
+                    setValue('password', '');
+                  }
+                });
             })}
           >
             <Typography
