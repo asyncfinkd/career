@@ -9,6 +9,7 @@ import {
   Select,
   SelectChangeEvent,
 } from '@mui/material';
+import Button from 'components/button';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -59,6 +60,7 @@ export default function UsersDeleteModal({ open, handleClose, item }: any) {
                 })}
               </Select>
             </FormControl>
+            {user.length != 0 && <Button>წაშლა</Button>}
           </form>
         </Box>
       </Modal>
