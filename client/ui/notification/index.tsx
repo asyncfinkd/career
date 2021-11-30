@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Notification() {
+export default function Notification({ email, phone }: any) {
   return (
     <>
       <div className="bg-white p-5 sm:py-10 sm:px-0 hh-text-section border-t-2">
@@ -49,12 +49,12 @@ export default function Notification() {
           </p>
           <p className="ql-align-center">
             <span style={{ color: 'rgb(91,91,91)', fontFamily: 'MarkGEO' }}>
-              ელ.ფოსტა: Careers@bog.ge&nbsp;
+              ელ.ფოსტა: {email}&nbsp;
             </span>
           </p>
           <p className="ql-align-center">
             <span style={{ color: 'rgb(91,91,91)', fontFamily: 'MarkGEO' }}>
-              ტელეფონი: (+995 32) 2444444 (ext. 4422)
+              ტელეფონი: {phone}
             </span>
             .
           </p>

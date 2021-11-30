@@ -7,12 +7,19 @@ import type {
 
 const Home: NextPage = ({
   response,
+  secondResponse,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [data, setData] = Actions.useState(response?.item);
 
   return (
     <>
-      <Actions.IndexModules data={data} setData={setData} />
+      {console.log(secondResponse)}
+      <Actions.IndexModules
+        data={data}
+        setData={setData}
+        email={secondResponse.item.email}
+        phone={secondResponse.item.phone}
+      />
     </>
   );
 };
@@ -27,7 +34,19 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const response = await request.json();
 
-  return { props: { response } };
+  const secondRequest = await fetch(
+    `${process.env.SERVER_API_URL}/api/get/contacts/user`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    },
+  );
+
+  const secondResponse = await secondRequest.json();
+
+  return { props: { response, secondResponse } };
 };
 
 export default Home;
