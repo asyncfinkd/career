@@ -35,7 +35,7 @@ export default function AdminSidebar() {
             },
             {
               text: 'კონტაქტები',
-              route: 'admin/contacts',
+              route: '/admin/contacts',
               key: 3,
             },
           ].map((item: AdminSidebarInterface) => {
