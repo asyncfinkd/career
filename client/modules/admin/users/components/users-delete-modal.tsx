@@ -10,6 +10,9 @@ import {
   SelectChangeEvent,
 } from '@mui/material';
 import Button from 'components/button';
+import axios from 'axios';
+import { readCookie } from 'shared/read-cookie';
+import { toast } from 'react-toastify';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -23,12 +26,23 @@ const style = {
   p: 4,
 };
 
-export default function UsersDeleteModal({ open, handleClose, item }: any) {
+export default function UsersDeleteModal({
+  open,
+  handleClose,
+  item,
+  setItem,
+}: any) {
   const [user, setUser] = React.useState('');
   const [data, setData] = React.useState(item);
 
   const handleChange = (event: SelectChangeEvent) => {
     setUser(event.target.value as string);
+  };
+
+  const deleteItem = (_id: string) => {
+    const updateList = item.filter((item: any) => item._id !== _id);
+
+    setItem(updateList);
   };
 
   return (
@@ -60,7 +74,36 @@ export default function UsersDeleteModal({ open, handleClose, item }: any) {
                 })}
               </Select>
             </FormControl>
-            {user.length != 0 && <Button>წაშლა</Button>}
+            {user.length != 0 && (
+              <button
+                style={{ width: '100%' }}
+                onClick={() => {
+                  axios
+                    .post(
+                      `${process.env.SERVER_API_URL}/api/delete/users`,
+                      { _id: user },
+                      {
+                        headers: {
+                          Authorization: `Bearer ${readCookie('cookie')}`,
+                        },
+                      },
+                    )
+                    .then((result) => {
+                      if (result.data.success) {
+                        setUser('');
+                        handleClose();
+                        deleteItem(user);
+
+                        toast.success(
+                          'გილოცავთ, მომხმარებელი წარმატებით წაიშალა!',
+                        );
+                      }
+                    });
+                }}
+              >
+                <Button>წაშლა</Button>
+              </button>
+            )}
           </form>
         </Box>
       </Modal>

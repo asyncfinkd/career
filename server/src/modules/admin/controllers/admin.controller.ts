@@ -53,7 +53,7 @@ export class AdminController {
    * @returns
    */
   @Auth()
-  @Delete('delete/users')
+  @Post('delete/users')
   deleteUser(@Body() req: AdminDeleteDto) {
     return this.adminService.deleteItem(req._id);
   }
