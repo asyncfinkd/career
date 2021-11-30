@@ -53,6 +53,10 @@ export default function UsersHero({ item, setItem }: any) {
   const [secondModal, setSecondModal] = React.useState(false);
   const secondHandleToOpen = () => setSecondModal(true);
   const secondHandleToClose = () => setSecondModal(false);
+
+  const [thirdModal, setThirdModal] = React.useState(false);
+  const thirdHandleToOpen = () => setThirdModal(true);
+  const thirdHandleToClose = () => setThirdModal(false);
   return (
     <>
       <Box
@@ -76,6 +80,16 @@ export default function UsersHero({ item, setItem }: any) {
         <Box sx={{ gap: '15px', display: 'flex', flexWrap: 'wrap' }}>
           <Button
             variant="contained"
+            color="success"
+            sx={{
+              marginBottom: 2,
+            }}
+            onClick={handleOpen}
+          >
+            დამატება
+          </Button>
+          <Button
+            variant="contained"
             color="primary"
             sx={{
               marginBottom: 2,
@@ -86,13 +100,13 @@ export default function UsersHero({ item, setItem }: any) {
           </Button>
           <Button
             variant="contained"
-            color="success"
+            color="error"
             sx={{
               marginBottom: 2,
             }}
-            onClick={handleOpen}
+            onClick={thirdHandleToOpen}
           >
-            დამატება
+            წაშლა
           </Button>
         </Box>
       </Box>
