@@ -5,6 +5,7 @@ import UsersTable from './users-table';
 import UsersModal from './users-modal';
 import TextField from '@mui/material/TextField';
 import UsersEditModal from './users-edit-modal';
+import UsersDeleteModal from './users-delete-modal';
 
 function createData(
   _id: string,
@@ -117,6 +118,7 @@ export default function UsersHero({ item, setItem }: any) {
         item={item}
         setItem={setItem}
       />
+      <UsersDeleteModal handleClose={thirdHandleToClose} open={thirdModal} />
       <UsersTable rows={rows} />
     </>
   );
