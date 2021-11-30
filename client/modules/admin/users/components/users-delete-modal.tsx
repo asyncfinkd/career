@@ -23,11 +23,11 @@ const style = {
 };
 
 export default function UsersDeleteModal({ open, handleClose, item }: any) {
-  const [age, setAge] = React.useState('');
+  const [user, setUser] = React.useState('');
   const [data, setData] = React.useState(item);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
+    setUser(event.target.value as string);
   };
 
   return (
@@ -50,7 +50,7 @@ export default function UsersDeleteModal({ open, handleClose, item }: any) {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={age}
+                value={user}
                 label="მომხმარებელი"
                 onChange={handleChange}
               >
