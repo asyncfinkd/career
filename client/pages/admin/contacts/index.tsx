@@ -1,8 +1,11 @@
 import AdminContactsModules from 'modules/admin/contacts';
-import { GetServerSidePropsContext } from 'next';
-import React from 'react';
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import React, { useState } from 'react';
 
-function AdminContactsPages() {
+function AdminContactsPages({
+  data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const [item, setItem] = useState(data);
   return (
     <>
       <AdminContactsModules />
