@@ -93,7 +93,6 @@ export default function UsersDeleteModal({
                         setUser('');
                         handleClose();
                         deleteItem(user);
-
                         toast.success(
                           'გილოცავთ, მომხმარებელი წარმატებით წაიშალა!',
                         );
