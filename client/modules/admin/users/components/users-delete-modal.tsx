@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -18,7 +19,18 @@ export default function UsersDeleteModal({ open, handleClose }: any) {
   return (
     <>
       <Modal open={open} onClose={handleClose}>
-        <Box sx={style}>qwe</Box>
+        <Box sx={style}>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <Typography
+              sx={{ fontFamily: 'MarkGEO' }}
+              id="modal-modal-title"
+              variant="h6"
+              component="h2"
+            >
+              მომხმარებლის წაშლა
+            </Typography>
+          </form>
+        </Box>
       </Modal>
     </>
   );
