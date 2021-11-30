@@ -43,6 +43,7 @@ export default function UsersDeleteModal({
     const updateList = item.filter((item: any) => item._id !== _id);
 
     setItem(updateList);
+    setData(updateList);
   };
 
   return (
@@ -93,6 +94,7 @@ export default function UsersDeleteModal({
                         setUser('');
                         handleClose();
                         deleteItem(user);
+
                         toast.success(
                           'გილოცავთ, მომხმარებელი წარმატებით წაიშალა!',
                         );
