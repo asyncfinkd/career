@@ -2,6 +2,13 @@ import React from 'react';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from '@mui/material';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -15,7 +22,14 @@ const style = {
   p: 4,
 };
 
-export default function UsersDeleteModal({ open, handleClose }: any) {
+export default function UsersDeleteModal({ open, handleClose, item }: any) {
+  const [age, setAge] = React.useState('');
+  const [data, setData] = React.useState(item);
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value as string);
+  };
+
   return (
     <>
       <Modal open={open} onClose={handleClose}>
@@ -29,6 +43,22 @@ export default function UsersDeleteModal({ open, handleClose }: any) {
             >
               მომხმარებლის წაშლა
             </Typography>
+            <FormControl fullWidth sx={{ marginTop: '20px' }}>
+              <InputLabel id="demo-simple-select-label">
+                მომხმარებელი
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={age}
+                label="მომხმარებელი"
+                onChange={handleChange}
+              >
+                {data.map((item: any) => {
+                  return <MenuItem value={item._id}>{item.fullName}</MenuItem>;
+                })}
+              </Select>
+            </FormControl>
           </form>
         </Box>
       </Modal>

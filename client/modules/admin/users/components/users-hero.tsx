@@ -118,7 +118,11 @@ export default function UsersHero({ item, setItem }: any) {
         item={item}
         setItem={setItem}
       />
-      <UsersDeleteModal handleClose={thirdHandleToClose} open={thirdModal} />
+      <UsersDeleteModal
+        handleClose={thirdHandleToClose}
+        item={item}
+        open={thirdModal}
+      />
       <UsersTable rows={rows} />
     </>
   );
