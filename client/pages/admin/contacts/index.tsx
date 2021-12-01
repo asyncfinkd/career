@@ -1,6 +1,7 @@
 import AdminContactsModules from 'modules/admin/contacts';
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import React, { useState } from 'react';
+import { TAdminContactsInterface } from 'types/pages/admin/contacts';
 import SpeedDialTooltipOpen from 'ui/speed-dial';
 
 function AdminContactsPages({
@@ -8,11 +9,16 @@ function AdminContactsPages({
   contacts,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [item, setItem] = useState(data);
-  const [contactsItem, setContactsItem] = useState(contacts);
+  const [contactsItem, setContactsItem] = useState<TAdminContactsInterface>(
+    contacts.item,
+  );
 
   return (
     <>
-      <AdminContactsModules />
+      <AdminContactsModules
+        contactsItem={contactsItem}
+        setContactsItem={setContactsItem}
+      />
       <SpeedDialTooltipOpen />
     </>
   );

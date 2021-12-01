@@ -2,7 +2,8 @@ import React from 'react';
 import Actions from 'actions/modules/admin/contacts';
 import Head from 'next/head';
 import BasicBreadcrumbs from 'ui/breadcrumbs';
-import Chip from '@mui/material/Chip';
+import { TAdminContactsInterface } from 'types/pages/admin/contacts';
+import ContactsHero from './components/contacts-hero';
 
 const drawerWidth = 240;
 
@@ -14,7 +15,13 @@ interface Props {
   window?: () => Window;
 }
 
-export default function AdminContactsModules(props: Props) {
+export default function AdminContactsModules(
+  {
+    contactsItem,
+    setContactsItem,
+  }: { contactsItem: TAdminContactsInterface; setContactsItem: any },
+  props: Props,
+) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -108,11 +115,7 @@ export default function AdminContactsModules(props: Props) {
           <Actions.Toolbar />
           <BasicBreadcrumbs first="Admin" second="Contacts" />
           <br />
-          <Chip
-            label="Chip Outlined"
-            variant="outlined"
-            sx={{ cursor: 'pointer' }}
-          />
+          <ContactsHero contactsItem={contactsItem} />
         </Actions.Box>
       </Actions.Box>
     </>
