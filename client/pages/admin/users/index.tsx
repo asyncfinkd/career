@@ -1,6 +1,7 @@
 import AdminUsersModules from 'modules/admin/users';
 import React, { useState } from 'react';
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import SpeedDialTooltipOpen from 'ui/speed-dial';
 
 function AdminUsersPages({
   data,
@@ -11,6 +12,7 @@ function AdminUsersPages({
   return (
     <>
       <AdminUsersModules item={newItem} setItem={setNewItem} />
+      <SpeedDialTooltipOpen />
     </>
   );
 }

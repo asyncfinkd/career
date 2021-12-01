@@ -1,6 +1,7 @@
 import AdminDashboardModules from 'modules/admin/dashboard';
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import React from 'react';
+import SpeedDialTooltipOpen from 'ui/speed-dial';
 
 function AdminDashboardPages({
   data,
@@ -8,6 +9,7 @@ function AdminDashboardPages({
   return (
     <>
       <AdminDashboardModules />
+      <SpeedDialTooltipOpen />
     </>
   );
 }
