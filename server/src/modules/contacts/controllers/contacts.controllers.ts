@@ -14,4 +14,9 @@ export class ContactsController {
   async editEmail(@Body() req) {
     return this.contactsService.editEmail(req._id, req.email);
   }
+
+  @Post('edit/contacts/by/phone')
+  async editPhone(@Body() req) {
+    return this.contactsService.editPhone(req._id, req.phone);
+  }
 }

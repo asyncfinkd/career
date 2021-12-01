@@ -21,23 +21,25 @@ export default function ContactsHero({
   const chipsFixture = [
     {
       label: contactsItem.email,
+      click: handleEmailOpen,
     },
     {
       label: contactsItem.phone,
+      click: handlePhoneOpen,
     },
   ];
 
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        {chipsFixture.map((item: { label: string }) => {
+        {chipsFixture.map((item: { label: string; click: () => void }) => {
           return (
             <Chip
               label={item.label}
               variant="outlined"
               sx={{ cursor: 'pointer' }}
               onClick={() => {
-                handleEmailOpen();
+                item.click();
               }}
             />
           );
@@ -48,7 +50,11 @@ export default function ContactsHero({
         handleClose={handleEmailClose}
         contactsItem={contactsItem}
       />
-      <ContactsPhoneModal open={phoneModal} handleClose={handlePhoneClose} />
+      <ContactsPhoneModal
+        open={phoneModal}
+        handleClose={handlePhoneClose}
+        contactsItem={contactsItem}
+      />
     </>
   );
 }

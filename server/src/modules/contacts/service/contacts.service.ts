@@ -3,13 +3,29 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { ContactsDocument, ContactsSchema } from '../model/contacts.model';
 
+/**
+ * Injectable
+ */
 @Injectable()
 export class ContactsService {
+  /**
+   * Creates an instance of contacts service.
+   * @param contactsModel
+   */
   constructor(
     @InjectModel(ContactsSchema.name)
     private contactsModel: Model<ContactsDocument>,
   ) {}
 
+  /**
+   * Get item of contacts service
+   */
+
+  /**
+   * Roles get item
+   * @param role
+   * @returns
+   */
   getItem = async (role: string) => {
     try {
       const item = await this.contactsModel
@@ -28,6 +44,16 @@ export class ContactsService {
     }
   };
 
+  /**
+   * Edit email of contacts service
+   */
+
+  /**
+   * edit email
+   * @param _id
+   * @param email
+   * @returns
+   */
   editEmail = async (_id: string, email: string) => {
     try {
       return this.contactsModel.findById({ _id: _id }).then((result) => {
@@ -37,6 +63,23 @@ export class ContactsService {
           return {
             success: true,
             msg: 'Congratulation, you edit email successfuly',
+          };
+        });
+      });
+    } catch (err) {
+      return { success: false, msg: 'something is wrong.', err };
+    }
+  };
+
+  editPhone = async (_id: string, phone: string) => {
+    try {
+      return this.contactsModel.findById({ _id: _id }).then((result) => {
+        result.phone = phone;
+
+        result.save().then(() => {
+          return {
+            success: true,
+            msg: 'Congratulation, you edit phone successfuly',
           };
         });
       });
