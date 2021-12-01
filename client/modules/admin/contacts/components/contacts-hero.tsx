@@ -3,6 +3,7 @@ import Chip from '@mui/material/Chip';
 import { TAdminContactsInterface } from 'types/pages/admin/contacts';
 import { Box } from '@mui/system';
 import ContactsEmailModal from './contacts-email-modal';
+import ContactsPhoneModal from './contacts-phone-modal';
 
 export default function ContactsHero({
   contactsItem,
@@ -47,6 +48,7 @@ export default function ContactsHero({
         handleClose={handleEmailClose}
         contactsItem={contactsItem}
       />
+      <ContactsPhoneModal open={phoneModal} handleClose={handlePhoneClose} />
     </>
   );
 }
