@@ -8,19 +8,27 @@ export default function ContactsHero({
 }: {
   contactsItem: TAdminContactsInterface;
 }) {
+  const chipsFixture = [
+    {
+      label: contactsItem.email,
+    },
+    {
+      label: contactsItem.phone,
+    },
+  ];
+
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        <Chip
-          label={contactsItem.email}
-          variant="outlined"
-          sx={{ cursor: 'pointer' }}
-        />
-        <Chip
-          label={contactsItem.phone}
-          variant="outlined"
-          sx={{ cursor: 'pointer' }}
-        />
+        {chipsFixture.map((item: { label: string }) => {
+          return (
+            <Chip
+              label={item.label}
+              variant="outlined"
+              sx={{ cursor: 'pointer' }}
+            />
+          );
+        })}
       </Box>
     </>
   );
