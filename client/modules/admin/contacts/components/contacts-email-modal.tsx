@@ -6,6 +6,7 @@ import { FormControl, TextField } from '@mui/material';
 import Button from 'components/button';
 import { TAdminContactsInterface } from 'types/pages/admin/contacts';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -67,10 +68,15 @@ export default function ContactsEmailModal({
                   axios
                     .post(
                       `${process.env.SERVER_API_URL}/api/edit/contacts/by/email`,
-                      { email: email },
+                      { _id: contactsItem._id, email: email },
                     )
                     .then((result) => {
-                      console.log(result);
+                      if (result.status <= 400) {
+                        contactsItem.email = email;
+                        toast.success('გილოცავთ, წარმატებით შეიცვალა ელ.ფოსტა');
+
+                        handleClose();
+                      }
                     });
                 }
               }}

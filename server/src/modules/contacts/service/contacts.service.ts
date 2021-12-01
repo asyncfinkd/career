@@ -28,9 +28,9 @@ export class ContactsService {
     }
   };
 
-  editEmail = async (email: string) => {
+  editEmail = async (_id: string, email: string) => {
     try {
-      return this.contactsModel.findById({ email: email }).then((result) => {
+      return this.contactsModel.findById({ _id: _id }).then((result) => {
         result.email = email;
 
         result.save().then(() => {
