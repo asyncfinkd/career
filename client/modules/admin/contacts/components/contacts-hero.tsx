@@ -8,6 +8,14 @@ export default function ContactsHero({
 }: {
   contactsItem: TAdminContactsInterface;
 }) {
+  const [emailModal, setEmailModal] = React.useState(false);
+  const handleEmailOpen = () => setEmailModal(true);
+  const handleEmailClose = () => setEmailModal(false);
+
+  const [phoneModal, setPhoneModal] = React.useState(false);
+  const handlePhoneOpen = () => setPhoneModal(true);
+  const handlePhoneClose = () => setPhoneModal(false);
+
   const chipsFixture = [
     {
       label: contactsItem.email,
