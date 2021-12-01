@@ -2,6 +2,8 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import React from 'react';
+import { FormControl, TextField } from '@mui/material';
+import Button from 'components/button';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -15,7 +17,11 @@ const style = {
   p: 4,
 };
 
-export default function ContactsEmailModal({ open, handleClose }: any) {
+export default function ContactsEmailModal({
+  open,
+  handleClose,
+  contactsItem,
+}: any) {
   return (
     <>
       <Modal
@@ -25,15 +31,26 @@ export default function ContactsEmailModal({ open, handleClose }: any) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <form>
+          <form onSubmit={(e) => e.preventDefault()}>
             <Typography
               sx={{ fontFamily: 'MarkGEO' }}
               id="modal-modal-title"
               variant="h6"
               component="h2"
             >
-              ინფორმაციის შეცვლა
+              ელ.ფოსტის შეცვლა
             </Typography>
+            <FormControl fullWidth sx={{ marginTop: '20px' }}>
+              <TextField
+                id="outlined-basic"
+                sx={{ marginTop: '20px', width: '100%' }}
+                label={'ელ.ფოსტა'}
+                variant="outlined"
+                value={contactsItem.email}
+                type="text"
+              />
+            </FormControl>
+            <Button>რედაქტირება</Button>
           </form>
         </Box>
       </Modal>

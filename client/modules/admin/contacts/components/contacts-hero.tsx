@@ -42,7 +42,11 @@ export default function ContactsHero({
           );
         })}
       </Box>
-      <ContactsEmailModal open={emailModal} handleClose={handleEmailClose} />
+      <ContactsEmailModal
+        open={emailModal}
+        handleClose={handleEmailClose}
+        contactsItem={contactsItem}
+      />
     </>
   );
 }
