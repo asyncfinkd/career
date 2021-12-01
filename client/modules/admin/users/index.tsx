@@ -1,6 +1,7 @@
 import React from 'react';
 import Actions from 'actions/modules/admin/users';
 import UsersHero from './components/users-hero';
+import BasicBreadcrumbs from 'ui/breadcrumbs';
 
 const drawerWidth = 240;
 
@@ -107,6 +108,8 @@ export default function AdminUsersModules(
           }}
         >
           <Actions.Toolbar />
+          <BasicBreadcrumbs first="Admin" second="Users" />
+          <br />
           <UsersHero item={item} setItem={setItem} />
         </Actions.Box>
       </Actions.Box>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Actions from 'actions/modules/admin/dashboard';
+import BasicBreadcrumbs from 'ui/breadcrumbs';
 
 const drawerWidth = 240;
 
@@ -98,6 +99,8 @@ export default function AdminDashboardModules(props: Props) {
           }}
         >
           <Actions.Toolbar />
+          <BasicBreadcrumbs first="Admin" second="Dashboard" />
+          <br />
           <Actions.Typography paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
