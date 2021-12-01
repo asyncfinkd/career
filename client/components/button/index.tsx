@@ -50,6 +50,16 @@ function CustomButton(props: ButtonUnstyledProps) {
   );
 }
 
-export default function Button({ children }: any) {
-  return <CustomButton type="submit">{children}</CustomButton>;
+export default function Button({
+  children,
+  onClick,
+}: {
+  children: React.ReactNode;
+  onClick: () => void;
+}) {
+  return (
+    <CustomButton type="submit" onClick={onClick}>
+      {children}
+    </CustomButton>
+  );
 }
