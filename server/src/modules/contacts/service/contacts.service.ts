@@ -71,6 +71,16 @@ export class ContactsService {
     }
   };
 
+  /**
+   * Edit phone of contacts service
+   */
+
+  /**
+   * edit phone
+   * @param _id
+   * @param phone
+   * @returns
+   */
   editPhone = async (_id: string, phone: string) => {
     try {
       return this.contactsModel.findById({ _id: _id }).then((result) => {
