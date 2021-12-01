@@ -2,6 +2,7 @@ import React from 'react';
 import Actions from 'actions/modules/admin/contacts';
 import Head from 'next/head';
 import BasicBreadcrumbs from 'ui/breadcrumbs';
+import Chip from '@mui/material/Chip';
 
 const drawerWidth = 240;
 
@@ -107,7 +108,11 @@ export default function AdminContactsModules(props: Props) {
           <Actions.Toolbar />
           <BasicBreadcrumbs first="Admin" second="Contacts" />
           <br />
-          <p>qwe</p>
+          <Chip
+            label="Chip Outlined"
+            variant="outlined"
+            sx={{ cursor: 'pointer' }}
+          />
         </Actions.Box>
       </Actions.Box>
     </>
