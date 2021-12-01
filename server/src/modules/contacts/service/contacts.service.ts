@@ -27,4 +27,21 @@ export class ContactsService {
       return { success: false, msg: 'something is wrong.', err };
     }
   };
+
+  editEmail = async (email: string) => {
+    try {
+      return this.contactsModel.findById({ email: email }).then((result) => {
+        result.email = email;
+
+        result.save().then(() => {
+          return {
+            success: true,
+            msg: 'Congratulation, you edit email successfuly',
+          };
+        });
+      });
+    } catch (err) {
+      return { success: false, msg: 'something is wrong.', err };
+    }
+  };
 }
