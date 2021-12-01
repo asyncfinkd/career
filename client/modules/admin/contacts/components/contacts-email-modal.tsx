@@ -5,6 +5,7 @@ import React from 'react';
 import { FormControl, TextField } from '@mui/material';
 import Button from 'components/button';
 import { TAdminContactsInterface } from 'types/pages/admin/contacts';
+import axios from 'axios';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -62,6 +63,15 @@ export default function ContactsEmailModal({
               onClick={() => {
                 if (email == contactsItem.email) {
                   handleClose();
+                } else {
+                  axios
+                    .post(
+                      `${process.env.SERVER_API_URL}/api/edit/contacts/by/email`,
+                      { email: email },
+                    )
+                    .then((result) => {
+                      console.log(result);
+                    });
                 }
               }}
             >

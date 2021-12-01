@@ -10,7 +10,7 @@ export class ContactsController {
     res.json(await this.contactsService.getItem(role));
   }
 
-  @Post('edit/user/by/email')
+  @Post('edit/contacts/by/email')
   async editEmail(@Body() req) {
     return this.contactsService.editEmail(req.email);
   }
