@@ -62,9 +62,8 @@ export default function ContactsEmailModal({
             </FormControl>
             <Button
               onClick={() => {
-                if (email == contactsItem.email) {
-                  handleClose();
-                } else {
+                if (email == contactsItem.email) handleClose();
+                else {
                   axios
                     .post(
                       `${process.env.SERVER_API_URL}/api/edit/contacts/by/email`,
