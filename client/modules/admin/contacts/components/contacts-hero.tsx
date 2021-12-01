@@ -2,6 +2,7 @@ import React from 'react';
 import Chip from '@mui/material/Chip';
 import { TAdminContactsInterface } from 'types/pages/admin/contacts';
 import { Box } from '@mui/system';
+import ContactsEmailModal from './contacts-email-modal';
 
 export default function ContactsHero({
   contactsItem,
@@ -34,10 +35,14 @@ export default function ContactsHero({
               label={item.label}
               variant="outlined"
               sx={{ cursor: 'pointer' }}
+              onClick={() => {
+                handleEmailOpen();
+              }}
             />
           );
         })}
       </Box>
+      <ContactsEmailModal open={emailModal} handleClose={handleEmailClose} />
     </>
   );
 }
