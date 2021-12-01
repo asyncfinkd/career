@@ -4,12 +4,15 @@ import type {
   InferGetServerSidePropsType,
   NextPage,
 } from 'next';
+import { AdminContactsInterface } from 'types/pages/admin/contacts';
 
 const Home: NextPage = ({
   response,
   secondResponse,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [data, setData] = Actions.useState(response?.item);
+  const [secResponse, setSecResponse] =
+    Actions.useState<AdminContactsInterface>(secondResponse?.item);
 
   return (
     <>
@@ -17,8 +20,8 @@ const Home: NextPage = ({
       <Actions.IndexModules
         data={data}
         setData={setData}
-        email={secondResponse.item.email}
-        phone={secondResponse.item.phone}
+        email={secResponse.email}
+        phone={secResponse.phone}
       />
     </>
   );

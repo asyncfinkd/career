@@ -1,15 +1,24 @@
 import AdminContactsModules from 'modules/admin/contacts';
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import React, { useState } from 'react';
+import { TAdminContactsInterface } from 'types/pages/admin/contacts';
 import SpeedDialTooltipOpen from 'ui/speed-dial';
 
 function AdminContactsPages({
   data,
+  contacts,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [item, setItem] = useState(data);
+  const [contactsItem, setContactsItem] = useState<TAdminContactsInterface>(
+    contacts.item,
+  );
+
   return (
     <>
-      <AdminContactsModules />
+      <AdminContactsModules
+        contactsItem={contactsItem}
+        setContactsItem={setContactsItem}
+      />
       <SpeedDialTooltipOpen />
     </>
   );
@@ -41,7 +50,19 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     };
   }
 
-  return { props: { data: response.user } };
+  const secondRequest = await fetch(
+    `${process.env.SERVER_API_URL}/api/get/contacts/admin`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    },
+  );
+
+  const secondResponse = await secondRequest.json();
+
+  return { props: { data: response.user, contacts: secondResponse } };
 }
 
 export default AdminContactsPages;
