@@ -58,7 +58,15 @@ export default function ContactsEmailModal({
                 type="text"
               />
             </FormControl>
-            <Button>რედაქტირება</Button>
+            <Button
+              onClick={() => {
+                if (email == contactsItem.email) {
+                  handleClose();
+                }
+              }}
+            >
+              რედაქტირება
+            </Button>
           </form>
         </Box>
       </Modal>
