@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import React from 'react';
 import { FormControl, TextField } from '@mui/material';
 import Button from 'components/button';
+import { TAdminContactsInterface } from 'types/pages/admin/contacts';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -21,7 +22,13 @@ export default function ContactsEmailModal({
   open,
   handleClose,
   contactsItem,
-}: any) {
+}: {
+  open: boolean;
+  handleClose: () => void;
+  contactsItem: TAdminContactsInterface;
+}) {
+  const [email, setEmail] = React.useState(contactsItem.email);
+
   return (
     <>
       <Modal
@@ -46,7 +53,8 @@ export default function ContactsEmailModal({
                 sx={{ marginTop: '20px', width: '100%' }}
                 label={'ელ.ფოსტა'}
                 variant="outlined"
-                value={contactsItem.email}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 type="text"
               />
             </FormControl>
