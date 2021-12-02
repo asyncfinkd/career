@@ -1,5 +1,6 @@
 import React from 'react';
 import Actions from 'actions/modules/admin/add/cv';
+import CVHero from './components/cv-hero';
 
 const drawerWidth = 240;
 
@@ -100,7 +101,7 @@ export default function AdminAddCVModules(props: Props) {
           }}
         >
           <Actions.Toolbar />
-          <p>qwe</p>
+          <CVHero />
         </Actions.Box>
       </Actions.Box>
     </>
