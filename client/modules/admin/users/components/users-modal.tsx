@@ -70,7 +70,6 @@ export default function UsersModal({ handleClose, open, rows }: any) {
                     toast.success(
                       'გილოცავთ, ახალი მომხმარებელი წარმატებით დაემატა',
                     );
-                    console.log(result);
                     const updatedRow = { ...newData, _id: result.item };
                     rows.push(updatedRow);
                     handleClose();
