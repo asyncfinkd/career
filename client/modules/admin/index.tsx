@@ -31,9 +31,6 @@ export default function AdminModules() {
                 document.cookie = `cookie=${result.access_token};path=/`;
                 router.push('/admin/dashboard');
               }
-            })
-            .catch((err) => {
-              console.log('err: ' + err);
             });
         })}
       >

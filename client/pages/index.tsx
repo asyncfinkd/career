@@ -16,7 +16,6 @@ const Home: NextPage = ({
 
   return (
     <>
-      {console.log(secondResponse)}
       <Actions.IndexModules
         data={data}
         setData={setData}
