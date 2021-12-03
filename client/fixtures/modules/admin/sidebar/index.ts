@@ -6,7 +6,7 @@ export const AdminSidebar = [
   },
   {
     text: 'პოსტის დამატება',
-    route: '/admin/add/post',
+    route: '/admin/add/cv',
     key: 1,
   },
   {

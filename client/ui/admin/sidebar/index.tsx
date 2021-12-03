@@ -25,7 +25,7 @@ export default function AdminSidebar() {
             },
             {
               text: 'CV დამატება',
-              route: '/admin/add/post',
+              route: '/admin/add/cv',
               key: 1,
             },
             {
