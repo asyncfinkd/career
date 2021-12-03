@@ -13,14 +13,14 @@ export default function IndexMap({ item }: any) {
               <span
                 className="user-color text-secondary"
                 style={{ fontFamily: 'MarkGEO' }}
-              >
-                {title}
-              </span>
+                dangerouslySetInnerHTML={{ __html: title }}
+              ></span>
             </h3>
             <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap">
               <div
                 className="mt-2 flex items-center text-sm leading-5 text-gray-600 sm:mr-6 hh-job-row-location"
                 style={{ fontFamily: 'MarkGEO' }}
+                // dangerouslySetInnerHTML={{ __html: location }}
               >
                 <Actions.SVG src={Actions.s.LOCATION_SVG} />
                 {location}

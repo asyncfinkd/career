@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import TextField from '@mui/material/TextField';
 
 export default function CVHero() {
   // @ts-ignore
@@ -53,16 +54,20 @@ export default function CVHero() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
+  const [time, setTime] = useState('');
 
   return (
     <>
-      <p style={{ marginBottom: 20, fontFamily: 'MarkGEO' }}>სათაური</p>
-      <QuillNoSSRWrapper
+      <p style={{ marginTop: 20, marginBottom: 20, fontFamily: 'MarkGEO' }}>
+        სათაური
+      </p>
+      <TextField
+        type="text"
+        label={'სათაური'}
+        sx={{ width: '100%' }}
+        variant="filled"
         value={title}
-        onChange={setTitle}
-        modules={modules}
-        formats={formats}
-        theme="snow"
+        onChange={(e) => setTitle(e.target.value)}
       />
       <p style={{ marginTop: 20, marginBottom: 20, fontFamily: 'MarkGEO' }}>
         აღწერა
@@ -77,12 +82,24 @@ export default function CVHero() {
       <p style={{ marginTop: 20, marginBottom: 20, fontFamily: 'MarkGEO' }}>
         ადგილმდებარეობა
       </p>
-      <QuillNoSSRWrapper
-        modules={modules}
-        formats={formats}
-        theme="snow"
+      <TextField
+        type="text"
+        label={'ადგილმდებარეობა'}
+        sx={{ width: '100%' }}
+        variant="filled"
         value={location}
-        onChange={setLocation}
+        onChange={(e) => setLocation(e.target.value)}
+      />
+      <p style={{ marginTop: 20, marginBottom: 20, fontFamily: 'MarkGEO' }}>
+        განაკვეთი
+      </p>
+      <TextField
+        type="text"
+        label={'განაკვეთი'}
+        sx={{ width: '100%' }}
+        variant="filled"
+        value={time}
+        onChange={(e) => setTime(e.target.value)}
       />
       <Button
         variant="contained"
@@ -94,7 +111,7 @@ export default function CVHero() {
               .post(`${process.env.SERVER_API_URL}/api/add/post`, {
                 title: title,
                 description: description,
-                time: '12',
+                time: time,
                 location: location,
               })
               .then((result) => {
@@ -104,6 +121,7 @@ export default function CVHero() {
                   setLocation('');
                   setDescription('');
                   setTitle('');
+                  setTime('');
                 }
               });
           }
