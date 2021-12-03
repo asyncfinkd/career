@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import '../styles/globals.css';
 import 'nprogress/nprogress.css';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-quill/dist/quill.snow.css';
 
 Actions.Router.events.on('routeChangeStart', () => Actions.NProgress.start());
 Actions.Router.events.on('routeChangeComplete', () => Actions.NProgress.done());
