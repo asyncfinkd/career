@@ -26,7 +26,7 @@ export class AppsService {
    */
   getItems = async () => {
     try {
-      const item = await this.appsModel.find();
+      const item = await this.appsModel.find().populate('applicationId');
 
       if (!item) return { success: true, msg: 'not found' };
 

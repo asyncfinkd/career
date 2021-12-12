@@ -1,5 +1,7 @@
 import { Prop, SchemaFactory, Schema } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import * as mongoose from 'mongoose';
+import { PostSchema } from 'src/modules/post/model/post.model';
 
 export type AppsDocument = AppsSchema & Document;
 
@@ -37,6 +39,9 @@ export class AppsSchema {
 
   @Prop()
   motivationMessage: string;
+
+  @Prop({ type: mongoose.Types.ObjectId, ref: PostSchema.name })
+  applicationId: PostSchema;
 }
 
 /**
