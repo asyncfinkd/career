@@ -24,6 +24,11 @@ export class AppsController {
     return res.json(await this.appsService.getItems());
   }
 
+  /**
+   * Posts apps controller
+   * @param req
+   * @returns item
+   */
   @Post('add/apps')
   addItem(@Body() req): Promise<{ success: boolean; msg: string }> {
     return this.appsService.addItem(req);
