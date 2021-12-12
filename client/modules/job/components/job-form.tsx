@@ -1,7 +1,7 @@
 import { JobFormFixtures, JobFormMultipleFixtures } from 'fixtures/modules/job';
 import React from 'react';
 import DOMPurify from 'isomorphic-dompurify';
-import { useForm } from 'react-hook-form';
+import { useForm, get } from 'react-hook-form';
 import { JobProps } from 'types/pages/job';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { JobSchema } from 'schema/pages/job';
@@ -19,7 +19,11 @@ export default function JobForm() {
         className="md:w-5/12-1 p-4 sm:p-6 border-t-2 md:border-0 max-w-full"
       >
         <div>
-          <form onSubmit={(e) => e.preventDefault()}>
+          <form
+            onSubmit={handleSubmit((data: JobProps) => {
+              console.log(data);
+            })}
+          >
             <h3 className="font-semibold text-2xl text-center">
               გამოაგზავნეთ განაცხადი
             </h3>
@@ -66,12 +70,20 @@ export default function JobForm() {
                           </span>
                           {item?.required && <span className="req-mark"></span>}
                           <input
-                            className="form-input required"
+                            className={`form-input required ${
+                              get(formState.errors, item?.name) &&
+                              'error__input'
+                            }`}
                             id={item?.id}
                             maxLength={item?.maxLength}
                             type={item?.type}
-                            value=""
+                            {...register(item?.name)}
                           />
+                          {get(formState.errors, item?.name) && (
+                            <div className="form-error-txt">
+                              გთხოვთ შეავსოთ ეს ველი.
+                            </div>
+                          )}
                         </label>
                       </div>
                     </>

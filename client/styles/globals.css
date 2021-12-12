@@ -419,3 +419,8 @@ a {
 .geo__font {
   font-family: 'MarkGEO' !important;
 }
+
+.error__input {
+  border-color: rgba(239, 68, 68, 1);
+  opacity: 1;
+}
