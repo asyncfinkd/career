@@ -25,7 +25,7 @@ export const JobFormFixtures = [
     maxLength: 150,
     id: 'Location',
     type: 'text',
-    name: 'location',
+    name: 'cityOrRegion',
     required: true,
   },
   {
@@ -286,7 +286,7 @@ export const JobFormFixtures = [
     maxLength: 150,
     id: 'CurrentCompany',
     type: 'text',
-    name: 'currentCompany',
+    name: 'lastEmployeer',
     required: true,
   },
   {

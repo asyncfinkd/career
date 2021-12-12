@@ -127,11 +127,20 @@ export default function JobForm() {
                             ) : (
                               <>
                                 <input
-                                  className="form-input required"
+                                  className={`form-input required ${
+                                    get(formState.errors, item?.name) &&
+                                    'error__input'
+                                  }`}
                                   id={item?.id}
                                   maxLength={item?.maxLength}
                                   type={item?.type}
+                                  {...register(item?.name)}
                                 />
+                                {get(formState.errors, item?.name) && (
+                                  <div className="form-error-txt">
+                                    გთხოვთ შეავსოთ ეს ველი.
+                                  </div>
+                                )}
                               </>
                             )}
                           </>
