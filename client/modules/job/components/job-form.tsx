@@ -1,9 +1,17 @@
 import { JobFormFixtures, JobFormMultipleFixtures } from 'fixtures/modules/job';
 import React from 'react';
 import DOMPurify from 'isomorphic-dompurify';
+import { useForm } from 'react-hook-form';
+import { JobProps } from 'types/pages/job';
+import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
+import { JobSchema } from 'schema/pages/job';
 
 export default function JobForm() {
   const sanitizer = DOMPurify.sanitize;
+
+  const { register, handleSubmit, formState } = useForm<JobProps>({
+    resolver: yupResolver(JobSchema),
+  });
   return (
     <>
       <div
