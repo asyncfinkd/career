@@ -70,7 +70,9 @@ export default function JobForm() {
                           </span>
                           {item?.required && <span className="req-mark"></span>}
                           <input
-                            className={`form-input required ${
+                            className={`form-input ${
+                              item?.required && 'required'
+                            } ${
                               get(formState.errors, item?.name) &&
                               'error__input'
                             }`}
@@ -127,7 +129,9 @@ export default function JobForm() {
                             ) : (
                               <>
                                 <input
-                                  className={`form-input required ${
+                                  className={`form-input ${
+                                    item?.required && 'required'
+                                  } ${
                                     get(formState.errors, item?.name) &&
                                     'error__input'
                                   }`}

@@ -23,7 +23,7 @@ export const JobFormFixtures = [
   {
     text: 'ქალაქი/რეგიონი',
     maxLength: 150,
-    id: 'Location',
+    id: 'cityOrRegion',
     type: 'text',
     name: 'cityOrRegion',
     required: true,
