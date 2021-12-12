@@ -21,7 +21,7 @@ export class AppsSchema {
   country: string;
 
   @Prop()
-  lastHired: string;
+  lastEmployeer: string;
 
   @Prop()
   lastPosition: string;
@@ -32,8 +32,8 @@ export class AppsSchema {
   @Prop()
   phone: string;
 
-  @Prop()
-  resume: string;
+  // @Prop()
+  // resume: string;
 
   @Prop()
   motivationMessage: string;
