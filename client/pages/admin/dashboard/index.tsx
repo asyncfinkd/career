@@ -8,7 +8,8 @@ function AdminDashboardPages({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <>
-      <AdminDashboardModules />
+      {console.log(data)}
+      <AdminDashboardModules data={data} />
       <SpeedDialTooltipOpen />
     </>
   );

@@ -258,6 +258,9 @@ export default function JobForm() {
                 id="submitBtn"
                 type="submit"
                 className="btn-color loading-button px-8 py-2 font-medium text-white rounded shadow-sm button"
+                onClick={handleSubmit((data: JobProps) => {
+                  console.log(data);
+                })}
               >
                 <span className="circle-loader text-gray-600"></span>
                 <span className="apply-button-text button-content">
